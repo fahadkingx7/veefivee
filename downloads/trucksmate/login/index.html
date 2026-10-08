@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LogIn Extension | Share Login Simply</title>
+  <meta name="description" content="LogIn makes shared login access simple. Download the extension and get started in minutes.">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #6d4aff;
+      --primary-2: #8b5cf6;
+      --text: #17151f;
+      --muted: #6f6b7a;
+      --border: #ebe8f4;
+      --soft: #f7f5ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(109, 74, 255, .09), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(139, 92, 246, .08), transparent 25%),
+        #fff;
+    }
+
+    .navbar {
+      padding: 20px 0;
+    }
+
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand-dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      margin-left: 4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #a78bfa);
+    }
+
+    .hero {
+      padding: 42px 0 26px;
+      text-align: center;
+    }
+
+    .badge-soft {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 12px;
+      border: 1px solid #e7e1ff;
+      border-radius: 999px;
+      color: var(--primary);
+      background: rgba(109, 74, 255, .06);
+      font-size: .78rem;
+      font-weight: 700;
+      margin-bottom: 17px;
+    }
+
+    .badge-soft i {
+      font-size: .65rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.4rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      font-weight: 850;
+      margin: 0 auto 15px;
+      max-width: 760px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #6845f5, #9a67ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 540px;
+      margin: 0 auto 25px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 220px;
+      padding: 14px 23px;
+      border: 0;
+      border-radius: 13px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 12px 28px rgba(109, 74, 255, .22);
+      font-size: 1rem;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+
+    .download-btn:hover {
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 17px 34px rgba(109, 74, 255, .3);
+      filter: brightness(1.04);
+    }
+
+    .download-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .note {
+      margin-top: 10px;
+      color: #9994a5;
+      font-size: .72rem;
+    }
+
+    .steps-section {
+      max-width: 900px;
+      margin: 25px auto 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: .86rem;
+      font-weight: 800;
+      color: #514d5d;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 13px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 11px;
+    }
+
+    .step {
+      position: relative;
+      padding: 17px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: rgba(255,255,255,.84);
+      box-shadow: 0 7px 25px rgba(30, 20, 60, .035);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 8px;
+      margin-bottom: 9px;
+      color: var(--primary);
+      background: var(--soft);
+      font-size: .72rem;
+      font-weight: 850;
+    }
+
+    .step h3 {
+      margin: 0 0 5px;
+      font-size: .92rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .77rem;
+      line-height: 1.45;
+    }
+
+    .step a {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(109,74,255,.45);
+    }
+
+    .step a:hover {
+      color: #5031d8;
+    }
+
+    .tip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      margin: 13px 0 0;
+      color: #85808f;
+      font-size: .72rem;
+    }
+
+    .tip i {
+      color: #8b5cf6;
+    }
+
+    footer {
+      padding: 22px 0 18px;
+      text-align: center;
+      color: #aaa6b2;
+      font-size: .68rem;
+    }
+
+    @media (max-width: 700px) {
+      .navbar { padding: 15px 0; }
+      .hero { padding: 30px 0 20px; }
+      h1 { font-size: clamp(2.5rem, 13vw, 3.6rem); }
+      .hero p { font-size: .9rem; padding: 0 10px; }
+      .steps { grid-template-columns: 1fr; }
+      .step { padding: 14px 15px; }
+      .step-number { margin-bottom: 5px; }
+      .section-title { margin-bottom: 9px; }
+      .tip { padding: 0 12px; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="#" class="brand">LogIn<span class="brand-dot"></span></a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="badge-soft">
+          <i class="bi bi-stars"></i>
+          Beta Version
+        </div>
+
+        <h1>Share <span class="gradient-text">LogIn</span><br>Simply.</h1>
+
+        <p>
+          LogIn makes sharing website access quick & easy.<br/>
+        </p>
+
+        <!-- Replace href with your actual ZIP download URL -->
+        <a class="download-btn" href="https://github.com/fahadkingx7/login-client/archive/refs/heads/main.zip" download>
+          <i class="bi bi-download"></i>
+          Download LogIn Extension
+        </a>
+
+        <div class="note">Free to download · Chrome extension</div>
+      </div>
+    </section>
+
+    <section class="steps-section">
+      <div class="container">
+        <div class="section-title">Get started in 3 steps</div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Download & Extract</h3>
+            <p>
+              Download the ZIP above. Go to downloads folder and <strong>Right-click it → Extract All</strong>
+              to turn it into a normal folder.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Open Extensions</h3>
+            <p>
+              Go to
+              <a href="chrome://extensions" target="_blank">chrome://extensions</a>
+              or Chrome menu → Extensions, then top right turn on <strong>Developer mode</strong>.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Install LogIn</h3>
+            <p>
+              On top left click <strong>Load unpacked</strong>,
+              then select the extracted LogIn folder to install the chrome extension.
+            </p>
+          </div>
+        </div>
+
+        <div class="tip">
+          <i class="bi bi-lightbulb"></i>
+          Done — <strong>LogIn</strong> will now appear in your Chrome extensions.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 LogIn Extension · 
+    <a href="https://veefivee.com" target="_blank" rel="noopener"
+       style="color:#7654ee;text-decoration:none;font-weight:750;">🌴 Veefivee</a>
+  </footer>
+</body>
+</html>
