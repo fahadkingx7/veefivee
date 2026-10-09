@@ -179,3 +179,206 @@ main > section:first-of-type .glass-panel:hover{background:rgba(255,255,255,.85)
 .footer-luxe{padding:26px 15px}.footer-links{gap:1px}.footer-links a{font-size:.76rem;padding:8px}
 }
 @media(prefers-reduced-motion:reduce){.founder-image,.milestone,.service-card,.contact-option,.button-purple,.button-light,.service-tabs a{transition:none!important;transform:none!important}.text-shimmer{animation:none}}
+
+/* Same Android/Noto palm glyph across iOS, macOS, Android and Windows. */
+.android-palm{display:inline-block;width:1em;height:1em;vertical-align:-.12em;object-fit:contain;flex-shrink:0}
+
+/* Mobile-only: add the veefivee brand as a first row inside the ORIGINAL
+   rounded-full liquid-glass navigation. Original desktop appearance untouched. */
+.vf-mobile-brand { display:none; }
+.vf-nav-contact-mobile { display:none; }
+@media (max-width: 767.98px) {
+  [data-nav-pill] {
+    flex-wrap:wrap;
+    justify-content:center;
+    border-radius:9999px;
+    row-gap:1px;
+  }
+  [data-nav-pill] > .vf-mobile-brand {
+    display:flex;
+    flex:0 0 100%;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+    padding:3px 0 2px;
+    margin:0;
+    color:#282340;
+    font-size:.875rem;
+    line-height:1.3;
+    text-decoration:none;
+  }
+  [data-nav-pill] > .vf-mobile-brand .android-palm { margin:0; }
+  .vf-nav-contact-desktop { display:none; }
+  .vf-nav-contact-mobile { display:inline; }
+}
+@media (max-width: 520px) {
+  [data-nav-pill] > .vf-mobile-brand {
+    font-size:.875rem!important;
+    padding:3px 0 2px!important;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   veefivee v4: How We Help + Industries. Additive styles only.
+   Existing liquid glass, typography, animations and pill nav are preserved.
+   ═══════════════════════════════════════════════════════════════════════ */
+/* Optical correction for a visual balance between the colorful palm and wordmark. */
+.footer-brand{position:relative;left:-4px}
+@media(max-width:767.98px){[data-nav-pill]>.vf-mobile-brand{position:relative;left:-5px}}
+/* Keep six links on the ORIGINAL rounded-pill mobile navbar. No font changes. */
+@media(max-width:410px){[data-nav-pill]>a:not(.vf-mobile-brand):not(.hidden){padding-left:6px!important;padding-right:6px!important}}
+@media(max-width:360px){[data-nav-pill]>a:not(.vf-mobile-brand):not(.hidden){padding-left:4px!important;padding-right:4px!important}}
+
+.vf-section-shell{max-width:1170px;margin:0 auto}
+.vf-section-heading{text-align:center;max-width:805px;margin:0 auto 45px}
+.vf-section-heading h2{color:#26233f;font-size:clamp(2.45rem,5.2vw,4.7rem);font-weight:850;letter-spacing:-.067em;line-height:1.12;margin:14px 0 18px;text-wrap:balance}
+.vf-section-heading>p:last-child{color:#65647a;font-size:1.05rem;line-height:1.79;max-width:680px;margin:0 auto}
+.vf-how-section{padding:82px 22px 125px;position:relative}
+.vf-how-section:before{content:"";z-index:-1;position:absolute;left:3%;top:2%;height:390px;width:390px;border-radius:50%;background:radial-gradient(circle,rgba(183,187,255,.22),transparent 72%);pointer-events:none}
+.vf-how-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}
+.vf-how-card{display:flex;flex-direction:column;min-width:0;border-radius:32px;border:1px solid rgba(255,255,255,.92);padding:30px 27px 31px;box-shadow:0 17px 44px -31px rgba(67,55,130,.28),inset 0 1px 0 #fff;transition:transform .32s ease,box-shadow .32s ease,opacity .7s ease;background:linear-gradient(156deg,rgba(230,230,255,.90),rgba(255,255,255,.83))}
+.vf-how-card:hover{transform:translateY(-7px)!important;box-shadow:0 26px 48px -32px rgba(74,65,147,.39)}
+.vf-how-consult{background:linear-gradient(148deg,#e6e6ff 0%,rgba(255,255,255,.88) 85%)}
+.vf-how-build{background:linear-gradient(148deg,#dcf4f4 0%,rgba(255,255,255,.88) 85%)}
+.vf-how-ideas{background:linear-gradient(148deg,#fff0dc 0%,rgba(255,255,255,.90) 85%)}
+.vf-how-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:33px}
+.vf-how-icon{display:grid;place-items:center;font-size:1.7rem;width:60px;height:60px;border-radius:20px;background:rgba(255,255,255,.7);color:#7361d6;box-shadow:0 10px 22px -14px rgba(57,47,116,.32),inset 0 1px 0 white}
+.vf-how-build .vf-how-icon{color:#31999a}.vf-how-ideas .vf-how-icon{color:#d4953d}
+.vf-how-number{font-size:.66rem;letter-spacing:.15em;color:#88839d;font-weight:800}
+.vf-how-card h3{font-size:clamp(1.55rem,2.6vw,2.16rem);font-weight:820;line-height:1.22;color:#29253f;letter-spacing:-.05em;margin:0 0 17px}
+.vf-how-card h3 em{font-style:normal;color:#7359d1}.vf-how-build h3 em{color:#318b91}.vf-how-ideas h3 em{color:#bb8254}
+.vf-how-card>p{color:#55546b;line-height:1.78;font-size:.9rem;margin:0 0 24px}
+.vf-how-points{display:flex;align-items:flex-start;flex-wrap:wrap;gap:7px;margin-top:auto}
+.vf-how-points span{background:rgba(255,255,255,.73);border:1px solid rgba(255,255,255,.92);border-radius:10px;font-size:.71rem;font-weight:720;color:#5b5879;padding:7px 9px}
+.vf-how-bottom{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;border-radius:24px;border:1px solid white;background:rgba(255,255,255,.62);margin-top:19px;padding:21px 27px;color:#6a667c;font-size:.94rem}
+.vf-how-bottom strong{color:#383250}
+.vf-how-bottom a{color:#6253ca;font-weight:800;text-decoration:none;white-space:nowrap}.vf-how-bottom a:hover{color:#a64fb7}
+
+.vf-industries-section{padding:65px 22px 115px;position:relative}
+.vf-industries-heading{max-width:850px}
+.vf-industry-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px;align-items:stretch}
+.vf-industry-card{display:flex;flex-direction:column;position:relative;min-width:0;overflow:hidden;border-radius:27px;padding:24px 22px 24px;border:1px solid rgba(255,255,255,.94);background:linear-gradient(145deg,var(--vf-ind-tint,#edeaff),rgba(255,255,255,.85) 69%);box-shadow:0 13px 41px -29px rgba(67,52,142,.30),inset 0 1px 0 white;transition:box-shadow .3s ease, background .3s ease, opacity .7s ease}
+.vf-industry-card:hover{box-shadow:0 25px 53px -28px rgba(80,67,152,.32)}
+.vf-industry-violet{--vf-ind-tint:#e9e6ff;--vf-ind-color:#6356b8}
+.vf-industry-pink{--vf-ind-tint:#ffe7f2;--vf-ind-color:#a95c8d}
+.vf-industry-blue{--vf-ind-tint:#e2ecff;--vf-ind-color:#4e77ba}
+.vf-industry-peach{--vf-ind-tint:#fff0e4;--vf-ind-color:#b67e53}
+.vf-industry-mint{--vf-ind-tint:#dcf7eb;--vf-ind-color:#4c9580}
+.vf-industry-sky{--vf-ind-tint:#def3fc;--vf-ind-color:#478da9}
+.vf-industry-lavender{--vf-ind-tint:#f1e4ff;--vf-ind-color:#8d65be}
+.vf-industry-sun{--vf-ind-tint:#fff2ce;--vf-ind-color:#ac8b36}
+.vf-industry-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.vf-industry-icon{width:51px;height:51px;display:grid;place-items:center;font-size:1.5rem;font-weight:700;color:var(--vf-ind-color);background:rgba(255,255,255,.75);border-radius:18px;border:1px solid white;box-shadow:0 9px 20px -15px rgba(42,35,87,.32)}
+.vf-industry-number{font-size:.68rem;letter-spacing:.1em;color:#9991a8;font-weight:760}
+.vf-industry-eyebrow{font-size:.66rem;letter-spacing:.15em;font-weight:800;color:var(--vf-ind-color);margin:0 0 12px}
+.vf-industry-card h3{font-size:1.18rem;line-height:1.28;font-weight:835;letter-spacing:-.036em;color:#29253e;margin:0 0 12px}
+.vf-industry-description{font-size:.835rem;line-height:1.72;color:#5c5a70;margin:0 0 21px}
+.vf-industry-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:15px;border-top:1px solid rgba(85,78,124,.10)}
+.vf-industry-chips span{background:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.90);border-radius:9px;font-size:.665rem;padding:5px 8px;font-weight:680;color:#625d7a;line-height:1.3}
+.vf-industry-cta{display:flex;align-items:center;justify-content:space-between;gap:8px;text-decoration:none;font-size:.78rem;font-weight:790;color:var(--vf-ind-color);margin-top:19px}.vf-industry-cta:hover{text-decoration:underline;text-underline-offset:3px}
+.vf-industry-free{position:absolute;top:0;left:0;padding:4px 11px;background:#6a58b5;color:white;font-size:.56rem;font-weight:800;letter-spacing:.08em;border-bottom-right-radius:13px}
+.vf-industry-bottom{text-align:center;max-width:750px;margin:45px auto 0}
+.vf-industry-bottom>p{font-size:1rem;line-height:1.8;color:#6a657a;margin-bottom:24px}.vf-industry-bottom strong{color:#383550}
+
+/* Industries landing page, using the same typography and color vocabulary. */
+.vf-industries-page{overflow-x:hidden}
+.vf-ind-page-hero{position:relative;isolation:isolate;min-height:565px;padding:165px 22px 105px;text-align:center;overflow:hidden;background:radial-gradient(ellipse 60% 100% at 12% 6%,#e6e6ff,transparent 80%),radial-gradient(ellipse 50% 80% at 90% 15%,#ffebf2,transparent 78%),linear-gradient(130deg,#f9f9ff,#f0f8ff)}
+.vf-ind-hero-glow{position:absolute;z-index:-1;width:320px;height:320px;filter:blur(45px);border-radius:50%;opacity:.28;pointer-events:none;animation:float 9s ease-in-out infinite}
+.vf-ind-hero-glow-a{left:-145px;top:130px;background:#aaa6ff}.vf-ind-hero-glow-b{right:-145px;bottom:10px;background:#ffb4db;animation-delay:-4s}
+.vf-ind-hero-content{max-width:950px}
+.vf-ind-hero-content h1{font-size:clamp(3.15rem,7vw,6rem);font-weight:860;line-height:1.12;letter-spacing:-.068em;color:#29263f;margin:15px auto 25px;text-wrap:balance}
+.vf-ind-hero-content>p:not(.section-kicker){font-size:1.12rem;line-height:1.79;max-width:710px;color:#646277;margin:0 auto}
+.vf-ind-hero-action{display:inline-flex;margin-top:30px;padding:12px 20px;border-radius:999px;background:rgba(255,255,255,.65);border:1px solid white;box-shadow:0 10px 30px -20px rgba(86,67,150,.45);color:#6354b7;font-weight:790;text-decoration:none;transition:transform .24s}
+.vf-ind-hero-action:hover{transform:translateY(-3px)}
+.vf-ind-directory{padding-top:82px;scroll-margin-top:110px}
+.vf-ind-directory .vf-industry-card{scroll-margin-top:124px}
+@media(max-width:1060px){.vf-industry-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:860px){.vf-how-grid{grid-template-columns:1fr;gap:16px}.vf-how-card{padding:27px 28px}.vf-how-top{margin-bottom:17px}.vf-how-card h3{font-size:1.8rem}}
+@media(max-width:600px){.vf-how-section{padding:50px 15px 84px}.vf-industries-section{padding:45px 15px 88px}.vf-industry-grid{grid-template-columns:1fr;gap:13px}.vf-industry-card{padding:26px 23px}.vf-industry-card h3{font-size:1.3rem}.vf-industry-description{font-size:.9rem}.vf-section-heading{margin-bottom:34px}.vf-section-heading h2{font-size:clamp(2.25rem,9.2vw,3.5rem)}.vf-section-heading>p:last-child{font-size:.97rem}.vf-how-card{padding:24px}.vf-how-card h3{font-size:1.65rem}.vf-how-bottom{padding:20px;gap:10px}.vf-ind-page-hero{min-height:530px;padding:160px 20px 85px}.vf-ind-hero-content h1{font-size:clamp(2.85rem,10.5vw,4.3rem)}.vf-ind-hero-content>p:not(.section-kicker){font-size:1rem}.vf-ind-directory{padding-top:60px}}
+@media(prefers-reduced-motion:reduce){.vf-how-card,.vf-industry-card,.vf-ind-hero-action{transition:none!important}.vf-ind-hero-glow{animation:none}}
+
+
+/* Industries v5 — alternating showcase panels with artwork */
+.vf-ind-showcase .vf-section-shell{max-width:1220px}
+.vf-industry-panels{display:flex;flex-direction:column;gap:26px}
+.vf-industry-panel{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);align-items:stretch;gap:0;border-radius:38px;overflow:hidden;border:1px solid rgba(255,255,255,.92);background:rgba(255,255,255,.7);box-shadow:0 24px 70px -42px rgba(66,56,125,.34), inset 0 1px 0 rgba(255,255,255,.95)}
+.vf-industry-panel.vf-panel-reverse{grid-template-columns:minmax(0,.98fr) minmax(0,1.02fr)}
+.vf-industry-panel-media{position:relative;min-height:360px;background:linear-gradient(135deg,rgba(232,236,255,.85),rgba(253,240,247,.85))}
+.vf-industry-panel-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.vf-industry-panel-copy{position:relative;display:flex;flex-direction:column;justify-content:center;padding:clamp(26px,4vw,48px);background:linear-gradient(135deg,rgba(255,255,255,.84),rgba(246,244,255,.78))}
+.vf-panel-reverse .vf-industry-panel-media{order:2}
+.vf-panel-reverse .vf-industry-panel-copy{order:1}
+.vf-industry-panel h3{font-size:clamp(2rem,3.8vw,3.25rem);line-height:1.08;font-weight:840;letter-spacing:-.055em;color:#292543;margin:10px 0 18px;text-wrap:balance}
+.vf-industry-panel .vf-industry-description{font-size:1rem;line-height:1.82;color:#5b5970;margin-bottom:18px}
+.vf-industry-points{margin:0 0 22px;padding:0;list-style:none;display:grid;gap:10px}
+.vf-industry-points li{position:relative;padding-left:1.2rem;color:#4e4b65;font-size:.92rem;line-height:1.65}
+.vf-industry-points li::before{content:"✦";position:absolute;left:0;top:0;color:#7b62ec;font-weight:800}
+.vf-industry-panel .vf-industry-card-top{margin-bottom:4px}
+.vf-industry-panel .vf-industry-eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#7865bb}
+.vf-industry-panel .vf-industry-cta{margin-top:6px;display:inline-flex;align-items:center;gap:.5rem;width:max-content;font-size:.86rem;border-radius:999px;padding:13px 18px;background:rgba(255,255,255,.86);border:1px solid rgba(122,104,194,.16);box-shadow:0 12px 28px -18px rgba(84,64,161,.35)}
+.vf-industry-panel .vf-industry-cta:hover{transform:translateY(-2px);background:#fff}
+.vf-industry-panel .vf-industry-chips{margin-top:2px;margin-bottom:18px}
+.vf-industry-panel .vf-industry-free{position:absolute;right:22px;top:22px}
+.vf-panel-creators .vf-industry-panel-copy{background:linear-gradient(135deg,rgba(255,248,252,.9),rgba(247,242,255,.82))}
+.vf-panel-software .vf-industry-panel-copy{background:linear-gradient(135deg,rgba(245,248,255,.92),rgba(238,246,255,.82))}
+.vf-panel-government .vf-industry-panel-copy{background:linear-gradient(135deg,rgba(247,249,255,.92),rgba(238,244,255,.82))}
+.vf-panel-callcenter .vf-industry-panel-copy{background:linear-gradient(135deg,rgba(250,246,255,.92),rgba(244,249,255,.82))}
+.vf-panel-education .vf-industry-panel-copy{background:linear-gradient(135deg,rgba(246,255,251,.94),rgba(242,247,255,.84))}
+.vf-panel-business .vf-industry-panel-copy{background:linear-gradient(135deg,rgba(255,249,243,.94),rgba(247,243,255,.84))}
+.vf-panel-local .vf-industry-panel-copy{background:linear-gradient(135deg,rgba(255,248,239,.94),rgba(255,244,251,.84))}
+.vf-panel-freelancers .vf-industry-panel-copy{background:linear-gradient(135deg,rgba(247,244,255,.94),rgba(242,250,255,.84))}
+@media(max-width:980px){
+  .vf-industry-panel,.vf-industry-panel.vf-panel-reverse{grid-template-columns:1fr}
+  .vf-panel-reverse .vf-industry-panel-media,.vf-panel-reverse .vf-industry-panel-copy{order:initial}
+  .vf-industry-panel-media{min-height:310px}
+}
+@media(max-width:640px){
+  .vf-industry-panels{gap:20px}
+  .vf-industry-panel{border-radius:28px}
+  .vf-industry-panel-media{min-height:250px}
+  .vf-industry-panel-copy{padding:24px 20px 26px}
+  .vf-industry-panel h3{font-size:2rem}
+  .vf-industry-panel .vf-industry-description{font-size:.96rem;line-height:1.72}
+  .vf-industry-points li{font-size:.88rem}
+  .vf-industry-panel .vf-industry-free{position:static;align-self:flex-start;margin-top:12px}
+}
+
+
+/* Home industries compact showcase v6 */
+.vf-home-industries-preview .vf-section-shell{max-width:1220px}
+.vf-home-industries-preview .vf-industry-panels{gap:22px}
+.vf-home-industries-preview .vf-industry-panel{border-radius:34px}
+.vf-home-industries-preview .vf-industry-panel-media{min-height:280px}
+.vf-home-industries-preview .vf-industry-panel-copy{padding:28px 30px}
+.vf-home-industries-preview .vf-industry-panel h3{font-size:clamp(1.75rem,3.2vw,2.5rem);margin:10px 0 14px}
+.vf-home-industries-preview .vf-industry-panel .vf-industry-description{font-size:.96rem;line-height:1.72;margin-bottom:14px}
+.vf-home-industries-preview .vf-industry-chips{margin-bottom:14px}
+.vf-home-industries-preview .vf-industry-cta{padding:12px 16px;font-size:.84rem}
+.vf-home-industries-bottom{margin-top:26px}
+@media(max-width:640px){
+  .vf-home-industries-preview .vf-industry-panel-media{min-height:220px}
+  .vf-home-industries-preview .vf-industry-panel-copy{padding:22px 18px 24px}
+  .vf-home-industries-preview .vf-industry-panel h3{font-size:1.7rem}
+}
+
+
+/* v10 targeted performance: animate only the visible hero/content, never the
+   entire (very tall) homepage. Keep original page-enter keyframes + duration,
+   easing, delay and the existing staggered rise-in animations unchanged. */
+.vf-home-page.page-enter,
+.contact-page.page-enter { animation: none; }
+.vf-home-page > .home-hero > .mx-auto.max-w-4xl,
+.contact-page > .contact-main { animation: .7s cubic-bezier(.22,1,.36,1) both page-enter; }
+/* Original what-I-do first-section card treatment, preserved after rearrange. */
+.vf-what-section .glass-panel { background:rgba(255,255,255,.62); border:1px solid white; box-shadow:0 12px 48px -20px rgba(68,60,138,.24); }
+.vf-what-section .glass-panel:hover { background:rgba(255,255,255,.85); }
+/* Soft tilt uses the existing mouse-follow algorithm (used by the final CTA).
+   The large card has a smaller angle, and visual style remains untouched. */
+.vf-industry-panel { position:relative; transition:transform .6s cubic-bezier(.22,1,.36,1); }
+.vf-industry-panel:hover { z-index:1; }
+@media (prefers-reduced-motion: reduce) {
+ .vf-home-page > .home-hero > .mx-auto.max-w-4xl,
+ .contact-page > .contact-main,
+ .vf-industry-panel { animation:none!important; transition:none!important; }
+}
