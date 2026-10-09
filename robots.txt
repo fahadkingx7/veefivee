@@ -1,0 +1,31 @@
+# Public pages are available to search engines and AI search providers.
+# Search crawlers and training crawlers are different. Review your policy before changing these rules.
+User-agent: *
+Allow: /
+
+# ChatGPT Search / AI-assisted search discovery
+User-agent: OAI-SearchBot
+Allow: /
+
+# Perplexity search
+User-agent: PerplexityBot
+Allow: /
+
+# Claude search
+User-agent: Claude-SearchBot
+Allow: /
+
+# User-requested AI page fetchers
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Model training bots, including GPTBot and ClaudeBot, remain allowed by the wildcard rule.
+# To opt out of training without blocking search discovery, create separate user-agent policies.
+
+Sitemap: https://veefivee.com/sitemap.xml

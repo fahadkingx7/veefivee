@@ -606,3 +606,16 @@ html,body {max-width:100%; overflow-x:clip;}
     padding-right:2px!important;
   }
 }
+
+/* v22: Place the live green status dot directly beside the first mobile greeting line. */
+@media (max-width: 767.98px) {
+  .home-hero .glass-pill:has(.vf-greeting-mobile) > span:first-child { display:none; }
+  .home-hero .vf-greeting-mobile {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    white-space:nowrap;
+  }
+  .home-hero .vf-mobile-green-dot { flex:0 0 8px; }
+}
