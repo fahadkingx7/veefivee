@@ -49,11 +49,11 @@ a:focus-visible,button:focus-visible{outline:3px solid #7972f7!important;outline
 .home-hero > .absolute{pointer-events:none}
 .home-hero > .absolute img{object-fit:cover}
 .hero-soften{background:radial-gradient(ellipse 55% 72% at 50% 45%,rgba(255,255,255,.70),rgba(255,255,255,.23) 73%,transparent 100%)}
-.home-hero .mx-auto.max-w-4xl{max-width:950px;position:relative;z-index:1}
+.home-hero .mx-auto.max-w-4xl{max-width:950px;position:relative;z-index:1;padding-inline:12px}
 .home-hero .glass-pill{background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.82);box-shadow:0 10px 25px rgba(101,83,157,.09)}
 .hero-eyebrow{font-size:.95rem;font-weight:800;letter-spacing:.06em;color:#4d41a7;margin-bottom:20px}
 .hero-eyebrow span{color:#77718e;font-weight:500;letter-spacing:0}
-.hero-heading{font-size:clamp(3.5rem,8.2vw,7.8rem);line-height:1.035;letter-spacing:-.068em!important;color:#202038;text-wrap:balance;text-shadow:0 1px 0 rgba(255,255,255,.28)}
+.hero-heading{font-size:clamp(3.35rem,7.9vw,7.45rem);line-height:1.04;letter-spacing:-.064em!important;color:#202038;text-wrap:balance;text-shadow:0 1px 0 rgba(255,255,255,.28);padding-inline:.05em}
 .hero-second-line{display:block;color:#202038}
 .hero-summary{color:#3f425f!important;line-height:1.55;max-width:685px}
 .home-hero .glass-panel-strong{background:rgba(255,255,255,.7)!important;border-color:rgba(255,255,255,.95)!important;box-shadow:0 10px 25px rgba(82,72,119,.1)}
@@ -61,7 +61,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #7972f7!important;outline
 main > section:first-of-type .glass-panel{background:rgba(255,255,255,.62);border:1px solid white;box-shadow:0 12px 48px -20px rgba(68,60,138,.24)}
 main > section:first-of-type .glass-panel:hover{background:rgba(255,255,255,.85)}
 /* FOUNDER HOME */
-.founder-home-section{padding:15px 22px 130px;position:relative}
+.founder-home-section{padding:44px 22px 130px;position:relative}
 .founder-home-shell{max-width:1160px;margin:auto;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(35px,6vw,94px);padding:clamp(24px,5vw,65px);border-radius:48px;background:linear-gradient(127deg,rgba(228,236,255,.72),rgba(255,255,255,.78) 49%,rgba(252,229,246,.78));border:1px solid rgba(255,255,255,.91);box-shadow:0 20px 80px -45px rgba(78,67,140,.3),inset 0 1px 0 #fff}
 .founder-image-wrap{position:relative;isolation:isolate;margin:15px 0}
 .founder-image-aura{position:absolute;inset:-24px;background:linear-gradient(145deg,#a9afff,#ffc5ac 62%,#a7e8e8);filter:blur(28px);opacity:.67;z-index:-1;border-radius:40px}
@@ -171,7 +171,7 @@ main > section:first-of-type .glass-panel:hover{background:rgba(255,255,255,.85)
 }
 @media(max-width:520px){
 [data-nav-pill]{max-width:calc(100vw - 14px)!important;padding:6px!important;gap:0!important}[data-nav-pill] a{font-size:.65rem!important;padding:7px 8px!important}
-.home-hero{min-height:735px}.hero-heading{font-size:clamp(2.8rem,12.2vw,4.1rem)}.home-hero .glass-pill{font-size:.72rem;padding:6px 11px}.home-hero .rise-in.mt-10{gap:10px}.home-hero .rise-in.mt-10 a{padding:12px 16px;font-size:.77rem}
+.home-hero{min-height:735px}.hero-heading{font-size:clamp(2.6rem,10.8vw,4rem);line-height:1.03;padding-inline:.08em}.home-hero .glass-pill{font-size:.72rem;padding:6px 11px}.home-hero .rise-in.mt-10{gap:10px}.home-hero .rise-in.mt-10 a{padding:12px 16px;font-size:.77rem}
 .founder-story h2{font-size:2.3rem}.founder-story p:not(.section-kicker){font-size:.94rem}.founder-stats{gap:6px}.founder-stats span{font-size:.7rem}
 .about-topline h1{font-size:clamp(2.55rem,10vw,3.65rem)}.about-narrative{padding:24px 22px}.about-narrative h2{font-size:2.25rem}.about-connect>a{width:100%}.story-milestones{grid-template-columns:1fr}
 .service-header h1{font-size:clamp(2.55rem,10vw,4rem)}.service-header>p:not(.section-kicker){font-size:1rem}.service-grid{grid-template-columns:1fr}.category-header{padding:27px 22px}.category-header h2{font-size:2rem}.category-emblem{font-size:3.4rem}.service-category{margin-bottom:64px}.service-card{padding:24px}.service-card h3{font-size:1.18rem}.service-card>p{font-size:.91rem}.service-tabs{gap:8px}.service-tabs a{font-size:.78rem;padding:10px 13px}
@@ -381,4 +381,84 @@ main > section:first-of-type .glass-panel:hover{background:rgba(255,255,255,.85)
  .vf-home-page > .home-hero > .mx-auto.max-w-4xl,
  .contact-page > .contact-main,
  .vf-industry-panel { animation:none!important; transition:none!important; }
+}
+
+
+/* v14: Keep existing large headline design but prevent ink clipping at smaller
+   viewports and browser zoom. No other layouts or animation rules change. */
+.home-hero .hero-heading,
+.service-header h1,
+.about-topline h1 {
+  box-sizing:border-box;
+  max-width:100%;
+  margin-inline:auto;
+  text-wrap:balance;
+  overflow-wrap:break-word;
+  padding-inline:.09em;
+}
+.home-hero .hero-heading {font-size:clamp(2.75rem,7.2vw,6.75rem);}
+.service-header h1 {font-size:min(clamp(2.9rem,6vw,6.2rem),5.4rem);}
+.about-topline h1 {font-size:min(clamp(3rem,6.5vw,6.4rem),5.4rem);}
+.home-hero .hero-heading span,
+.service-header h1 .text-shimmer,
+.about-topline h1 .text-shimmer {white-space:normal;overflow-wrap:break-word;}
+@media(max-width:760px){
+ .home-hero .hero-heading {font-size:clamp(2.35rem,9vw,4.9rem);}
+}
+@media(max-width:520px){
+ .home-hero .hero-heading {font-size:clamp(2.25rem,9vw,3.6rem);}
+ .service-header h1,.about-topline h1 {font-size:clamp(2.25rem,8.5vw,3.6rem);}
+}
+
+/* v15: prevent the final glyph in gradient text from clipping without changing alignment */
+.text-shimmer {
+  padding-right: 10px;
+  margin-right: -10px;
+}
+
+
+/* v16: Fix true headline overflow (not only gradient's last glyph).
+   Preserve fonts, gradient, content and animations. */
+html,body {max-width:100%; overflow-x:clip;}
+.home-hero .hero-heading,
+.founder-story h2,
+.about-topline h1,
+.about-narrative h2,
+.service-header h1,
+.vf-section-heading h2,
+.vf-ind-hero-content h1 {
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
+  overflow-wrap:normal;
+  word-break:normal;
+  white-space:normal;
+  text-wrap:balance;
+  padding-inline:.09em;
+}
+/* Let gradient spans form normal wrapping boxes instead of unbreakable oversize lines. */
+.home-hero .hero-heading .text-shimmer,
+.founder-story h2 em,
+.about-topline h1 .text-shimmer,
+.service-header h1 .text-shimmer,
+.vf-section-heading h2 .text-shimmer,
+.vf-ind-hero-content h1 .text-shimmer {
+  white-space:normal;
+  overflow-wrap:normal;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+/* Keep large editorial typography while fitting real text columns. */
+.founder-story h2{font-size:clamp(2rem,3.3vw,3.25rem);}
+.vf-section-heading h2{font-size:clamp(2.15rem,4.1vw,3.95rem);}
+.service-header h1,.about-topline h1{font-size:clamp(2.7rem,5vw,5.1rem);}
+.vf-ind-hero-content h1{font-size:clamp(2.7rem,5.5vw,5.3rem);}
+@media(max-width:760px){
+ .founder-story h2{font-size:clamp(2rem,7vw,3.1rem);}
+ .vf-section-heading h2{font-size:clamp(2rem,7vw,3.45rem);}
+ .service-header h1,.about-topline h1,.vf-ind-hero-content h1{font-size:clamp(2.2rem,7.5vw,4rem);}
+}
+@media(max-width:420px){
+ .founder-story h2,.vf-section-heading h2{font-size:clamp(1.95rem,8.2vw,2.55rem);}
+ .service-header h1,.about-topline h1,.vf-ind-hero-content h1{font-size:clamp(2rem,8.5vw,2.8rem);}
 }
