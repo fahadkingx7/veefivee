@@ -504,3 +504,105 @@ html,body {max-width:100%; overflow-x:clip;}
   .vf-ind-page-hero > .vf-ind-hero-content { animation: none !important; }
   .vf-ind-page-hero .vf-ind-hero-glow { will-change: auto; }
 }
+
+
+/* v19: Remaining-page startup optimization (same visual design and easing).
+   Avoid filtering/scaling tall documents: that full-page blur rasterizes all
+   service/product/about content on every visit, even far below the viewport.
+   Like v18 Industries, keep the 700ms original entrance on only hero text.
+*/
+.about-page.page-enter,
+.services-page.page-enter,
+.vf-products-page.page-enter { animation: none; }
+
+.about-page .about-topline,
+.services-page .service-header {
+  animation: .7s cubic-bezier(.22,1,.36,1) both page-enter;
+}
+
+/* About's second part is visible on some mobile screens. Preserve its
+   original enter movement and fade, without blurring the glass portrait/card.
+   This is GPU-compositable opacity + transform, not an animated CSS filter. */
+@keyframes vf-enter-composited {
+  from { opacity: 0; transform: translateY(24px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.about-page .about-intro-grid {
+  animation: .7s cubic-bezier(.22,1,.36,1) both vf-enter-composited;
+}
+
+/* Products already has the staggered 700ms data-reveal animation on its
+   two opening columns (0ms and 150ms). Keep those existing animations and
+   avoid stacking an expensive full-page blur on top of them. */
+
+/* Contact's wallpaper is already pre-rendered. Previously the opening filter
+   was placed around the whole content including three backdrop-filter cards.
+   Keep the exact original text entrance keyframes, easing and duration; let
+   glass cards enter at the same speed with composited fade/slide/scale. */
+.contact-page > .contact-main { animation: none; }
+.contact-page .contact-main > .section-kicker,
+.contact-page .contact-main > h1,
+.contact-page .contact-main > .contact-intro {
+  animation: .7s cubic-bezier(.22,1,.36,1) both page-enter;
+}
+.contact-page .contact-main > .contact-options,
+.contact-page .contact-main > .contact-location {
+  animation: .7s cubic-bezier(.22,1,.36,1) both vf-enter-composited;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .about-topline,
+  .about-page .about-intro-grid,
+  .services-page .service-header,
+  .contact-page .contact-main > .section-kicker,
+  .contact-page .contact-main > h1,
+  .contact-page .contact-main > .contact-intro,
+  .contact-page .contact-main > .contact-options,
+  .contact-page .contact-main > .contact-location {
+    animation: none !important;
+  }
+}
+
+
+/* v20: Mobile-only header refinement. Desktop styling and all animation rules stay intact. */
+.vf-greeting-mobile { display:none; }
+@media (max-width:767.98px) {
+  /* Keep the existing intro pill; display its two phrases on separate lines. */
+  .home-hero .vf-greeting-desktop { display:none; }
+  .home-hero .vf-greeting-mobile,
+  .home-hero .vf-greeting-role { display:block; }
+  .home-hero .glass-pill:has(.vf-greeting-mobile) > span:last-child {
+    text-align:center;
+    line-height:1.45;
+    min-width:0;
+  }
+
+  /* Preserve the single rounded glass outer capsule, but not the individual selection pills. */
+  [data-nav-pill] > a[data-status="active"]:not(.vf-mobile-brand) {
+    background:transparent!important;
+    box-shadow:none!important;
+    font-weight:800!important;
+    color:#26243d!important;
+  }
+  [data-nav-pill] > a[href="contact.html"],
+  [data-nav-pill] > a[href="contact.html"][data-status="active"] {
+    background:transparent!important;
+    box-shadow:none!important;
+    color:#2c5ff4!important;
+    font-weight:750!important;
+    transform:none!important;
+  }
+  /* Recover space around all six labels on narrow phones without shrinking the text. */
+  [data-nav-pill] > a:not(.vf-mobile-brand):not(.hidden) {
+    padding-left:clamp(4px,1.2vw,7px)!important;
+    padding-right:clamp(4px,1.2vw,7px)!important;
+  }
+}
+
+@media (max-width:340px) {
+  /* Keep all six pages on one line even on compact 320px screens. */
+  [data-nav-pill] > a:not(.vf-mobile-brand):not(.hidden) {
+    padding-left:2px!important;
+    padding-right:2px!important;
+  }
+}
