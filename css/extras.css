@@ -462,3 +462,45 @@ html,body {max-width:100%; overflow-x:clip;}
  .founder-story h2,.vf-section-heading h2{font-size:clamp(1.95rem,8.2vw,2.55rem);}
  .service-header h1,.about-topline h1,.vf-ind-hero-content h1{font-size:clamp(2rem,8.5vw,2.8rem);}
 }
+
+
+/* v18: Industries opening performance, no layout or animation-design changes.
+   The site's existing page-enter effect includes a blur and scale. Rendering it
+   on the entire eight-panel Industries <main> rasterizes the whole tall page.
+   Instead, apply that SAME keyframe, duration and easing just to the hero copy.
+*/
+.vf-industries-page.page-enter {
+  animation: none;
+}
+.vf-ind-page-hero > .vf-ind-hero-content {
+  animation: .7s cubic-bezier(.22,1,.36,1) both page-enter;
+}
+
+/* Same glowing circles, pre-blurred into small transparent WebP artwork.
+   They retain their original size, opacity, placement and float animations;
+   moving the images avoids recalculating filter:blur(45px) per frame.
+*/
+.vf-ind-page-hero .vf-ind-hero-glow {
+  filter: none;
+  background: transparent;
+  will-change: transform;
+}
+.vf-ind-page-hero .vf-ind-hero-glow::before {
+  content: "";
+  position: absolute;
+  inset: -135px;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+.vf-ind-page-hero .vf-ind-hero-glow-a::before {
+  background-image: url("../assets/industry-hero-glow-a.webp");
+}
+.vf-ind-page-hero .vf-ind-hero-glow-b::before {
+  background-image: url("../assets/industry-hero-glow-b.webp");
+}
+@media (prefers-reduced-motion: reduce) {
+  .vf-ind-page-hero > .vf-ind-hero-content { animation: none !important; }
+  .vf-ind-page-hero .vf-ind-hero-glow { will-change: auto; }
+}
