@@ -30,3 +30,14 @@ Browsers may retain an old favicon briefly; a versioned link helps refresh it.
 The website is static and does not require npm, a database, or a build step.
 
 V4: Homepage includes 3-stage How We Help and 8-industry cards beneath the founder story. The Industries page repeats those sectors with direct contact links. The original rounded mobile navbar now has a sixth Industries link, and logo alignment has a minor visual correction.
+
+LogIn pages added:
+  login.html           Full LogIn product introduction / how it works / FAQ
+  login-privacy.html   Public privacy policy for the LogIn extension
+  css/login-pages.css  Shared supplemental styles for those pages
+  assets/login-mark.png The LogIn gradient mark extracted from supplied extension image
+  products.html        Two small links to the expanded LogIn introduction
+
+Upload all site files together, keeping the assets, css, and js directories intact.
+Privacy URL for Chrome Web Store: https://veefivee.com/login-privacy.html
+Review the privacy policy against the final extension build before publication.
