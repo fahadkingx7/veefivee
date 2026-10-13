@@ -31,3 +31,15 @@ body{font-family:Inter,sans-serif}.dl-page{min-height:100vh;padding:120px 20px 7
 /* Larger download CTA; no other page styling is changed. */
 .dl-button{padding:19px 34px;font-size:16px;gap:36px}
 @media(max-width:700px){.dl-button{padding:17px 30px;font-size:15px}}
+
+/* Nested download URLs: match the main site's mobile contact styling.
+   extras.css uses href="contact.html", which does not match ../../contact.html. */
+@media (max-width:767.98px){
+ [data-nav-pill] > a[href$="/contact.html"]{
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#2c5ff4!important;
+  font-weight:750!important;
+  transform:none!important;
+ }
+}
