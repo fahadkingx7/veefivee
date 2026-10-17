@@ -619,3 +619,8 @@ html,body {max-width:100%; overflow-x:clip;}
   }
   .home-hero .vf-mobile-green-dot { flex:0 0 8px; }
 }
+
+/* Industry deep-dive secondary contact link */
+.vf-industry-panel .vf-industry-secondary-link{display:inline-flex;margin:12px 0 0 15px;font-size:.84rem;font-weight:700;color:#575370;text-decoration:none;transition:color .15s}
+.vf-industry-panel .vf-industry-secondary-link:hover{color:#6457e9;text-decoration:underline}
+.vf-industry-panel .vf-industry-secondary-link:focus-visible{outline:2px solid #6457e9;outline-offset:3px}

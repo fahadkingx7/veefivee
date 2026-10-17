@@ -1,3 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://veefivee.com/</loc></url><url><loc>https://veefivee.com/about.html</loc></url><url><loc>https://veefivee.com/industries.html</loc></url><url><loc>https://veefivee.com/services.html</loc></url><url><loc>https://veefivee.com/products.html</loc></url><url><loc>https://veefivee.com/contact.html</loc></url><url><loc>https://veefivee.com/login.html</loc></url><url><loc>https://veefivee.com/login-privacy.html</loc></url>  <url><loc>https://veefivee.com/csv-excel-to-vcf.html</loc></url>
-</urlset>
+<?xml version='1.0' encoding='utf-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://veefivee.com/</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/about.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/industries.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/services.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/products.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/contact.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/login.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/login-privacy.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/csv-excel-to-vcf.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/industries/software-development-teams.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/industries/influencers-content-creators.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/industries/government-public-sector.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/industries/call-centers-sales-teams.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/industries/schools-universities.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/industries/businesses-growing-teams.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/industries/local-shops-restaurants-salons.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/industries/freelancers-first-time-founders.html</loc>
+  </url>
+<url><loc>https://veefivee.com/leadextract.html</loc></url></urlset>

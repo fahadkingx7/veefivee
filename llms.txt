@@ -13,6 +13,8 @@ Creative and technology director: Fahad
 - [Products](https://veefivee.com/products.html): Meet LogIn from veefivee: a browser-based way for teams, agencies and partners to share account access without revealing underlying passwords.
 - [Contact](https://veefivee.com/contact.html): Let’s build your next idea together. Contact veefivee on WhatsApp, Instagram or email about AI automation, custom software, websites and growth.
 
+- [LeadExtract Me Pro interactive demo](https://veefivee.com/leadextract.html): Explore synthetic local business owner samples, browser-based parser examples, contact research concepts and CRM CSV export; not a live search or scraping service.
+
 ## What veefivee helps with
 - Technology: AI agents, AI voice and reception systems, custom websites, web apps, SaaS, mobile experiences, desktop software, browser tools, integrations, cloud and APIs.
 - Marketing: branding, search engine optimization, advertising, social media strategy, content, lifecycle email, conversion optimization and analytics.
@@ -31,3 +33,13 @@ Creative and technology director: Fahad
 - [Full veefivee service and industry overview](https://veefivee.com/llms-full.txt)
 
 Information in these files summarizes public website content. Check the linked pages for current details. No guaranteed rankings, affiliations, client outcomes, or third-party endorsements are implied.
+
+## Industry-specific guides (remote services: USA, UK, Pakistan and worldwide)
+- [Software houses & development teams](https://veefivee.com/industries/software-development-teams.html): Custom software development support, AI automation, internal dashboards, QA workflows and product launch help for US, UK, Pakistan and global tech teams.
+- [Influencers, creators & public figures](https://veefivee.com/industries/influencers-content-creators.html): Personal brand strategy, creator websites, media kits, content systems and campaigns for influencers in the USA, UK, Pakistan and worldwide.
+- [Government & public sector](https://veefivee.com/industries/government-public-sector.html): Accessible public sector websites, internal portals, document workflows and reporting dashboards for agencies and civic programs in the USA, UK, Pakistan and worldwide.
+- [Call centers & sales teams](https://veefivee.com/industries/call-centers-sales-teams.html): CRM integrations, sales automation, call center dashboards, lead workflows and AI support tools for US, UK, Pakistan and worldwide contact center teams.
+- [Schools & universities](https://veefivee.com/industries/schools-universities.html): Student portals, school websites, course catalogs, admissions workflows and education software for institutions in the USA, UK, Pakistan and worldwide.
+- [Businesses & growing teams](https://veefivee.com/industries/businesses-growing-teams.html): Business automation, AI tools, custom websites, CRM, dashboards and digital growth services for USA, UK, Pakistan and worldwide businesses.
+- [Local shops & neighborhood brands](https://veefivee.com/industries/local-shops-restaurants-salons.html): Websites, local SEO, Google Business Profile guidance, booking systems and marketing for restaurants, salons, cafés and shops across the USA, UK, Pakistan and worldwide.
+- [Freelancers & first-time founders](https://veefivee.com/industries/freelancers-first-time-founders.html): Practical startup advice, freelancer portfolios, simple websites, branding and MVP support for founders in the USA, UK, Pakistan and worldwide.
