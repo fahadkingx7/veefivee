@@ -23,7 +23,11 @@ def main():
         head = re.search(r"<head(?:\s[^>]*)?>", text, re.I)
         end = re.search(r"</head\s*>", text, re.I)
         if not head or not end or head.end() >= end.start():
-            raise ValueError(f"Missing HTML head in {path.relative_to(ROOT)}")
+            # The repository can include stand-alone HTML fragments, e.g. an
+            # embedded form. They aren't full webpages and have nowhere
+            # appropriate to place an analytics script.
+            print(f"GA4: skipping HTML fragment without head: {path.relative_to(ROOT)}")
+            continue
         if MEASUREMENT_ID in text[head.end():end.start()]:
             continue
         text = text[:head.end()] + "\n" + TAG + "\n" + text[head.end():]
