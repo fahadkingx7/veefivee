@@ -1,25 +1,31 @@
-# veefivee Free Consultation — launch and maintenance
+# veefivee Free Consultation — Web3Forms v34
 
-## Live page
-https://veefivee.com/free-consultation.html
+Live URL: https://veefivee.com/free-consultation.html
 
-## Form handling
-The form is a regular HTML POST to https://formsubmit.co/info@veefivee.com.
-Fields: name, email, industry, role, inquiry.
-Includes: _subject, _template=table, _url, _next, and an empty _honey anti-spam field.
-FormSubmit's default anti-spam CAPTCHA is left enabled. There is no site server or client-side form AJAX.
-The _next URL returns to the consultation page with ?submitted=1 after FormSubmit's successful flow.
-Do not claim the appointment is booked: this is a free discovery-call request, and staff arrange the time afterward.
+## Form provider
+Native HTML POST to https://api.web3forms.com/submit (no AJAX, no extra JavaScript submission library).
+The provided Web3Forms access_key is embedded as a hidden field. Web3Forms explicitly permits public browser-side access keys; its corresponding configured receiving mailbox controls delivery. Confirm in the Web3Forms account that it sends to info@veefivee.com.
 
-**One-time activation (required):** Submit a real test enquiry from the live page. Then check info@veefivee.com for the FormSubmit activation email and click its confirmation link. FormSubmit reports that it retains submissions until confirmation and delivers them afterward. Check spam/junk. Without confirmation, do not assume leads are being delivered.
+Form fields: name, email, industry, role, message. Note **message** (not the previous `inquiry` name).
+Other hidden fields: access_key, subject, from_name, redirect.
+Anti-spam: hidden `botcheck` checkbox. To enable stronger captcha, configure it in Web3Forms before modifying the page.
+After a successful native submission, Web3Forms redirects to the full same-site URL https://veefivee.com/free-consultation.html?sent=1. A tiny script hides the form and displays an accessible on-page success confirmation. Errors remain under Web3Forms control.
 
-## Contact links
-WhatsApp: https://wa.me/923254891223
-Email: info@veefivee.com
-Phone: tel:+923254891223
-Keep the existing /contact.html page accessible through its footer link; the global header CTA now links to /free-consultation.html.
+## Testing
+Once deployed, enter a real test lead and verify it arrives in the recipient mailbox (including Spam/Junk). Do not infer email delivery from the GitHub deployment; Web3Forms key settings must be correct. Avoid repeated test submissions in quick succession due to rate limits.
+Native required fields and email validation work without JavaScript.
+No appointment is auto-booked: submissions request a free first consultation, and the team contacts the visitor to arrange a time.
 
-## Navigation / design contract
-Use a single global glass capsule with Home, About, Industries, Services, Products, Free Consultation on mobile; Blog is desktop-only in the header. The consultation label is blue regular-weight when inactive on mobile, and dark bold when on the consultation page. The same CTA is shown desktop and mobile. Shared nav styles are in css/blog-nav.css and MUST load last.
-The consultation layout and gradient animation are in css/consultation.css. Retain the palm brand, soft pastel movement, reduced-motion support, optimized static HTML and GA4 tag G-086Y2TSZTM.
-New pages/templates should use the same global header, stylesheet load order, and footer.
+## Design and mobile constraints
+Page is static HTML + css/consultation.css, without additional frameworks or heavy effects.
+The existing veefivee logo, navigation, footer and GA4 tag are preserved.
+Desktop editorial text left, elevated glass form right. On mobile/tablets <=820px, the form is displayed FIRST, immediately below the navigation; the larger editorial pitch follows below the form.
+Soft purple/pink/blue radial gradients move slowly using transform/opacity-friendly effects. Respect prefers-reduced-motion.
+Retain 320px responsive support, clear labels and accessible focus states, five form fields, privacy microcopy, and WhatsApp/email/phone cards.
+
+Contact channels:
+WhatsApp https://wa.me/923254891223
+Email info@veefivee.com
+Phone tel:+923254891223
+
+SEO: standalone canonical URL, social metadata, structured ContactPage, sitemap entry.
