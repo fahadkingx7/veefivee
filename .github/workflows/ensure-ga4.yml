@@ -1,0 +1,31 @@
+name: Ensure GA4 on new pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'blog-templates/*.html.txt'
+      - 'scripts/ensure_ga4.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply-ga4:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Apply Google Analytics tag to all pages
+        run: python3 scripts/ensure_ga4.py
+      - name: Commit any new tags
+        run: |
+          if ! git diff --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -u -- '*.html' '*.html.txt'
+            git commit -m "chore: keep GA4 on new pages [skip ci]"
+            git push
+          fi
