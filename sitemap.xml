@@ -2,15 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://veefivee.com/</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://veefivee.com/about.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://veefivee.com/industries.html</loc>
   </url>
   <url>
     <loc>https://veefivee.com/services.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://veefivee.com/products.html</loc>
@@ -29,26 +32,44 @@
   </url>
   <url>
     <loc>https://veefivee.com/industries/software-development-teams.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://veefivee.com/industries/influencers-content-creators.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://veefivee.com/industries/government-public-sector.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://veefivee.com/industries/call-centers-sales-teams.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://veefivee.com/industries/schools-universities.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://veefivee.com/industries/businesses-growing-teams.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://veefivee.com/industries/local-shops-restaurants-salons.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://veefivee.com/industries/freelancers-first-time-founders.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
-<url><loc>https://veefivee.com/leadextract.html</loc></url></urlset>
+  <url>
+    <loc>https://veefivee.com/leadextract.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/tools.html</loc>
+  </url>
+  <url>
+    <loc>https://veefivee.com/blog.html</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+</urlset>

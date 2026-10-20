@@ -1,0 +1,66 @@
+{
+  "software-development-teams": {
+    "title": "Better software teams: from AI workflows to smarter product launches",
+    "category": "Technology",
+    "excerpt": "A practical guide to custom software, automation, dashboards, QA, and building calmer, more reliable development operations.",
+    "image": "assets/blog-software-development-teams.webp",
+    "readMinutes": 6,
+    "imageAlt": "Software designers brainstorming at sunset in a collaborative creative workspace"
+  },
+  "influencers-content-creators": {
+    "title": "Beyond the algorithm: building a creator brand you actually own",
+    "category": "Marketing & Creators",
+    "excerpt": "Explore creator websites, media kits, content systems, partnerships, and ways to turn an audience into a long-term digital brand.",
+    "image": "assets/blog-influencers-content-creators.webp",
+    "readMinutes": 6,
+    "imageAlt": "Content creators producing videos and building a media brand in a warm studio"
+  },
+  "government-public-sector": {
+    "title": "Digital public services that are simpler, clearer, and more accessible",
+    "category": "Public Sector",
+    "excerpt": "From usable public websites to transparent service portals and secure internal workflows: what meaningful modernization looks like.",
+    "image": "assets/blog-government-public-sector.webp",
+    "readMinutes": 6,
+    "imageAlt": "Public sector technology team planning accessible civic services with data dashboards"
+  },
+  "call-centers-sales-teams": {
+    "title": "Less busywork, better conversations: a guide for sales and call centers",
+    "category": "Business & Operations",
+    "excerpt": "Learn how CRMs, automation, lead handling, reporting, and well-designed processes can support faster, more human sales teams.",
+    "image": "assets/blog-call-centers-sales-teams.webp",
+    "readMinutes": 6,
+    "imageAlt": "Sales and support colleagues collaborating on customer conversations and CRM software"
+  },
+  "schools-universities": {
+    "title": "A smarter digital campus starts with the student experience",
+    "category": "Education",
+    "excerpt": "Student portals, school websites, admissions journeys, classroom tools, and practical automation for modern educational teams.",
+    "image": "assets/blog-schools-universities.webp",
+    "readMinutes": 6,
+    "imageAlt": "Students and educators discussing a digital learning project on a university campus"
+  },
+  "businesses-growing-teams": {
+    "title": "Digital systems that help growing businesses stay in control",
+    "category": "Business & Operations",
+    "excerpt": "How to connect your website, customer journey, operations, marketing, and internal systems without adding unnecessary complexity.",
+    "image": "assets/blog-businesses-growing-teams.webp",
+    "readMinutes": 6,
+    "imageAlt": "Growing business team discussing strategy in a modern studio at golden hour"
+  },
+  "local-shops-restaurants-salons": {
+    "title": "From local favorite to first choice: digital growth for neighborhood brands",
+    "category": "Local Business",
+    "excerpt": "Helpful approaches to local SEO, websites, online booking, menus, reputation, and customer retention for shops and service brands.",
+    "image": "assets/blog-local-shops-restaurants-salons.webp",
+    "readMinutes": 6,
+    "imageAlt": "Boutique shop team serving customers and processing orders at sunset"
+  },
+  "freelancers-first-time-founders": {
+    "title": "Your first digital business: what to build, what to skip, and why",
+    "category": "Startups & Freelancers",
+    "excerpt": "A clear path through branding, launch websites, basic automations, early customer discovery, and scaling only when it makes sense.",
+    "image": "assets/blog-freelancers-first-time-founders.webp",
+    "readMinutes": 6,
+    "imageAlt": "Independent founders and creative professionals shaping an early-stage product idea"
+  }
+}

@@ -563,7 +563,7 @@
     let appState = {
       activeTab: 'leadEngine',
       viewMode: 'cards',
-      currentQuery: 'hair salons in Austin TX',
+      currentQuery: '',
       batchTarget: 150,
       streamSpeed: 'turbo',
       skipSavedDomains: true,
@@ -635,7 +635,14 @@
       }
 
       const queryInput = document.getElementById('searchQueryInput');
-      const query = (queryInput && queryInput.value.trim()) ? queryInput.value.trim() : 'hair salons in Austin TX';
+      const query = queryInput ? queryInput.value.trim() : '';
+      if (!query) {
+        if (queryInput) {queryInput.focus(); queryInput.setAttribute('aria-invalid','true');}
+        showToast('Type in business and location to begin.', 'amber');
+        return;
+      }
+      if (queryInput) queryInput.removeAttribute('aria-invalid');
+      window.dispatchEvent(new CustomEvent('vf:leadsearch', { detail: { query } }));
       appState.currentQuery = query;
 
       const requestedTarget = getRequestedBatchTarget();
@@ -712,7 +719,7 @@
           appState.isStreaming = false;
           updateTelemetryAndRender();
           renderSerpQueueLog();
-          showToast(`Search complete: ${appState.streamedLeads.length} verified business leads ready.`);
+          showToast(`Demo ready: ${appState.streamedLeads.length} fictional sample businesses generated.`);
           return;
         }
         appState.streamedLeads.push(...nextSlice);
@@ -760,16 +767,16 @@
         const currentLead = appState.allValidLeads[leads.length] || leads[leads.length - 1];
         if (dot) dot.className = 'w-2 h-2 rounded-full bg-[#c78c55] animate-ping shrink-0';
         if (statusText && currentLead) {
-          statusText.textContent = `Crawling ${currentLead.subpagePath} on ${currentLead.rootDomain} (${leads.length + 1} of ${totalTarget})...`;
+          statusText.textContent = `Generating sample ${leads.length + 1} of ${totalTarget} · ${currentLead.rootDomain}`;
         }
         const pct = Math.min(100, Math.round((leads.length / Math.max(1, totalTarget)) * 100));
         if (progressBar) progressBar.style.width = `${pct}%`;
       } else {
         if (dot) dot.className = 'w-2 h-2 rounded-full bg-[#258b7c] shrink-0';
         if (statusText) {
-          statusText.textContent = `${leads.length} / ${totalTarget} verified local businesses ready · ${skippedItems.length} directory/dead links auto-refilled`;
+          statusText.textContent = appState.currentQuery ? `${leads.length} / ${totalTarget} fictional demo profiles ready · ${skippedItems.length} simulated skips` : "Ready when you are. Enter a business and location.";
         }
-        if (progressBar) progressBar.style.width = '100%';
+        if (progressBar) progressBar.style.width = appState.currentQuery ? '100%' : '0%';
       }
 
       const dirCount = appState.serpQueueLog.filter(x => x.status === 'BLOCKED_DIRECTORY').length;
@@ -791,7 +798,7 @@
       document.getElementById('navSkippedBadge').textContent = `${skippedItems.length} skipped`;
       document.getElementById('statValidDomains').textContent = String(leads.length);
       document.getElementById('statTargetGoal').textContent = `/ ${totalTarget} target`;
-      document.getElementById('statSerpScanned').textContent = `Scanned ${totalScanned} SERP URLs`;
+      document.getElementById('statSerpScanned').textContent = appState.currentQuery ? `Simulated ${totalScanned} candidate URLs` : 'No searches yet';
 
       document.getElementById('statReplenishedCount').textContent = String(skippedItems.length);
       document.getElementById('statReplenishedBreakdown').textContent = `${dirCount} dir · ${dupCount} dup · ${errCount} dead`;
@@ -816,7 +823,7 @@
       const filtered = getFilteredStreamedLeads();
       const countLabel = document.getElementById('visibleLeadsCountLabel');
       if (countLabel) {
-        countLabel.textContent = `Showing ${filtered.length} of ${appState.streamedLeads.length} leads`;
+        countLabel.textContent = appState.currentQuery ? `Showing ${filtered.length} of ${appState.streamedLeads.length} demo leads` : 'Ready for your first search';
       }
 
       const cardGrid = document.getElementById('leadsCardGrid');
@@ -1467,8 +1474,8 @@
       document.getElementById('rawHtmlTestInput').value = SAMPLE_HTML_PAYLOADS.cfemail_wix.html;
       renderLiveParseLabOutput();
 
-      // Default 150 leads loaded immediately on startup
-      executeLeadBatch(true);
+      // Keep the workspace blank until the visitor enters and submits a query.
+      updateTelemetryAndRender();
 
       document.getElementById('tabBtnLeadEngine').addEventListener('click', () => switchMainTab('leadEngine'));
       document.getElementById('tabBtnQueueLog').addEventListener('click', () => {
@@ -1477,12 +1484,6 @@
       });
       document.getElementById('tabBtnLiveInspector').addEventListener('click', () => switchMainTab('liveInspector'));
       document.getElementById('tabBtnArchitecture').addEventListener('click', () => switchMainTab('architecture'));
-
-      document.getElementById('presetMarketSelect').addEventListener('change', (e) => {
-        const val = e.target.value;
-        document.getElementById('searchQueryInput').value = val === 'all-trades-mega' ? 'All Local Trades Combined' : val;
-        executeLeadBatch(false);
-      });
 
       // Sync Preset Dropdown <-> Custom Number Input
       document.getElementById('batchTargetSelect').addEventListener('change', (e) => {
@@ -1521,7 +1522,7 @@
       });
 
       document.getElementById('skipSavedToggle').addEventListener('change', () => {
-        executeLeadBatch(true);
+        if (appState.currentQuery) executeLeadBatch(true);
       });
 
       document.getElementById('btnSaveAllCurrent').addEventListener('click', () => {
@@ -1535,7 +1536,7 @@
         });
         persistSavedVault();
         renderFilteredLeadsView();
-        showToast(`Saved 12 domains to Vault. Toggle "Skip previously saved" to see auto-replenishment!`);
+        showToast(`Saved ${subset.length} demo records to your browser Vault.`);
       });
 
       ['leadFilterInput', 'ownerFilterSelect', 'emailTierFilterSelect', 'techFilterSelect'].forEach(id => {

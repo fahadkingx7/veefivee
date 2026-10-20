@@ -10,6 +10,7 @@ veefivee is a creative technology and growth studio combining AI, software, desi
 - Industries: https://veefivee.com/industries.html
 - Services: https://veefivee.com/services.html
 - Products: https://veefivee.com/products.html
+- Blog & Insights: https://veefivee.com/blog.html
 - Contact: https://veefivee.com/contact.html
 
 ## Services
@@ -104,3 +105,5 @@ This file reflects information on the public site and should not be taken as a g
 
 ## LeadExtract Me Pro interactive demo
 At https://veefivee.com/leadextract.html visitors can explore local business research and contact parsing examples with simulated USA business profiles. This demo generates fictional data locally and does not query search engines or scrape live websites. It includes filters, a saved vault, parser lab, and CSV export of sample data.
+
+- [Try Tools](https://veefivee.com/tools.html): Veefivee's public tools directory with LeadExtract interactive sample research and CSV/Excel to VCF converter.

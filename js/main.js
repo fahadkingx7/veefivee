@@ -18,6 +18,19 @@
     }
     updateNav();
     window.addEventListener("scroll", updateNav, { passive: true });
+    // The compact mobile/tablet More dropdown closes when focus or clicks leave it.
+    var more = pill.querySelector('details.vf-nav-more');
+    if (more) {
+      document.addEventListener('pointerdown', function (e) {
+        if (more.open && !more.contains(e.target)) more.open = false;
+      }, { passive: true });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && more.open) {
+          more.open = false;
+          more.querySelector('summary').focus();
+        }
+      });
+    }
   }
 
   var reveals = document.querySelectorAll("[data-reveal]");
