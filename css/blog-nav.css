@@ -1,33 +1,39 @@
-/* veefivee v26: Blog is in the desktop navigation only.
-   On mobile, preserve the original beautiful six-link header unchanged.
-   Blog is discoverable in the homepage Journal section and site footer. */
+/* veefivee v28: canonical responsive navigation behavior.                                  
+ * Include as the final CSS file on EVERY marketing page (including industries/ pages). 
+ * Desktop design remains unchanged. Mobile keeps exactly the original six links; no More dropdown. */
+
 @media (max-width: 767.98px) {
   [data-nav-pill] > .vf-nav-blog { display: none !important; }
+
+  /* Regular Contact is a simple blue text link, same weight as its neighbors. */
+  [data-nav-pill] > a[aria-label="Contact veefivee"] {
+    background: transparent !important;
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    color: #2c5ff4 !important;
+    font-weight: 500 !important;
+    transform: none !important;
+    text-shadow: none !important;
+  }
+  /* Selected Contact is dark and bold, matching selected Home / About / Services.
+     No colored button or selection bubble; use both status conventions safely. */
+  [data-nav-pill] > a[aria-label="Contact veefivee"][aria-current="page"],
+  [data-nav-pill] > a[aria-label="Contact veefivee"][data-status="active"] {
+    color: #26243d !important;
+    font-weight: 800 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+  }
+  [data-nav-pill] > a[aria-label="Contact veefivee"] .vf-nav-contact-desktop { display: none !important; }
+  [data-nav-pill] > a[aria-label="Contact veefivee"] .vf-nav-contact-mobile { display: inline !important; }
+}
+@media (min-width: 768px) {
+  [data-nav-pill] > a[aria-label="Contact veefivee"] .vf-nav-contact-desktop { display: inline !important; }
+  [data-nav-pill] > a[aria-label="Contact veefivee"] .vf-nav-contact-mobile { display: none !important; }
 }
 @media (min-width: 768px) and (max-width: 900px) {
   [data-nav-pill] > .vf-nav-blog,
   [data-nav-pill] > .vf-nav-products { padding-inline: 7px !important; }
   [data-nav-pill] > a { font-size: .72rem !important; }
-}
-
-/* v27: treat Contact as one of the six ordinary mobile navigation items.
-   The active state matches Home / About / Services rather than a blue CTA. */
-@media (max-width:767.98px) {
-  [data-nav-pill] a[aria-label="Contact veefivee"] {
-    background: transparent !important;
-    color: color-mix(in srgb, var(--foreground) 72%, transparent) !important;
-    font-weight: 500 !important;
-    box-shadow: none !important;
-    transform: none !important;
-    --tw-ring-shadow: 0 0 #0000 !important;
-  }
-  [data-nav-pill] a[aria-label="Contact veefivee"]:hover,
-  [data-nav-pill] a[aria-label="Contact veefivee"]:focus-visible {
-    color: var(--foreground) !important;
-  }
-  [data-nav-pill] a[aria-label="Contact veefivee"][aria-current="page"] {
-    background: color-mix(in srgb,var(--foreground) 10%,transparent) !important;
-    color: var(--foreground) !important;
-    font-weight: 700 !important;
-  }
 }

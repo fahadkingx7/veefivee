@@ -18,19 +18,6 @@
     }
     updateNav();
     window.addEventListener("scroll", updateNav, { passive: true });
-    // The compact mobile/tablet More dropdown closes when focus or clicks leave it.
-    var more = pill.querySelector('details.vf-nav-more');
-    if (more) {
-      document.addEventListener('pointerdown', function (e) {
-        if (more.open && !more.contains(e.target)) more.open = false;
-      }, { passive: true });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && more.open) {
-          more.open = false;
-          more.querySelector('summary').focus();
-        }
-      });
-    }
   }
 
   var reveals = document.querySelectorAll("[data-reveal]");
@@ -47,7 +34,7 @@
 
     // Keep every existing CSS animation while visible. Stop off-screen animations
     // from consuming rendering time; their playback resumes when scrolled into view.
-    var looping = document.querySelectorAll(".animate-float, .animate-float-slow, .animate-drift, .animate-ping, .animate-bounce, .text-shimmer");
+    var looping = document.querySelectorAll(".animate-float, .animate-float-slow, .animate-drift, .animate-ping, .animate-bounce, .text-shimmer, .vf-blog-hero h1 span");
     var motionObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         entry.target.style.animationPlayState = entry.isIntersecting ? "running" : "paused";

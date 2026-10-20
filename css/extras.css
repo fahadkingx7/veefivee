@@ -584,14 +584,6 @@ html,body {max-width:100%; overflow-x:clip;}
     font-weight:800!important;
     color:#26243d!important;
   }
-  [data-nav-pill] > a[href="contact.html"],
-  [data-nav-pill] > a[href="contact.html"][data-status="active"] {
-    background:transparent!important;
-    box-shadow:none!important;
-    color:#2c5ff4!important;
-    font-weight:750!important;
-    transform:none!important;
-  }
   /* Recover space around all six labels on narrow phones without shrinking the text. */
   [data-nav-pill] > a:not(.vf-mobile-brand):not(.hidden) {
     padding-left:clamp(4px,1.2vw,7px)!important;
@@ -625,15 +617,4 @@ html,body {max-width:100%; overflow-x:clip;}
 .vf-industry-panel .vf-industry-secondary-link:hover{color:#6457e9;text-decoration:underline}
 .vf-industry-panel .vf-industry-secondary-link:focus-visible{outline:2px solid #6457e9;outline-offset:3px}
 
-/* v23 — one consistent contact label at every nested route. */
-[data-nav-pill] .vf-nav-contact-desktop {display:inline;}
-[data-nav-pill] .vf-nav-contact-mobile {display:none;}
-@media (max-width:767.98px) {
-  [data-nav-pill] a[aria-label="Contact veefivee"] { background:transparent!important; box-shadow:none!important; color:#2c5ff4!important; font-weight:750!important; transform:none!important; }
-  [data-nav-pill] a[aria-label="Contact veefivee"] .vf-nav-contact-desktop {display:none!important;}
-  [data-nav-pill] a[aria-label="Contact veefivee"] .vf-nav-contact-mobile {display:inline!important;}
-}
-@media (min-width:768px) {
-  [data-nav-pill] a[aria-label="Contact veefivee"] .vf-nav-contact-desktop {display:inline!important;}
-  [data-nav-pill] a[aria-label="Contact veefivee"] .vf-nav-contact-mobile {display:none!important;}
-}
+/* Contact link responsive styling is maintained in css/blog-nav.css (v28). */

@@ -12,7 +12,10 @@
 .vf-blog-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:100px;background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.96);color:#6254a9;font-size:12px;letter-spacing:.035em;font-weight:760;box-shadow:0 10px 30px rgba(111,97,157,.06)}
 .vf-blog-eyebrow span{font-size:18px;line-height:1}
 .vf-blog-hero h1{margin:23px 0 21px;font-size:clamp(3.25rem,7.1vw,6.35rem);font-weight:850;line-height:1.06;letter-spacing:-.072em;color:#242239;text-wrap:balance}
-.vf-blog-hero h1 span{display:inline-block;padding:0 .06em .12em;background:linear-gradient(95deg,#6658d9 0%,#a760c2 39%,#5e9acb 70%,#6557d2 100%);color:transparent;background-clip:text;-webkit-background-clip:text}
+.vf-blog-hero h1 span{display:inline-block;padding:0 .06em .12em;background:linear-gradient(95deg,#6658d9 0%,#a760c2 23%,#5e9acb 46%,#6557d2 70%,#a760c2 84%,#6658d9 100%);background-size:225% 100%;background-position:0% 50%;color:transparent;background-clip:text;-webkit-background-clip:text;animation:vf-blog-title-flow 16s ease-in-out infinite}
+/* Animate only the headline's gradient, not the full-screen hero/blur layers. */
+@keyframes vf-blog-title-flow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@media (prefers-reduced-motion:reduce){.vf-blog-hero h1 span{animation:none!important;background-position:40% 50%}}
 .vf-blog-hero-inner>p{max-width:640px;margin:0 auto;color:#62617a;font-size:clamp(.98rem,1.5vw,1.13rem);line-height:1.8;font-weight:450;text-wrap:pretty}
 .vf-blog-hero-meta{display:flex;justify-content:center;gap:22px;align-items:center;flex-wrap:wrap;margin-top:29px;color:#696483;font-size:.78rem;font-weight:650}
 .vf-blog-meta-dot{display:inline-block;background:#30b879;border-radius:50%;width:7px;height:7px;margin-right:6px;box-shadow:0 0 0 4px #30b87919}
