@@ -37,3 +37,10 @@
   [data-nav-pill] > .vf-nav-products { padding-inline: 7px !important; }
   [data-nav-pill] > a { font-size: .72rem !important; }
 }
+
+/* v32: stabilize the glass header without removing its appearance or motion. */
+@media(min-width:768px){html{scrollbar-gutter:stable}}
+@media(min-width:901px){[data-nav-pill]{width:min(760px,calc(100vw - 32px));justify-content:space-evenly}}
+@media(min-width:768px) and (max-width:900px){[data-nav-pill]{width:min(640px,calc(100vw - 32px));justify-content:space-evenly}}
+@media(max-width:767.98px){[data-nav-pill]{width:100%}}
+[data-nav-pill]{transition-property:background-color,box-shadow,border-color!important;transition-duration:.28s!important}

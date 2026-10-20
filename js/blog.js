@@ -14,12 +14,23 @@
   const sentinel = document.getElementById('blogSentinel');
   const clear = document.getElementById('blogClearFilters');
   const CHUNK = 6;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealObserver = !prefersReducedMotion && 'IntersectionObserver' in window
+    ? new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('vf-is-visible');
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.06, rootMargin: '0px 0px 90px 0px' })
+    : null;
   const params = new URLSearchParams(window.location.search);
   let articles = [];
   let filtered = [];
   let displayed = 0;
   let category = params.get('category') || 'all';
   let observer = null;
+  let lastIndexSignature = null;
   let debounce = null;
   const fallback = document.getElementById('blogFallbackData');
   const escapeHTML = (value) => String(value == null ? '' : value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -65,6 +76,12 @@
     const chunk = filtered.slice(displayed, displayed + CHUNK);
     if (!chunk.length) {loadWrap.hidden=true;return;}
     grid.insertAdjacentHTML('beforeend',chunk.map((p,i)=>renderCard(p,displayed+i)).join(''));
+    if (revealObserver) {
+      [...grid.querySelectorAll('.vf-blog-card:not(.vf-reveal-ready)')].forEach(card => {
+        card.classList.add('vf-reveal-ready');
+        revealObserver.observe(card);
+      });
+    }
     displayed += chunk.length;
     showing.textContent = `Showing ${displayed} of ${filtered.length} ${filtered.length === 1 ? 'story' : 'stories'}`;
     loadWrap.hidden = displayed >= filtered.length;
@@ -72,6 +89,7 @@
   };
   const reset = () => {
     getFilters();
+    if (revealObserver) revealObserver.disconnect();
     grid.innerHTML='';displayed=0;
     empty.hidden=filtered.length>0;
     count.textContent = `${filtered.length} ${filtered.length===1?'story':'stories'} to explore`;
@@ -85,6 +103,9 @@
     categories.innerHTML=['all',...names].map(x=>`<button type="button" class="vf-blog-chip${x===category?' is-active':''}" data-category="${escapeHTML(x)}" aria-pressed="${x===category}">${escapeHTML(categoryTitle(x))}</button>`).join('');
   };
   const init = list => {
+    const signature = JSON.stringify(list);
+    if (signature === lastIndexSignature) return;
+    lastIndexSignature = signature;
     articles=list.filter(p=>p&&typeof p.title==='string'&&typeof p.category==='string'&&typeof p.url==='string'&&attrURL(p.url,'post')!=='#');
     buildChips();
     search.value=params.get('q')||'';
@@ -121,7 +142,7 @@
   try{local=JSON.parse((fallback.textContent||'[]').replace(/<!--[^>]*-->/g,'').trim());}catch(_){}
   if(Array.isArray(local))init(local);
   // Same-origin static JSON file is the source of truth. No GitHub API keys/rate limits.
-  fetch('data/blog-posts.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Index unavailable');return r.json();})
+  fetch('data/blog-posts.json',{cache:'default'}).then(r=>{if(!r.ok)throw Error('Index unavailable');return r.json();})
     .then(data=>{if(data&&Array.isArray(data.posts)){init(data.posts);}else throw Error('Invalid index');})
     .catch(()=>{/* Site still works from embedded, generator-produced fallback while offline. */});
 })();
