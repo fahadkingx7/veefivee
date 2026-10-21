@@ -15,7 +15,7 @@
 .dl-lead{color:#706a83;font-size:14px;line-height:1.75;max-width:585px;margin:12px auto 20px}
 .dl-install-actions{display:grid;justify-items:center;gap:8px}
 /* Classic veefivee gradient CTA, within the newer download page. */
-.dl-button{display:inline-flex;align-items:center;gap:30px;padding:19px 34px;border-radius:100px;background:linear-gradient(120deg,#6659e8,#a25fce);color:#fff!important;font-size:16px;font-weight:750;box-shadow:0 12px 26px #7963d84b;transition:transform .2s,box-shadow .2s;text-decoration:none!important}
+.dl-button{display:inline-flex;align-items:center;gap:32px;padding:25px 46px;border-radius:100px;background:linear-gradient(120deg,#6659e8,#a25fce);color:#fff!important;font-size:19px;font-weight:750;box-shadow:0 12px 26px #7963d84b;transition:transform .2s,box-shadow .2s;text-decoration:none!important}
 .dl-button:hover{transform:translateY(-3px);box-shadow:0 17px 35px #7963d85e}
 .dl-button:focus-visible{outline:3px solid #7662db;outline-offset:4px}
 .dl-install-actions{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:30px;margin-bottom:28px}
@@ -47,5 +47,5 @@
 @media(max-width:420px){.dl-page{padding-top:104px}.dl-hero h1{font-size:37px}.dl-appicon{margin-top:13px}.dl-panel h2{font-size:22px}.dl-store-copy strong{font-size:16px}.dl-store-button{gap:10px;padding:12px}.dl-store-arrow{flex-basis:25px;height:25px}.dl-chrome-icon{flex-basis:42px;width:42px;height:42px}.dl-chrome-icon::after{inset:10px}.dl-chrome-core{inset:14px}}
 @media(prefers-reduced-motion:reduce){.dl-glow,.dl-hero h1 em{animation:none!important}.dl-store-button,.dl-step{transition:none!important}}
 
-@media(max-width:720px){.dl-button{padding:17px 30px;font-size:15px}.dl-install-actions{margin-top:28px;margin-bottom:24px}.dl-store-source{font-size:11px;margin-top:15px}}
+@media(max-width:720px){.dl-button{padding:22px 37px;font-size:18px}.dl-install-actions{margin-top:28px;margin-bottom:24px}.dl-store-source{font-size:11px;margin-top:15px}}
 @media(prefers-reduced-motion:reduce){.dl-button,.dl-store-source{transition:none!important}}
