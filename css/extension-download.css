@@ -1,45 +1,50 @@
-body{font-family:Inter,sans-serif}.dl-page{min-height:100vh;padding:120px 20px 75px;background:radial-gradient(ellipse at 15% 4%,#e8ddff 0,transparent 42%),radial-gradient(ellipse at 89% 14%,#ffe5f0 0,transparent 38%),linear-gradient(160deg,#fafaff,#f7f6ff 55%,#f6f0ff);color:#28223e}.dl-wrap{max-width:1020px;margin:auto}.dl-hero{text-align:center;padding:28px 0 40px}.dl-eyebrow{display:inline-block;background:#ffffffb8;border:1px solid white;border-radius:40px;padding:10px 18px;color:#7560c6;font-weight:700;font-size:12px}.dl-appicon{display:grid;place-items:center;width:66px;height:66px;border-radius:19px;margin:20px auto 14px;background:#fff;box-shadow:0 10px 30px #7565a52e}.dl-appicon span{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:linear-gradient(130deg,#745bea,#b95bc7);color:white;font-size:34px}.dl-hero h1{font-size:clamp(42px,6vw,72px);line-height:1.1;letter-spacing:-.065em;font-weight:800}.dl-hero h1 em{font-style:normal;background:linear-gradient(110deg,#6457e9,#b65cc8,#e487ba);background-clip:text;-webkit-background-clip:text;color:transparent}.dl-lead{max-width:580px;margin:14px auto 22px;color:#756e8b;font-size:15px;line-height:1.7}.dl-button{display:inline-flex;align-items:center;gap:30px;padding:15px 24px;border-radius:100px;background:linear-gradient(120deg,#6659e8,#a25fce);color:white!important;font-size:14px;font-weight:750;box-shadow:0 12px 26px #7963d84b;transition:transform .2s,box-shadow .2s}.dl-button:hover{transform:translateY(-3px);box-shadow:0 17px 35px #7963d85e}.dl-trust{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:17px;font-size:11px;color:#79708f;font-weight:600}.dl-panel{background:#ffffffcf;border:1px solid #fff;border-radius:28px;padding:32px;box-shadow:0 18px 60px #7865ac18;backdrop-filter:blur(22px)}.dl-panel-head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:24px}.dl-small{font-size:10px;font-weight:800;letter-spacing:.12em;color:#8d77db}.dl-panel h2{font-size:clamp(22px,3vw,30px);letter-spacing:-.045em;font-weight:800;margin-top:6px}.dl-time{font-size:12px;color:#8b7da5}.dl-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.dl-step{background:linear-gradient(145deg,#faf9ff,#f7f6ff);border:1px solid #eee9fc;border-radius:20px;padding:22px}.dl-number{display:grid;place-items:center;width:39px;height:39px;background:#eee9ff;color:#7660da;border-radius:12px;font-size:13px;font-weight:800}.dl-step h3{font-size:16px;font-weight:750;letter-spacing:-.025em;margin:18px 0 9px}.dl-step p{font-size:12px;line-height:1.8;color:#77708c}.dl-step code{font-size:11px;color:#6c55c6;overflow-wrap:anywhere}.dl-copy{margin-top:12px;font-size:11px;color:#7059d9;font-weight:750;cursor:pointer}.dl-note{display:flex;gap:14px;align-items:center;margin:18px 0 0;background:#ffffff87;border:1px solid #fff;padding:19px 23px;border-radius:19px;color:#756c88;font-size:13px;line-height:1.6}.dl-note>span{color:#8e6ae6;font-size:26px}.dl-note strong{color:#31294b}.dl-bottom{text-align:center;color:#8a829c;font-size:13px;margin-top:32px}.dl-bottom a{color:#735bd8;font-weight:750}@media(max-width:700px){.dl-page{padding:122px 15px 50px}.dl-hero{padding:15px 0 30px}.dl-hero h1{font-size:clamp(37px,9vw,50px)}.dl-lead{font-size:13px}.dl-panel{padding:22px}.dl-panel-head{align-items:start}.dl-time{display:none}.dl-steps{grid-template-columns:1fr}.dl-step{padding:18px}.dl-step h3{margin:12px 0 6px}.dl-appicon{margin-top:17px}.dl-trust{gap:10px}}
-/* Download-specific identity: warm peach / soft mint / sky, distinct from converter lavender */
-.dl-page{padding-top:91px;padding-bottom:40px;background:radial-gradient(ellipse at 12% 15%,#ffe6d8 0,transparent 42%),radial-gradient(ellipse at 91% 13%,#d8f4eb 0,transparent 42%),radial-gradient(ellipse at 55% 95%,#e2f1ff 0,transparent 48%),#fffdfb}
-.dl-hero{padding:8px 0 20px}
-.dl-appicon{margin:4px auto 10px;width:68px;height:68px;border-radius:19px}
-.dl-appicon img{width:62px;height:62px;object-fit:contain}
-.dl-hero h1{font-size:clamp(37px,4.8vw,56px)}
-.dl-lead{margin:9px auto 15px;font-size:13px}
-.dl-panel{padding:23px 26px}
-.dl-panel-head{margin-bottom:14px}
-.dl-panel h2{font-size:24px}
-.dl-step{padding:17px}
-.dl-step h3{margin:11px 0 6px}
-.dl-step p{line-height:1.65}
-.dl-note{margin-top:12px;padding:12px 19px}
-.dl-bottom{margin-top:14px}
-@media(max-width:700px){
-.dl-page{padding-top:108px}
-.dl-hero{padding:4px 0 18px}
-.dl-appicon{margin:0 auto 9px}
-.dl-hero h1{font-size:36px}
-.dl-lead{margin:8px auto 14px}
-.dl-panel{padding:18px}
-.dl-panel-head{margin-bottom:13px}
-.dl-step{padding:14px}
-.dl-step h3{margin:8px 0 5px}
-.dl-steps{gap:9px}
-.dl-note{padding:12px}
-}
-
-/* Larger download CTA; no other page styling is changed. */
-.dl-button{padding:19px 34px;font-size:16px;gap:36px}
-@media(max-width:700px){.dl-button{padding:17px 30px;font-size:15px}}
-
-/* Nested download URLs: match the main site's mobile contact styling.
-   extras.css uses href="contact.html", which does not match ../../contact.html. */
-@media (max-width:767.98px){
- [data-nav-pill] > a[href$="/contact.html"]{
-  background:transparent!important;
-  box-shadow:none!important;
-  color:#2c5ff4!important;
-  font-weight:750!important;
-  transform:none!important;
- }
-}
+/* LogIn download — one consolidated Chrome Web Store install page. */
+.dl-page{position:relative;isolation:isolate;min-height:calc(100vh - 140px);padding:107px 20px 55px;overflow:hidden;background:#faf9ff;color:#2a2540;font-family:Inter,system-ui,sans-serif}
+.dl-page *{box-sizing:border-box}
+.dl-glow{position:absolute;inset:0 0 auto;height:720px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 37% 48% at 11% 15%,rgba(187,167,249,.24),transparent 82%),radial-gradient(ellipse 35% 48% at 87% 11%,rgba(152,208,239,.22),transparent 83%),radial-gradient(ellipse 39% 45% at 55% 5%,rgba(252,210,220,.24),transparent 83%);background-size:110% 110%;animation:dl-drift 22s ease-in-out infinite alternate}
+@keyframes dl-drift{from{transform:translate3d(-1%,0,0)}to{transform:translate3d(1%,1.5%,0)}}
+.dl-wrap{max-width:1040px;margin:0 auto}
+.dl-hero{text-align:center;padding:20px 0 31px}
+.dl-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:999px;border:1px solid #ece7fc;background:#ffffffc9;color:#7158c2;letter-spacing:.075em;font-size:10px;font-weight:850}
+.dl-eyebrow-dot{width:8px;height:8px;border-radius:50%;background:#9a81e8;box-shadow:0 0 0 4px #9b79ed24}
+.dl-appicon{width:72px;height:72px;margin:16px auto 10px;display:grid;place-items:center;border:1px solid #fff;border-radius:24px;background:#ffffffd9;box-shadow:0 13px 36px #6456a422}
+.dl-appicon img{display:block;width:62px;height:62px;object-fit:contain}
+.dl-hero h1{font-size:clamp(39px,5vw,57px);line-height:1.09;letter-spacing:-.072em;font-weight:850;margin:0}
+.dl-hero h1 em{font-style:normal;background:linear-gradient(105deg,#7052cd,#a866c4 48%,#548bd9);background-size:175% 100%;background-clip:text;-webkit-background-clip:text;color:transparent;animation:dl-shimmer 13s ease-in-out infinite alternate}
+@keyframes dl-shimmer{from{background-position:0% 50%}to{background-position:100% 50%}}
+.dl-lead{color:#706a83;font-size:14px;line-height:1.75;max-width:585px;margin:12px auto 20px}
+.dl-install-actions{display:grid;justify-items:center;gap:8px}
+.dl-store-button{width:min(100%,355px);min-height:83px;display:flex;align-items:center;gap:14px;border:1px solid #e3e0f0;border-radius:21px;background:linear-gradient(120deg,#fff 10%,#fcfbff);padding:13px 17px;text-decoration:none!important;text-align:left;box-shadow:0 13px 30px #62519f16,0 2px 7px #62519f09;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;position:relative}
+.dl-store-button:hover{transform:translateY(-3px);border-color:#baace9;box-shadow:0 17px 38px #62519f28}
+.dl-store-button:focus-visible{outline:3px solid #7662db;outline-offset:4px}
+.dl-chrome-icon{width:47px;height:47px;flex:0 0 47px;border-radius:50%;position:relative;background:conic-gradient(from 13deg,#e94335 0 121deg,#fbbc04 121deg 204deg,#34a853 204deg 281deg,#e94335 281deg);box-shadow:0 1px 4px #0001}
+.dl-chrome-icon::after{content:"";position:absolute;inset:11px;background:#fff;border-radius:50%}
+.dl-chrome-core{position:absolute;inset:15px;border-radius:50%;background:#4285f4;z-index:1;box-shadow:inset 0 0 0 1px #ffffff4d}
+.dl-store-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:1px;color:#2e2945}
+.dl-store-copy small{font-weight:790;font-size:9px;letter-spacing:.10em;color:#837b91}
+.dl-store-copy strong{font-size:18px;font-weight:850;line-height:1.25;letter-spacing:-.025em}
+.dl-store-copy>span{font-size:11px;font-weight:600;color:#756e8d}
+.dl-store-arrow{display:grid;place-items:center;flex:0 0 30px;height:30px;border-radius:50%;background:#eeeafa;color:#6c56c7;font-weight:800}
+.dl-store-subtext{font-size:11px;color:#8c859e;margin:2px 0 0}
+.dl-panel{padding:23px 25px 25px;border-radius:28px;border:1px solid #fff;background:#ffffffc9;box-shadow:0 15px 50px #6d61a20d}
+.dl-panel-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:20px}
+.dl-small{font-size:10px;letter-spacing:.1em;color:#7865cd;font-weight:840}
+.dl-panel h2{font-size:clamp(21px,2.5vw,28px);letter-spacing:-.05em;color:#2f274b;font-weight:850;line-height:1.24;margin:6px 0 0}
+.dl-steps-subtitle{font-size:12px;color:#8b839f}
+.dl-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.dl-step{min-width:0;padding:20px 19px;border:1px solid #ede7f8;border-radius:20px;background:linear-gradient(145deg,#fff,#faf8ff);transition:transform .2s ease,border-color .2s}
+.dl-step:hover{transform:translateY(-2px);border-color:#ded2f7}
+.dl-number{display:inline-flex;width:32px;height:32px;justify-content:center;align-items:center;border-radius:11px;color:#6d57cb;background:#eee8ff;font-size:11px;font-weight:870}
+.dl-step h3{font-size:15px;letter-spacing:-.03em;line-height:1.3;font-weight:830;color:#302747;margin:15px 0 9px}
+.dl-step p{font-size:12px;line-height:1.75;color:#746b85;margin:0}
+.dl-step strong{font-weight:760;color:#484062}
+.dl-note{display:flex;align-items:flex-start;gap:13px;margin:15px auto 0;border:1px solid #e9e4f8;border-radius:19px;padding:15px 18px;background:#fff9}
+.dl-note-mark{color:#8c6bdf;font-size:21px;line-height:1}
+.dl-note p{margin:0;color:#706a80;font-size:12px;line-height:1.72}
+.dl-note strong{color:#3a3254}
+.dl-bottom{text-align:center;color:#8b849f;font-size:12px;margin-top:22px}
+.dl-bottom a{color:#6554cb;font-weight:780;text-decoration:none}
+.dl-bottom a:hover{text-decoration:underline}
+@media(max-width:720px){.dl-page{padding:107px 14px 40px}.dl-hero{padding:6px 0 24px}.dl-lead{font-size:13px}.dl-panel{padding:18px;border-radius:22px}.dl-steps-subtitle{display:none}.dl-steps{grid-template-columns:1fr;gap:11px}.dl-step{padding:16px}.dl-step h3{margin:9px 0 6px}.dl-store-button{max-width:360px}.dl-note{padding:14px}}
+@media(max-width:420px){.dl-page{padding-top:104px}.dl-hero h1{font-size:37px}.dl-appicon{margin-top:13px}.dl-panel h2{font-size:22px}.dl-store-copy strong{font-size:16px}.dl-store-button{gap:10px;padding:12px}.dl-store-arrow{flex-basis:25px;height:25px}.dl-chrome-icon{flex-basis:42px;width:42px;height:42px}.dl-chrome-icon::after{inset:10px}.dl-chrome-core{inset:14px}}
+@media(prefers-reduced-motion:reduce){.dl-glow,.dl-hero h1 em{animation:none!important}.dl-store-button,.dl-step{transition:none!important}}
