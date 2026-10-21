@@ -696,7 +696,7 @@ html,body {max-width:100%; overflow-x:clip;}
 /* Compact homepage industry cards: images retain their full natural proportions. */
 @media (min-width:900px) {
   .vf-home-industries-preview .vf-industry-panels-compact {
-    max-width:1100px;
+    max-width:1140px;
     margin-inline:auto;
     gap:18px;
   }
