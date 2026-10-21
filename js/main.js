@@ -1,5 +1,20 @@
 (function () {
   "use strict";
+  // iOS/Chrome may restore a document from the back-forward cache after its
+  // entrance animations have already finished. Replay only those existing
+  // animations; never change their easing, delay, duration, or visual style.
+  window.addEventListener("pageshow", function (event) {
+    if (!event.persisted || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var root = document.querySelector("main");
+    if (!root || !root.getAnimations) return;
+    root.getAnimations({ subtree: true }).forEach(function (animation) {
+      if (!(animation instanceof CSSAnimation)) return;
+      if (!/^(page-enter|rise-in|vf-enter-composited)$/.test(animation.animationName)) return;
+      animation.cancel();
+      animation.play();
+    });
+  });
+
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
