@@ -8,7 +8,7 @@
     var root = document.querySelector("main");
     if (!root || !root.getAnimations) return;
     root.getAnimations({ subtree: true }).forEach(function (animation) {
-      if (!(animation instanceof CSSAnimation)) return;
+      if (typeof animation.animationName !== "string") return;
       if (!/^(page-enter|rise-in|vf-enter-composited)$/.test(animation.animationName)) return;
       animation.cancel();
       animation.play();
