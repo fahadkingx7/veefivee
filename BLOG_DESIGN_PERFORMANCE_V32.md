@@ -9,5 +9,3 @@
 - Avoid GPU-expensive blur on the oversized radial gradient auras and repeated card badges; radial color softness is retained.
 - Do not add animation libraries or remove existing design features. Cache-bust modified assets via query versions.
 - Include GA4 G-086Y2TSZTM on all existing and future HTML pages.
-
-- **Card counts:** Prefer exactly **3, 6, or 9** cards for editorial/service/content grids so desktop layouts never end with an isolated card. Use a responsive 3-column desktop / 2-column tablet / 1-column mobile arrangement for six cards. Do not pad with meaningless content.

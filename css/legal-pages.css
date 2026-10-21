@@ -1,0 +1,19 @@
+/* veefivee legal pages — standalone small overrides of established LogIn policy design. */
+.vf-legal.lp-main{background:#f9f9ff;min-height:75vh}
+.vf-legal .lp-hero-bg{height:850px;opacity:1;background:radial-gradient(ellipse 39% 55% at 12% 16%,rgba(190,171,246,.34),transparent 82%),radial-gradient(ellipse 39% 51% at 85% 15%,rgba(153,208,250,.28),transparent 85%),radial-gradient(ellipse 40% 36% at 48% 0%,rgba(248,195,222,.20),transparent 80%);background-size:130% 115%;animation:vf-legal-aurora 25s ease-in-out infinite alternate;mask-image:linear-gradient(#000 40%,transparent 100%)}
+@keyframes vf-legal-aurora{from{background-position:0% 0%}to{background-position:100% 65%}}
+.vf-legal .lp-policy-hero{padding-top:155px;padding-bottom:60px}
+.vf-legal .lp-kicker{display:inline-flex;align-items:center;gap:9px;background:#fff9;border:1px solid #fff;border-radius:999px;padding:10px 17px;font-size:12px;color:#6b59b8;letter-spacing:.04em;font-weight:800}
+.vf-legal .lp-kicker-dot{width:8px;height:8px;display:inline-block;border-radius:50%;background:#7c63d4;box-shadow:0 0 0 5px #8161e21b}
+.vf-legal .lp-policy-hero h1{letter-spacing:-.075em}
+.vf-legal .lp-policy-hero>p{max-width:610px}
+.vf-legal .lp-policy-layout .paper{overflow-wrap:anywhere}
+.vf-legal .lp-policy-layout .paper a{overflow-wrap:anywhere}
+.vf-legal .lp-policy-layout .paper h2{font-size:clamp(21px,2vw,25px)}
+.vf-legal .lp-policy-bottom{margin-bottom:8px}
+.vf-legal .vf-legal-quick{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.vf-legal .vf-legal-quick span{padding:8px 13px;background:#f5f2ff;color:#6b59bc;border:1px solid #eae4f9;border-radius:999px;font-weight:750;font-size:12px}
+.vf-legal .vf-legal-contact{padding:17px 19px;margin-top:25px;background:linear-gradient(120deg,#f7f5ff,#f8fbff);border:1px solid #ece5fc;border-radius:18px}
+.vf-legal .vf-legal-contact p{margin:0}
+@media(max-width:760px){.vf-legal .lp-policy-hero{padding:136px 19px 38px}.vf-legal .lp-policy-layout{display:block;padding:0 15px}.vf-legal .lp-toc{position:relative;top:auto;display:flex;flex-wrap:wrap;gap:4px 16px;padding:17px;margin-bottom:18px}.vf-legal .lp-toc-head{width:100%;margin-bottom:2px}.vf-legal .lp-toc>a{padding:5px 0}.vf-legal .lp-toc-end{width:100%}.vf-legal .lp-policy .paper{padding:27px 21px}}
+@media(prefers-reduced-motion:reduce){.vf-legal .lp-hero-bg{animation:none}}
