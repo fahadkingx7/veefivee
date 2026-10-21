@@ -717,3 +717,23 @@ html,body {max-width:100%; overflow-x:clip;}
     margin-bottom:8px;
   }
 }
+
+/* Homepage Industries: compact widescreen photography on mobile only.
+   Desktop cards and dedicated Industries page remain unchanged. */
+@media (max-width: 899.98px) {
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media,
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-panel-reverse .vf-industry-panel-media {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    flex: 0 0 auto;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
