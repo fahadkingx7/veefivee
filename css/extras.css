@@ -760,3 +760,17 @@ html,body {max-width:100%; overflow-x:clip;}
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
 }
+
+/* Mobile navigation: preserve the 700ms entrance motion without the heavy
+   blur repaint that intermittently flashes during rapid page navigation.
+   Desktop styling, homepage hero, and all other animations are unchanged. */
+@media (max-width: 767.98px) and (prefers-reduced-motion: no-preference) {
+  .about-page .about-topline,
+  .services-page .service-header,
+  .vf-ind-page-hero > .vf-ind-hero-content,
+  .contact-page .contact-main > .section-kicker,
+  .contact-page .contact-main > h1,
+  .contact-page .contact-main > .contact-intro {
+    animation-name: vf-enter-composited;
+  }
+}
