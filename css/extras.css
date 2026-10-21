@@ -758,3 +758,46 @@ html,body {max-width:100%; overflow-x:clip;}
     animation-name:vf-mobile-entry-composited;
   }
 }
+
+/* iOS Chrome (CriOS) navigation stability.  Scoped by an early <head> UA flag;
+   Safari, Android Chrome and desktop retain their existing animation language.
+   Chrome iOS can visually shift a fixed blurred nav during cross-document
+   navigation if its dynamic toolbar changes viewport size.  Stabilize the nav
+   and prevent large entrance transforms on the incoming document. */
+@keyframes vf-crios-fade { from { opacity:0 } to { opacity:1 } }
+@keyframes vf-crios-rise { from { opacity:0;transform:translateY(7px) } to { opacity:1;transform:translateY(0) } }
+@media(max-width:767.98px) {
+  html.vf-crios { scroll-behavior:auto; }
+  html.vf-crios body > .overflow-x-hidden { overflow-x:clip !important; }
+  html.vf-crios nav:has([data-nav-pill]) {
+    top:0 !important;
+    transition:none !important;
+    transform:none !important;
+  }
+  html.vf-crios [data-nav-pill] {
+    transition:none !important;
+    transform:none !important;
+  }
+  html.vf-crios .page-enter,
+  html.vf-crios .vf-home-page > .home-hero > .mx-auto.max-w-4xl {
+    animation:none !important;
+    filter:none !important;
+  }
+  html.vf-crios .about-page .about-topline,
+  html.vf-crios .services-page .service-header,
+  html.vf-crios .vf-ind-page-hero > .vf-ind-hero-content,
+  html.vf-crios .contact-page .contact-main > .section-kicker,
+  html.vf-crios .contact-page .contact-main > h1,
+  html.vf-crios .contact-page .contact-main > .contact-intro,
+  html.vf-crios .contact-page .contact-main > .contact-options,
+  html.vf-crios .contact-page .contact-main > .contact-location,
+  html.vf-crios .about-page .about-intro-grid {
+    animation:vf-crios-fade .35s ease-out both !important;
+    filter:none !important;
+  }
+  html.vf-crios .home-hero { min-height:100svh; }
+  html.vf-crios .home-hero .rise-in {
+    animation-name:vf-crios-rise !important;
+    animation-duration:.7s !important;
+  }
+}
