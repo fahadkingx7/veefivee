@@ -5,7 +5,7 @@
 .vf-shop-btn.primary{background:#6c55d5;color:#fff;box-shadow:0 12px 27px #7061be26}
 .vf-shop-btn.secondary{background:#fff;color:#6252ba;border:1px solid #ded6f5}
 .vf-shop-kicker{font-size:.76rem;letter-spacing:.045em;color:#725dc4;font-weight:850;text-transform:uppercase}
-.vf-shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:14px;margin:25px 0}
+.vf-shop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:25px 0}
 .vf-shop-card{border:1px solid #e9def4;border-radius:21px;padding:21px;background:#fff;box-shadow:0 12px 30px #544a9f09}
 .vf-shop-card h3{color:#332b50;margin:0 0 9px!important;font-size:1.05rem!important}
 .vf-shop-card p{font-size:.89rem;margin:0!important}
@@ -46,3 +46,14 @@
 @keyframes vf-shop-fade-up{from{opacity:0;transform:translate3d(0,15px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
 @media(max-width:650px){.vf-shop-preview-layout{grid-template-columns:1fr}.vf-shop-checks{grid-template-columns:1fr}.vf-shop-playground,.vf-shop-cta{padding:19px}.vf-shop-preview-visual{min-height:110px}.vf-shop-btn{padding:11px 16px}}
 @media(prefers-reduced-motion:reduce){.vf-shop-hero-subtle{animation:none}.vf-shop-btn,.vf-shop-progress span{transition:none}}
+/* v36: even 3/6/9-card rhythm; product + category first; smaller CTA. */
+.vf-shop-first-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.vf-shop-first-row label{min-width:0}
+.vf-shop-small-cta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:17px;padding:15px 16px;border:1px solid #e1d8f3;border-radius:16px;background:#fffcffcf;color:#635777;font-size:.82rem;line-height:1.55}
+.vf-shop-small-cta strong{color:#3d3059}
+.vf-shop-small-cta a{display:inline-flex;padding:10px 15px;border-radius:999px;background:#735bd0;color:#fff!important;text-decoration:none!important;font-size:.79rem;font-weight:800;white-space:nowrap;transition:transform .2s,background .2s}
+.vf-shop-small-cta a:hover{transform:translateY(-2px);background:#6045bc}
+@media(max-width:900px){.vf-shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.vf-shop-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.vf-shop-first-row{grid-template-columns:1fr}.vf-shop-small-cta a{white-space:normal}}
+@media(prefers-reduced-motion:reduce){.vf-shop-small-cta a{transition:none}}

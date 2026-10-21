@@ -14,8 +14,8 @@
     const update = () => {
       if (outName) outName.textContent = name?.value.trim().slice(0,65) || 'Your amazing product';
       if (outPrice) outPrice.textContent = money.format(Math.max(0,Math.min(999999, Number(price?.value || 0))));
-      if (outKind) outKind.textContent = kind?.value || 'Handmade goods';
-      if (outIcon) outIcon.textContent = icons[kind?.value] || '✨';
+      if (outKind) outKind.textContent = kind?.value || 'Your category';
+      if (outIcon) outIcon.textContent = icons[kind?.value] || '📦';
     };
     [name,price,kind].forEach(field => field?.addEventListener('input',update,{passive:true}));
     update();
