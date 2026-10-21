@@ -736,3 +736,25 @@ html,body {max-width:100%; overflow-x:clip;}
     object-position: center;
   }
 }
+
+/* Mobile entry rendering: eliminate nested full-hero blur/scale rasterization.
+   The hero's existing staggered .rise-in animations remain untouched.
+   Secondary pages retain their original 700ms timing and easing, using a
+   compositor-friendly fade + 24px rise instead of animating blur on text. */
+@keyframes vf-mobile-entry-composited {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@media (max-width:767.98px) and (prefers-reduced-motion:no-preference) {
+  .vf-home-page > .home-hero > .mx-auto.max-w-4xl {
+    animation:none;
+  }
+  .about-page .about-topline,
+  .services-page .service-header,
+  .vf-industries-page .vf-ind-page-hero > .vf-ind-hero-content,
+  .contact-page .contact-main > .section-kicker,
+  .contact-page .contact-main > h1,
+  .contact-page .contact-main > .contact-intro {
+    animation-name:vf-mobile-entry-composited;
+  }
+}
