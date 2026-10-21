@@ -1,0 +1,171 @@
+/* veefivee canonical navigation — migrated without redesign from extras.css + blog-nav.css.
+   Owns every mobile/desktop navigation variant, link state and glass appearance.
+   Keep layout wrappers out of the header's fixed-position containing block. */
+[data-vf-site-nav] { position:fixed; top:0; inset-inline:0; z-index:50; }
+.vf-site-frame { overflow-x:clip; overflow-y:visible; }
+
+/* Existing glass rules */
+[data-nav-pill]{background:rgba(255,255,255,.73)!important;backdrop-filter:blur(30px) saturate(170%)!important;-webkit-backdrop-filter:blur(30px) saturate(170%)!important;border:1px solid rgba(255,255,255,.92)!important;box-shadow:0 8px 35px rgba(72,64,126,.13),inset 0 1px 0 #fff!important}
+[data-nav-pill] a:first-child{color:#282340!important;white-space:nowrap}
+[data-nav-pill] a{white-space:nowrap}
+[data-nav-pill] a:hover{transform:translateY(-1px)}
+
+/* Existing mobile-size rules: originally applied at <=520px only */
+@media (max-width:520px) {
+  [data-nav-pill]{max-width:calc(100vw - 14px)!important;padding:6px!important;gap:0!important}
+  [data-nav-pill] a{font-size:.65rem!important;padding:7px 8px!important}
+}
+
+/* Existing mobile-pill rules */
+/* Mobile-only: add the veefivee brand as a first row inside the ORIGINAL
+   rounded-full liquid-glass navigation. Original desktop appearance untouched. */
+.vf-mobile-brand { display:none; }
+.vf-nav-contact-mobile { display:none; }
+@media (max-width: 767.98px) {
+  [data-nav-pill] {
+    flex-wrap:wrap;
+    justify-content:center;
+    border-radius:9999px;
+    row-gap:1px;
+  }
+  [data-nav-pill] > .vf-mobile-brand {
+    display:flex;
+    flex:0 0 100%;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+    padding:3px 0 2px;
+    margin:0;
+    color:#282340;
+    font-size:.875rem;
+    line-height:1.3;
+    text-decoration:none;
+  }
+  [data-nav-pill] > .vf-mobile-brand .android-palm { margin:0; }
+  .vf-nav-contact-desktop { display:none; }
+  .vf-nav-contact-mobile { display:inline; }
+}
+@media (max-width: 520px) {
+  [data-nav-pill] > .vf-mobile-brand {
+    font-size:.875rem!important;
+    padding:3px 0 2px!important;
+  }
+}
+
+/* Existing mobile-corrections rules */
+@media(max-width:767.98px){[data-nav-pill]>.vf-mobile-brand{position:relative;left:-5px}}
+/* Keep six links on the ORIGINAL rounded-pill mobile navbar. No font changes. */
+@media(max-width:410px){[data-nav-pill]>a:not(.vf-mobile-brand):not(.hidden){padding-left:6px!important;padding-right:6px!important}}
+@media(max-width:360px){[data-nav-pill]>a:not(.vf-mobile-brand):not(.hidden){padding-left:4px!important;padding-right:4px!important}}
+
+/* Existing active-link rules */
+@media (max-width:767.98px) {
+  /* Preserve the single rounded glass outer capsule, but not the individual selection pills. */
+  [data-nav-pill] > a[data-status="active"]:not(.vf-mobile-brand) {
+    background:transparent!important;
+    box-shadow:none!important;
+    font-weight:800!important;
+    color:#26243d!important;
+  }
+  /* Recover space around all six labels on narrow phones without shrinking the text. */
+  [data-nav-pill] > a:not(.vf-mobile-brand):not(.hidden) {
+    padding-left:clamp(4px,1.2vw,7px)!important;
+    padding-right:clamp(4px,1.2vw,7px)!important;
+  }
+}
+
+/* Existing compact-links rules */
+@media (max-width:340px) {
+  /* Keep all six pages on one line even on compact 320px screens. */
+  [data-nav-pill] > a:not(.vf-mobile-brand):not(.hidden) {
+    padding-left:2px!important;
+    padding-right:2px!important;
+  }
+}
+
+/* Historical responsive navigation override, unchanged order */
+/* veefivee v28: canonical responsive navigation behavior.                                  
+ * Include as the final CSS file on EVERY marketing page (including industries/ pages). 
+ * Desktop design remains unchanged. Mobile keeps exactly the original six links; no More dropdown. */
+
+@media (max-width: 767.98px) {
+  [data-nav-pill] > .vf-nav-blog { display: none !important; }
+
+  /* Regular Contact is a simple blue text link, same weight as its neighbors. */
+  [data-nav-pill] > a[aria-label="Contact veefivee"] {
+    background: transparent !important;
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    color: #2c5ff4 !important;
+    font-weight: 500 !important;
+    transform: none !important;
+    text-shadow: none !important;
+  }
+  /* Selected Contact is dark and bold, matching selected Home / About / Services.
+     No colored button or selection bubble; use both status conventions safely. */
+  [data-nav-pill] > a[aria-label="Contact veefivee"][aria-current="page"],
+  [data-nav-pill] > a[aria-label="Contact veefivee"][data-status="active"] {
+    color: #26243d !important;
+    font-weight: 800 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+  }
+  [data-nav-pill] > a[aria-label="Contact veefivee"] .vf-nav-contact-desktop { display: none !important; }
+  [data-nav-pill] > a[aria-label="Contact veefivee"] .vf-nav-contact-mobile { display: inline !important; }
+}
+@media (min-width: 768px) {
+  [data-nav-pill] > a[aria-label="Contact veefivee"] .vf-nav-contact-desktop { display: inline !important; }
+  [data-nav-pill] > a[aria-label="Contact veefivee"] .vf-nav-contact-mobile { display: none !important; }
+}
+@media (min-width: 768px) and (max-width: 900px) {
+  [data-nav-pill] > .vf-nav-blog,
+  [data-nav-pill] > .vf-nav-products { padding-inline: 7px !important; }
+  [data-nav-pill] > a { font-size: .72rem !important; }
+}
+
+/* v32: stabilize the glass header without removing its appearance or motion. */
+@media(min-width:768px){html{scrollbar-gutter:stable}}
+@media(min-width:901px){[data-nav-pill]{width:min(760px,calc(100vw - 32px));justify-content:space-evenly}}
+@media(min-width:768px) and (max-width:900px){[data-nav-pill]{width:min(640px,calc(100vw - 32px));justify-content:space-evenly}}
+@media(max-width:767.98px){[data-nav-pill]{width:100%}}
+[data-nav-pill]{transition-property:background-color,box-shadow,border-color!important;transition-duration:.28s!important}
+
+/* v33 consultation — canonical CTA in the existing desktop/mobile header.
+   Keep exactly six mobile links and the original two-row glass capsule. */
+@media(min-width:901px){
+  [data-nav-pill]{width:min(860px,calc(100vw - 32px));justify-content:space-evenly}
+  [data-nav-pill] > .vf-nav-consultation{padding-inline:12px!important}
+}
+@media(min-width:768px) and (max-width:900px){
+  [data-nav-pill]{width:min(760px,calc(100vw - 24px))}
+  [data-nav-pill] > .vf-nav-consultation{font-size:.70rem!important;padding-inline:7px!important}
+}
+@media(max-width:767.98px){
+  [data-nav-pill] > .vf-nav-consultation{
+    background:transparent!important;
+    box-shadow:none!important;
+    --tw-ring-shadow:0 0 #0000!important;
+    color:#2c5ff4!important;
+    font-weight:500!important;
+    transform:none!important;
+    text-shadow:none!important;
+  }
+  [data-nav-pill] > .vf-nav-consultation[aria-current="page"],
+  [data-nav-pill] > .vf-nav-consultation[data-status="active"]{
+    background:transparent!important;
+    box-shadow:none!important;
+    --tw-ring-shadow:0 0 #0000!important;
+    color:#26243d!important;
+    font-weight:800!important;
+  }
+}
+@media(max-width:520px){
+  [data-nav-pill]>a:not(.vf-mobile-brand):not(.hidden){font-size:clamp(.56rem,2.35vw,.67rem)!important;padding-left:3px!important;padding-right:3px!important}
+  [data-nav-pill]>.vf-nav-consultation{font-size:clamp(.56rem,2.35vw,.67rem)!important;letter-spacing:-.015em!important}
+}
+@media(max-width:360px){
+  [data-nav-pill]>a:not(.vf-mobile-brand):not(.hidden){font-size:.565rem!important;padding-left:2px!important;padding-right:2px!important}
+  [data-nav-pill]>.vf-nav-consultation{font-size:.565rem!important}
+}
+
