@@ -1,0 +1,46 @@
+/* veefivee v35 — lightweight shared interactive article patterns */
+.vf-grow-hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 0}
+.vf-grow-btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border-radius:999px;padding:12px 19px;text-decoration:none!important;font-size:.87rem;font-weight:800;transition:transform .24s,box-shadow .24s}
+.vf-grow-btn:hover{transform:translateY(-2px)}
+.vf-grow-btn-primary{color:#fff!important;background:#6554d2;box-shadow:0 10px 25px #6554d237}
+.vf-grow-btn-secondary{color:#5c4eb1!important;border:1px solid #ddd4f7;background:#fff}
+.vf-grow-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin:24px 0}
+.vf-grow-card{background:#fff;border:1px solid #e9e1f6;padding:21px;border-radius:21px;box-shadow:0 11px 30px #7153b00b}
+.vf-grow-card h3{font-size:1.1rem!important;color:#2d2943;margin:0 0 10px!important}
+.vf-grow-card p{font-size:.91rem;margin:0!important}
+.vf-grow-panel{background:linear-gradient(135deg,#fbf8ff,#f3f2ff 61%,#f4fbff);border:1px solid #e3dbfa;border-radius:26px;padding:26px;margin:28px 0;box-shadow:0 13px 30px #6646aa0c}
+.vf-grow-panel h3{margin:0 0 12px!important;font-size:1.43rem!important;color:#352958}
+.vf-grow-panel>p{color:#655b79;margin:0 0 16px}
+.vf-grow-cta{background:linear-gradient(130deg,#f7f4ff,#f2f6ff 65%,#fff6f9);border:1px solid #ded3f3;border-radius:26px;padding:29px;margin:35px 0}
+.vf-grow-cta h3{font-size:1.5rem!important;margin:0 0 10px!important}
+.vf-grow-cta p{margin:0 0 17px}
+.vf-grow-choice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.vf-grow-choice,.vf-grow-checkbox{display:block;text-align:left;position:relative;background:#fff;border:1px solid #ded8ef;border-radius:16px;padding:14px 15px;color:#4f4668;font:700 .87rem/1.5 Inter,system-ui,sans-serif;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}
+.vf-grow-choice:hover,.vf-grow-checkbox:hover{border-color:#8b70d5;transform:translateY(-1px)}
+.vf-grow-choice[aria-pressed=true]{border-color:#7255d4;box-shadow:0 0 0 2px #7560d125;background:#faf7ff;color:#4932a3}
+.vf-grow-checkbox{display:flex;align-items:center;gap:10px}
+.vf-grow-checkbox input{accent-color:#725cce;inline-size:18px;block-size:18px;flex:0 0 auto}
+.vf-grow-result{border-left:3px solid #7756da;padding:11px 17px;background:#fff;border-radius:0 14px 14px 0;color:#433853;font-size:.92rem;line-height:1.7;margin-top:17px;min-height:70px}
+.vf-grow-progress{height:11px;border-radius:999px;background:#e5def3;overflow:hidden;margin:14px 0 10px}
+.vf-grow-progress span{display:block;width:0;height:100%;border-radius:999px;background:linear-gradient(90deg,#7a5adb,#5ca9c3);transition:width .25s ease}
+.vf-grow-status{font-size:.84rem;color:#615483;font-weight:770}
+.vf-grow-faq details{border:1px solid #e9e0f3;background:#fff;padding:17px 20px;border-radius:16px;margin:12px 0}
+.vf-grow-faq summary{font-weight:820;color:#342b51;cursor:pointer}
+.vf-grow-faq details p{margin:11px 0 0}
+.vf-grow-table-wrap{overflow-x:auto;border:1px solid #eae2f3;border-radius:19px;margin:26px 0}
+.vf-grow-table-wrap table{border-collapse:collapse;width:100%;font-size:.91rem}
+.vf-grow-table-wrap th,.vf-grow-table-wrap td{text-align:left;vertical-align:top;padding:15px;border-bottom:1px solid #f0eafa}
+.vf-grow-table-wrap th{background:#f7f4ff;color:#4a3c79;font-weight:800}
+.vf-grow-table-wrap tr:last-child td{border-bottom:0}
+.vf-grow-pill{display:inline-block;background:#eeeafa;border-radius:999px;padding:5px 10px;color:#6c51c3;font-weight:820;font-size:.7rem}
+.vf-grow-note{font-size:.8rem;color:#766d89;margin:14px 0 0}
+.vf-article-copy section{scroll-margin-top:115px}
+@media(max-width:520px){.vf-grow-panel,.vf-grow-cta{padding:19px;border-radius:20px}.vf-grow-choice-grid{grid-template-columns:1fr}.vf-grow-btn{padding:11px 15px;font-size:.81rem}}
+@media(prefers-reduced-motion:reduce){.vf-grow-btn,.vf-grow-choice,.vf-grow-checkbox,.vf-grow-progress span{transition:none!important}}
+
+/* Gentle entrance movement uses compositor-friendly properties only. */
+@keyframes vf-grow-enter{from{opacity:0;transform:translate3d(0,15px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+.vf-article-hero .vf-article-shell>h1{animation:vf-grow-enter .72s ease both}
+.vf-article-hero .vf-article-deck{animation:vf-grow-enter .72s .11s ease both}
+.vf-grow-hero-cta{animation:vf-grow-enter .72s .19s ease both}
+@media(prefers-reduced-motion:reduce){.vf-article-hero .vf-article-shell>h1,.vf-article-hero .vf-article-deck,.vf-grow-hero-cta{animation:none!important}}
