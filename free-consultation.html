@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+/* Start secondary-page entrances after the first visible paint on mobile.
+   The homepage hero is intentionally excluded. */
+(function () {
+  if (!window.matchMedia("(max-width: 767.98px) and (prefers-reduced-motion: no-preference)").matches) return;
+  var root = document.documentElement;
+  root.classList.add("vf-mobile-entry-armed");
+  function start() {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { root.classList.add("vf-mobile-entry-ready"); });
+    });
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start, { once: true });
+  } else {
+    start();
+  }
+})();
+</script>
 <link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="css/local-font.css?v=1">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-086Y2TSZTM"></script>
@@ -29,7 +48,7 @@
 
 
 <link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/extras.css?v=28">
+<link rel="stylesheet" href="css/extras.css?v=36">
 <link rel="stylesheet" href="css/consultation.css?v=35">
 <link rel="stylesheet" href="css/blog-nav.css?v=33">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","@id":"https://veefivee.com/free-consultation.html#webpage","url":"https://veefivee.com/free-consultation.html","name":"Free Business Consultation | veefivee","description":"Submit a free business consultation enquiry about CRM, AI automation, websites, software, and growth.","inLanguage":"en","isPartOf":{"@id":"https://veefivee.com/#website"},"about":{"@type":"Organization","name":"veefivee","url":"https://veefivee.com/","email":"info@veefivee.com"}}</script>
@@ -126,7 +145,7 @@
 <div class="footer-links"><a href="index.html">Home</a><a href="about.html">Our story</a><a href="industries.html">Industries</a><a href="services.html">Services</a><a href="products.html">Products</a><a href="blog.html">Blog</a><a href="tools.html">Try Tools</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a></div>
 <div class="footer-socials"><a aria-label="Instagram @fahadkingx7" href="https://www.instagram.com/fahadkingx7/" rel="noopener noreferrer" target="_blank">Instagram · @fahadkingx7 ↗</a><a aria-label="Chat on WhatsApp" href="https://wa.me/923254891223" rel="noopener noreferrer" target="_blank">WhatsApp ↗</a><a href="mailto:info@veefivee.com">Email ↗</a></div>
 <div class="footer-fine"><span>© <span id="year">2026</span> veefivee. All rights reserved.</span><span>Made with curiosity and a little magic. <strong><img alt="🌴" class="android-palm" decoding="async" height="26" src="assets/android-palm.png" width="26"/> veefivee</strong></span></div></div></footer>
-<script src="js/main.js?v=29" defer></script>
+<script src="js/main.js?v=30" defer></script>
 <script>
 if (new URLSearchParams(location.search).get('sent') === '1') {
   const success = document.getElementById('vf-consult-success');

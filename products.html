@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head><link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="css/local-font.css?v=1">
+<head>
+<script>
+/* Start secondary-page entrances after the first visible paint on mobile.
+   The homepage hero is intentionally excluded. */
+(function () {
+  if (!window.matchMedia("(max-width: 767.98px) and (prefers-reduced-motion: no-preference)").matches) return;
+  var root = document.documentElement;
+  root.classList.add("vf-mobile-entry-armed");
+  function start() {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { root.classList.add("vf-mobile-entry-ready"); });
+    });
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start, { once: true });
+  } else {
+    start();
+  }
+})();
+</script><link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="css/local-font.css?v=1">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-086Y2TSZTM"></script>
 <script>
@@ -19,7 +38,7 @@
 
 
 <link href="css/styles.css" rel="stylesheet"/>
-<link href="css/extras.css?v=35" rel="stylesheet"/>
+<link href="css/extras.css?v=36" rel="stylesheet"/>
 <link href="assets/favicon.svg?v=2" rel="icon" type="image/svg+xml"/><link href="assets/favicon-32.png?v=2" rel="icon" sizes="32x32" type="image/png"/><link href="favicon.ico?v=2" rel="shortcut icon"/><link href="assets/apple-touch-icon.png?v=2" rel="apple-touch-icon" sizes="180x180"/><meta content="#f5f4ff" name="theme-color"/><title>LogIn | Browser-Based Team Access Sharing | veefivee</title><meta content="Meet LogIn from veefivee: a browser-based way for teams, agencies and partners to share account access without revealing underlying passwords." name="description"/><meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/><link href="https://veefivee.com/products.html" rel="canonical"/><meta content="website" property="og:type"/><meta content="veefivee" property="og:site_name"/><meta content="en_US" property="og:locale"/><meta content="https://veefivee.com/products.html" property="og:url"/><meta content="LogIn | Browser-Based Team Access Sharing | veefivee" property="og:title"/><meta content="Meet LogIn from veefivee: a browser-based way for teams, agencies and partners to share account access without revealing underlying passwords." property="og:description"/><meta content="https://veefivee.com/assets/og-products.jpg" property="og:image"/><meta content="https://veefivee.com/assets/og-products.jpg" property="og:image:secure_url"/><meta content="image/jpeg" property="og:image:type"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="veefivee — Meet LogIn." property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="LogIn | Browser-Based Team Access Sharing | veefivee" name="twitter:title"/><meta content="Meet LogIn from veefivee: a browser-based way for teams, agencies and partners to share account access without revealing underlying passwords." name="twitter:description"/><meta content="https://veefivee.com/assets/og-products.jpg" name="twitter:image"/><meta content="veefivee — Meet LogIn." name="twitter:image:alt"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://veefivee.com/#organization","name":"veefivee","alternateName":"Veefivee","url":"https://veefivee.com/","description":"Creative technology and business growth studio offering AI solutions, custom software, digital experiences, marketing and business development.","logo":{"@type":"ImageObject","url":"https://veefivee.com/assets/apple-touch-icon.png","contentUrl":"https://veefivee.com/assets/apple-touch-icon.png","width":180,"height":180},"founder":{"@id":"https://veefivee.com/about.html#fahad"},"email":"fahadkingx4@gmail.com","contactPoint":{"@type":"ContactPoint","contactType":"business inquiries","email":"fahadkingx4@gmail.com","telephone":"+923254891223","url":"https://veefivee.com/contact.html","availableLanguage":["English"]}},{"@type":"WebSite","@id":"https://veefivee.com/#website","url":"https://veefivee.com/","name":"veefivee","alternateName":"Veefivee","description":"Creative technology, AI, software, digital marketing and growth studio.","publisher":{"@id":"https://veefivee.com/#organization"},"inLanguage":"en"},{"@type":"CollectionPage","@id":"https://veefivee.com/products.html#webpage","url":"https://veefivee.com/products.html","name":"LogIn | Browser-Based Team Access Sharing | veefivee","description":"Meet LogIn from veefivee: a browser-based way for teams, agencies and partners to share account access without revealing underlying passwords.","isPartOf":{"@id":"https://veefivee.com/#website"},"publisher":{"@id":"https://veefivee.com/#organization"},"inLanguage":"en","mainEntity":{"@id":"https://veefivee.com/products.html#login"}},{"@type":"SoftwareApplication","@id":"https://veefivee.com/products.html#login","name":"LogIn","url":"https://veefivee.com/products.html","description":"Browser-based shared account access for teams, agencies and partners without disclosing underlying passwords.","applicationCategory":"BusinessApplication","operatingSystem":"Google Chrome","creator":{"@id":"https://veefivee.com/#organization"},"publisher":{"@id":"https://veefivee.com/#organization"}}]}</script><link rel="stylesheet" href="css/blog-nav.css?v=33">
 </head>
 <body>
@@ -32,7 +51,7 @@
 <div class="footer-links"><a href="index.html">Home</a><a href="about.html">Our story</a><a href="industries.html">Industries</a><a href="services.html">Services</a><a href="products.html">Products</a><a href="blog.html">Blog</a><a href="tools.html">Try Tools</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a></div>
 <div class="footer-socials"><a aria-label="Instagram @fahadkingx7" href="https://www.instagram.com/fahadkingx7/" rel="noopener noreferrer" target="_blank">Instagram · @veefivee ↗</a><a aria-label="Chat on WhatsApp" href="https://wa.me/923254891223" rel="noopener noreferrer" target="_blank">WhatsApp ↗</a><a href="mailto:info@veefivee.com">Email ↗</a></div>
 <div class="footer-fine"><span>© <span id="year">2026</span> veefivee. All rights reserved.</span><span>Made with curiosity and a little magic. <strong><img alt="🌴" class="android-palm" decoding="async" height="26" src="assets/android-palm.png" width="26"/> veefivee</strong></span></div></div></footer></div>
-<script src="js/main.js?v=29"></script>
+<script src="js/main.js?v=30"></script>
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </body>
 </html>
