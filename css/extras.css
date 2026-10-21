@@ -753,3 +753,10 @@ html,body {max-width:100%; overflow-x:clip;}
 /* Hero description only: retain the original fade-up animation and delay,
    but release its final transform after completion for crisp text rasterization. */
 .home-hero .hero-summary.rise-in { animation-fill-mode: backwards; }
+
+/* Hero summary: use Chrome's native text antialiasing instead of the site's
+   global thin grayscale smoothing. Keep original geometry and animation. */
+.home-hero .hero-summary {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
