@@ -6,6 +6,9 @@
   const NON_NAMES = /\b(?:about|contact|welcome|meet|team|staff|our|your|services|solutions|business|company|privacy|policy|terms|website|email|phone|call|support|copyright|customer|client|review|testimonial|news|article|read|more|follow|join|careers|management|leadership|all rights)\b/i;
   const EXCLUDED_EMAIL_DOMAINS = /(?:^|\.)(?:example\.(?:com|org|net)|sentry\.io|wixpress\.com|schema\.org|domain\.com|yoursite\.com)$/i;
   const MAX_SOURCE_LENGTH = 2 * 1024 * 1024;
+  const STAFF_CARD_SELECTOR = '[itemtype$="/Person"], [class*="team-member"], [class*="staff-member"], [class*="person-card"], [class*="team-card"], [class*="staff-card"], [class*="profile-card"]';
+  const GENERAL_CONTACT = /\b(?:contact us|get in touch|head office|main office|our office|office (?:phone|number|telephone)|general (?:enquiries|inquiries|contact)|reception|switchboard|customer (?:service|support)|company (?:email|phone|telephone)|business (?:email|phone|telephone))\b/i;
+  const GENERAL_MAILBOX = /^(?:info|hello|contact|office|admin|support|sales|enquiries|inquiries|reception|booking|bookings|team|service|customerservice|help|mail|accounts|billing|careers|jobs)(?:[._-].*)?@/i;
 
   function clean(value) {
     return String(value == null ? '' : value).replace(/\s+/g, ' ').trim();
@@ -68,9 +71,11 @@
     const extension = raw.match(/(?:;ext=|\bext\.?\s*|\bextension\s*|\bx\s*)(\d{1,8})\s*$/i);
     if (extension) raw = raw.slice(0, extension.index).trim();
     if (!/^[+\d() .\-/]+$/.test(raw) || /^\d{4}[-/.]\d{1,2}[-/.]\d{1,2}$/.test(raw)) return '';
+    // Optional national trunk prefixes are not part of an international number.
+    raw = raw.replace(/^(\+\d{1,3})\s*\(0\)/, '$1');
     const digits = raw.replace(/\D/g, '');
     if (digits.length < 7 || digits.length > 15 || /^(\d)\1+$/.test(digits)) return '';
-    const normalized = raw.startsWith('+') ? '+' + digits : clean(raw);
+    const normalized = raw.startsWith('+') ? '+' + digits : digits.startsWith('00') ? '+' + digits.slice(2) : digits;
     return normalized + (extension ? ' ext. ' + extension[1] : '');
   }
   function nameValue(value) {
@@ -81,6 +86,25 @@
     return name;
   }
   function snippet(text) { return clean(text).slice(0, 360); }
+  function roleValue(value) {
+    const role = clean(value).replace(/^\*+|\*+$/g, '');
+    const match = ROLE.exec(role);
+    // A biography mentioning an owner is not a job-title label.
+    return role.length <= 100 && match && match.index === 0 && !/[.!?@\d]/.test(role) ? role : '';
+  }
+  function elementText(element) {
+    // textContent joins adjacent elements without spaces, corrupting contacts.
+    const parts = [];
+    function visit(node) {
+      if (node.nodeType === 3) parts.push(node.nodeValue);
+      else if (node.nodeType === 1) {
+        Array.from(node.childNodes).forEach(visit);
+        parts.push('\n');
+      }
+    }
+    visit(element);
+    return parts.join('');
+  }
   function extractContacts(text, sourceUrl, explicit) {
     const emails = [], phones = [];
     const input = deobfuscate(text);
@@ -90,11 +114,11 @@
       const value = emailValue(match[0]);
       if (value && !emails.some(item => item.value === value)) emails.push({value, sourceUrl, evidence:snippet(input.slice(Math.max(0, match.index - 60), match.index + match[0].length + 60))});
     }
-    const phonePattern = /(?:\+?\d[\d(). \t-]{5,}\d)(?:\s*(?:ext\.?|extension|x)\s*\d{1,8})?/gi;
+    const phonePattern = /(?:\+?\(?\d[\d(). /\t-]{5,}\d)(?:[ \t]*(?:ext\.?|extension|x)[ \t]*\d{1,8})?/gi;
     while ((match = phonePattern.exec(input))) {
       const value = phoneValue(match[0]);
       const context = input.slice(Math.max(0, match.index - 45), match.index + match[0].length + 30);
-      const looksLikePhone = explicit || /(?:phone|telephone|tel\b|mobile|cell|call|fax|contact|whatsapp)/i.test(context) || /^\+/.test(match[0]) || /\(\d{2,5}\)/.test(match[0]) || /^\d{3}[-.]\d{3}[-.]\d{4}$/.test(match[0]);
+      const looksLikePhone = explicit || /(?:phone|telephone|tel\b|mobile|cell|call|fax|contact|whatsapp)/i.test(context) || /^(?:\+|00)/.test(match[0]) || /\(\d{2,5}\)/.test(match[0]) || /^\d{3}[-.]\d{3}[-.]\d{4}$/.test(match[0]);
       if (value && looksLikePhone && !phones.some(item => item.value === value)) phones.push({value, sourceUrl, evidence:snippet(context)});
     }
     return {emails, phones};
@@ -105,6 +129,7 @@
     const html = String(options.html || '').slice(0, MAX_SOURCE_LENGTH);
     const text = String(options.text || '').slice(0, MAX_SOURCE_LENGTH);
     const result = {businessName:'', people:[], emails:[], phones:[], links:[]};
+    const organizationContacts = {emails:new Set(), phones:new Set()};
     function addContact(kind, value, evidence) {
       const parsed = kind === 'emails' ? emailValue(value) : phoneValue(value);
       if (parsed && !result[kind].some(item => item.value === parsed)) result[kind].push({value:parsed, sourceUrl, evidence:snippet(evidence || value)});
@@ -132,30 +157,41 @@
       if (url && !result.links.some(link => link.url === url)) result.links.push({url, label:clean(label).slice(0, 120)});
     }
     function parseStructuredData(payloads) {
-      const nodes = [], ids = new Map(), excluded = new Set(), businessNodes = new Set();
+      const nodes = [], ids = new Map(), excluded = new Set(), excludedIds = new Set(), businessNodes = new Set();
       function walk(value, path, depth) {
+        const excludedPath = path.some(key => /^(?:author|creator|review|reviewer|customer|testimonial|comment|publisher)$/i.test(key));
+        if (excludedPath && typeof value === 'string' && /^(?:#|https?:)/i.test(value)) excludedIds.add(value);
         if (!value || typeof value !== 'object' || depth > 24 || nodes.length > 3000) return;
         if (Array.isArray(value)) { value.forEach(item => walk(item, path, depth + 1)); return; }
         nodes.push(value);
         if (typeof value['@id'] === 'string') ids.set(value['@id'], Object.assign({}, ids.get(value['@id']) || {}, value));
-        if (path.some(key => /^(?:author|review|reviewer|customer|testimonial|comment|publisher)$/i.test(key))) excluded.add(value);
-        Object.entries(value).forEach(([key, child]) => { if (child && typeof child === 'object') walk(child, path.concat(key), depth + 1); });
+        if (excludedPath) {
+          excluded.add(value);
+          if (typeof value['@id'] === 'string') excludedIds.add(value['@id']);
+        }
+        Object.entries(value).forEach(([key, child]) => walk(child, path.concat(key), depth + 1));
       }
       payloads.forEach(payload => walk(payload, [], 0));
       const types = node => (Array.isArray(node['@type']) ? node['@type'] : [node['@type']]).map(type => String(type || '').split(/[\/#]/).pop());
       const resolve = value => typeof value === 'string' ? ids.get(value) : value && value['@id'] && ids.has(value['@id']) ? Object.assign({}, ids.get(value['@id']), value) : value;
       const values = value => Array.isArray(value) ? value : value == null ? [] : [value];
       const firstContact = (node, key) => values(node[key]).map(value => typeof value === 'string' ? value : '').find(Boolean) || '';
+      function addOrganizationContact(kind, value, evidence) {
+        if (typeof value !== 'string') return;
+        const parsed = addContact(kind, value, evidence);
+        if (parsed) organizationContacts[kind].add(parsed);
+      }
+      function isExcluded(person) { return excluded.has(person) || (person && excludedIds.has(person['@id'])); }
       nodes.forEach(node => {
         if (types(node).some(type => /(?:Organization|LocalBusiness|Corporation|Store|Restaurant|Salon|Dentist|MedicalBusiness|ProfessionalService|Agency|Hotel|Company|CafeOrCoffeeShop|RealEstateAgent|LegalService|AutoRepair|Electrician|Plumber|School|HealthClub)$/i.test(type))) businessNodes.add(node);
       });
       for (const org of businessNodes) {
         if (!result.businessName && typeof org.name === 'string') result.businessName = clean(org.name).slice(0, 160);
-        values(org.email).forEach(value => { if (typeof value === 'string') addContact('emails', value, 'Published organization email: ' + value); });
-        values(org.telephone).forEach(value => { if (typeof value === 'string') addContact('phones', value, 'Published organization telephone: ' + value); });
+        values(org.email).forEach(value => addOrganizationContact('emails', value, 'Published organization email: ' + value));
+        values(org.telephone).forEach(value => addOrganizationContact('phones', value, 'Published organization telephone: ' + value));
         values(org.contactPoint).map(resolve).filter(Boolean).forEach(contact => {
-          values(contact.email).forEach(value => { if (typeof value === 'string') addContact('emails', value, 'Organization contact point: ' + value); });
-          values(contact.telephone).forEach(value => { if (typeof value === 'string') addContact('phones', value, 'Organization contact point: ' + value); });
+          values(contact.email).forEach(value => addOrganizationContact('emails', value, 'Organization contact point: ' + value));
+          values(contact.telephone).forEach(value => addOrganizationContact('phones', value, 'Organization contact point: ' + value));
         });
         ['founder', 'founders', 'employee', 'employees', 'member'].forEach(relation => {
           values(org[relation]).map(resolve).filter(Boolean).forEach(person => {
@@ -165,7 +201,7 @@
         });
       }
       function structuredPerson(person, fallbackRole) {
-        if (!person || typeof person.name !== 'string') return;
+        if (!person || isExcluded(person) || typeof person.name !== 'string') return;
         const role = typeof person.jobTitle === 'string' ? person.jobTitle : fallbackRole || '';
         const email = firstContact(person, 'email'), phone = firstContact(person, 'telephone');
         const evidence = 'JSON-LD Person: ' + person.name + (role ? ' — ' + role : '');
@@ -174,7 +210,7 @@
         addPerson({name:person.name, role, email, phone, evidence, emailEvidence:evidence + '; email: ' + email, phoneEvidence:evidence + '; telephone: ' + phone});
       }
       nodes.forEach(node => {
-        if (!types(node).includes('Person') || excluded.has(node)) return;
+        if (!types(node).includes('Person') || isExcluded(node)) return;
         const hasWork = values(node.worksFor).map(resolve).some(org => org && (businessNodes.has(org) || (org['@id'] && [...businessNodes].some(biz => biz['@id'] === org['@id'])) || (org.name && [...businessNodes].some(biz => biz.name === org.name))));
         // A job title alone does not prove that an article's author works for the site.
         if (hasWork) structuredPerson(resolve(node), 'Staff');
@@ -187,14 +223,14 @@
       for (let i = 0; i < Math.min(cleaned.length, 8); i++) {
         const line = cleaned[i];
         const pieces = line.split(/\s*(?:—|–|\||,)\s*|\s+-\s+/);
-        if (pieces.length >= 2 && nameValue(pieces[0]) && ROLE.test(pieces.slice(1).join(' '))) {
+        if (pieces.length >= 2 && nameValue(pieces[0]) && roleValue(pieces.slice(1).join(' '))) {
           name = nameValue(pieces[0]); role = pieces.slice(1).join(' '); nameIndex = i; break;
         }
-        if (nameValue(line) && cleaned[i + 1] && cleaned[i + 1].length < 120 && ROLE.test(cleaned[i + 1])) {
+        if (nameValue(line) && roleValue(cleaned[i + 1])) {
           name = nameValue(line); role = cleaned[i + 1]; nameIndex = i; break;
         }
-        if (ROLE.test(line) && line.length < 100 && nameValue(cleaned[i + 1] || '')) {
-          name = nameValue(cleaned[i + 1]); role = line; nameIndex = i; break;
+        if (roleValue(line) && nameValue(cleaned[i + 1] || '')) {
+          name = nameValue(cleaned[i + 1]); role = line; nameIndex = i + 1; break;
         }
       }
       if (!name) return null;
@@ -207,9 +243,21 @@
       doc.querySelectorAll('script[type="application/ld+json"]').forEach(script => { try { payloads.push(JSON.parse(script.textContent)); } catch (_) {} });
       parseStructuredData(payloads);
       if (!result.businessName) result.businessName = clean(doc.querySelector('meta[property="og:site_name"]')?.getAttribute('content') || doc.title || '').slice(0, 160);
-      doc.querySelectorAll('script,style,noscript,template,iframe,svg,[hidden],[aria-hidden="true"],.testimonial,.testimonials,[class*="review-"]').forEach(node => node.remove());
-      const visibleText = doc.body?.textContent || '';
+      doc.querySelectorAll('script,style,noscript,template,iframe,svg,[hidden],[aria-hidden="true"],[class*="testimonial"],[class*="review-"]').forEach(node => node.remove());
+      const visibleText = doc.body ? elementText(doc.body) : '';
       absorbContacts(visibleText);
+      // Contacts explicitly labelled as organization details or placed in the
+      // site footer stay in the company list, even if repeated beside staff.
+      doc.querySelectorAll('footer,[role="contentinfo"]').forEach(block => {
+        const contacts = extractContacts(elementText(block), sourceUrl);
+        contacts.emails.forEach(item => organizationContacts.emails.add(item.value));
+        contacts.phones.forEach(item => organizationContacts.phones.add(item.value));
+        block.querySelectorAll('a[href]').forEach(anchor => {
+          const href = anchor.getAttribute('href');
+          if (/^mailto:/i.test(href)) { const value = emailValue(href); if (value) organizationContacts.emails.add(value); }
+          if (/^tel:/i.test(href)) { const value = phoneValue(href); if (value) organizationContacts.phones.add(value); }
+        });
+      });
       doc.querySelectorAll('a[href]').forEach(anchor => {
         const href = anchor.getAttribute('href');
         if (/^mailto:/i.test(href)) href.slice(7).split('?')[0].split(/[;,]/).forEach(value => addContact('emails', value, anchor.parentElement?.textContent || value));
@@ -217,7 +265,7 @@
         else addLink(href, anchor.textContent);
       });
       const seenBlocks = new Set();
-      doc.querySelectorAll('[itemtype$="/Person"], [class*="team-member"], [class*="staff-member"], [class*="person-card"], [class*="team-card"], [class*="staff-card"], [class*="profile-card"]').forEach(block => parseStaffBlock(block, true));
+      doc.querySelectorAll(STAFF_CARD_SELECTOR).forEach(block => parseStaffBlock(block, true));
       doc.querySelectorAll('h2,h3,h4,h5').forEach(heading => {
         if (!nameValue(heading.textContent)) return;
         const parent = heading.parentElement;
@@ -227,7 +275,7 @@
       function parseStaffBlock(block, isExplicitCard) {
         if (seenBlocks.has(block) || block.closest('header,footer,nav,blockquote,[class*="testimonial"],[class*="review"],article[itemtype*="Article"]')) return;
         seenBlocks.add(block);
-        if (block.querySelectorAll('[itemtype$="/Person"], [class*="team-member"], [class*="staff-member"]').length > 1) return;
+        if (block.querySelector(STAFF_CARD_SELECTOR) || block.querySelectorAll('[itemprop="name"],h2,h3,h4,h5').length > 1) return;
         const heading = block.querySelector('[itemprop="name"],h2,h3,h4,h5');
         const name = heading && nameValue(heading.textContent);
         if (!name) return;
@@ -236,16 +284,34 @@
         if (title) lines.push(title.textContent);
         block.querySelectorAll('p,span,div,a').forEach(node => { if (node !== heading && !node.contains(heading) && node.children.length === 0) lines.push(node.textContent); });
         const parsed = personFromLines(lines);
-        if (!parsed && !isExplicitCard) return;
+        if ((!parsed && !isExplicitCard) || (parsed && parsed.name !== name)) return;
+        for (let i = 1; i < lines.length; i++) {
+          const other = personFromLines(lines.slice(i, i + 2));
+          if (other && other.name !== name) return;
+        }
         const role = parsed?.role || (title ? clean(title.textContent) : 'Team member');
         // Keep contacts inside a single named staff card; never copy global footer contacts.
-        const contacts = extractContacts(block.textContent, sourceUrl);
-        const emailAnchor = block.querySelector('a[href^="mailto:"],a[href^="MAILTO:"]');
-        const phoneAnchor = block.querySelector('a[href^="tel:"],a[href^="TEL:"]');
-        const email = emailValue(emailAnchor?.getAttribute('href')) || contacts.emails[0]?.value || '';
-        const phone = phoneValue(phoneAnchor?.getAttribute('href')) || contacts.phones[0]?.value || '';
-        const evidence = snippet(block.textContent);
-        addPerson({name, role, email, phone, evidence});
+        const personalBlock = block.cloneNode(true);
+        personalBlock.querySelectorAll('footer,nav,blockquote,[role="contentinfo"],[class*="testimonial"],[class*="review"]').forEach(node => node.remove());
+        const evidence = snippet(elementText(personalBlock));
+        const contacts = extractContacts(elementText(personalBlock), sourceUrl);
+        let email = '', phone = '', emailEvidence = '', phoneEvidence = '';
+        personalBlock.querySelectorAll('a[href]').forEach(anchor => {
+          const href = anchor.getAttribute('href');
+          const parent = anchor.parentElement;
+          const context = parent && parent !== personalBlock && parent.querySelectorAll('a').length <= 1 ? elementText(parent) : (anchor.previousSibling?.textContent || '') + ' ' + anchor.textContent;
+          if (GENERAL_CONTACT.test(context)) {
+            const kind = /^mailto:/i.test(href) ? 'emails' : /^tel:/i.test(href) ? 'phones' : '';
+            const value = kind === 'emails' ? emailValue(href) : kind === 'phones' ? phoneValue(href) : '';
+            if (value) organizationContacts[kind].add(value);
+            return;
+          }
+          if (!email && /^mailto:/i.test(href)) { const value = emailValue(href); if (value && !GENERAL_MAILBOX.test(value)) { email = value; emailEvidence = context; } }
+          if (!phone && /^tel:/i.test(href)) { phone = phoneValue(href); phoneEvidence = context; }
+        });
+        if (!email) { const candidate = contacts.emails.find(item => !GENERAL_MAILBOX.test(item.value) && !GENERAL_CONTACT.test(item.evidence)); if (candidate) { email = candidate.value; emailEvidence = candidate.evidence; } }
+        if (!phone) { const candidate = contacts.phones.find(item => !GENERAL_CONTACT.test(item.evidence)); if (candidate) { phone = candidate.value; phoneEvidence = candidate.evidence; } }
+        addPerson({name, role, email, phone, evidence, emailEvidence, phoneEvidence});
       }
     } else if (html) {
       const payloads = [];
@@ -282,18 +348,40 @@
         const contactLines = [];
         let beganContacts = false;
         for (const line of blockLines.slice(1)) {
-          const value = clean(line);
-          if (!value) continue;
-          if (ROLE.test(value) && value.length < 120 && !beganContacts) continue;
-          if (/^(?:contact us|get in touch|office|head office|general inquiries|address|copyright)/i.test(value)) break;
+          const value = clean(line).replace(/^[>*\-\s]+/, '').replace(/\*\*/g, '');
+          if (!value) { if (beganContacts) break; continue; }
+          if (roleValue(value) && !beganContacts) continue;
+          if (GENERAL_CONTACT.test(value) || /^(?:office|address|copyright)/i.test(value)) break;
           if (value.length > 180 || (!/@|\bat\b|mailto:|tel:|\b(?:phone|mobile|email|tel|direct|call)\b|\+\d/i.test(value) && !phoneValue(value))) break;
+          // A differently named contact in this section must never be attached
+          // to the heading's person. Only contact labels and values qualify.
+          const remainder = deobfuscate(value).replace(/\[([^\]]*)\]\((?:mailto:|tel:)[^)]+\)/gi, '$1')
+            .replace(/[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9.-]+\.[a-z]{2,63}/gi, '')
+            .replace(/(?:\+?\(?\d[\d(). /\t-]{5,}\d)(?:[ \t]*(?:ext\.?|extension|x)[ \t]*\d{1,8})?/gi, '')
+            .replace(/\b(?:email|e-mail|phone|telephone|tel|mobile|cell|direct|line|contact|call|whatsapp|me|work)\b/gi, '')
+            .replace(/[\s:;|/()[\]*+.-]/g, '');
+          if (remainder) break;
           beganContacts = true; contactLines.push(value);
         }
         const contacts = extractContacts(contactLines.join('\n'), sourceUrl);
         const inlineEmail = contactLines.join('\n').match(/mailto:([^\s)]+)/i);
         const inlinePhone = contactLines.join('\n').match(/tel:([^\s)]+)/i);
-        addPerson({name:parsed.name, role:parsed.role, email:emailValue(inlineEmail?.[1]) || contacts.emails[0]?.value || '', phone:phoneValue(inlinePhone?.[1]) || contacts.phones[0]?.value || '', evidence:content});
+        const email = emailValue(inlineEmail?.[1]) || contacts.emails[0]?.value || '';
+        addPerson({name:parsed.name, role:parsed.role, email:GENERAL_MAILBOX.test(email) ? '' : email, phone:phoneValue(inlinePhone?.[1]) || contacts.phones[0]?.value || '', evidence:content});
       }
+    }
+    // Repeated staff contacts and explicitly published company contacts cannot
+    // establish an individual match. They remain available as company contacts.
+    for (const [field, kind] of [['email', 'emails'], ['phone', 'phones']]) {
+      const counts = new Map();
+      result.people.forEach(person => { if (person[field]) counts.set(person[field], (counts.get(person[field]) || 0) + 1); });
+      result.people.forEach(person => {
+        if (person[field] && (organizationContacts[kind].has(person[field]) || counts.get(person[field]) > 1)) {
+          person[field] = '';
+          delete person[field + 'SourceUrl'];
+          delete person[field + 'Evidence'];
+        }
+      });
     }
     return result;
   }

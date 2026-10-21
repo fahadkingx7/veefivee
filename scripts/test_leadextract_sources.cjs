@@ -44,6 +44,7 @@ test('plain keyless reader responses are accurately labelled and cached', async 
   assert.equal(calls.length, 1);
   assert.equal(calls[0].url, 'https://r.jina.ai/https://company.org/');
   assert.equal(calls[0].options.credentials, 'omit');
+  assert.equal(calls[0].options.referrerPolicy, 'strict-origin-when-cross-origin');
   assert.equal(calls[0].options.headers, undefined);
   assert.equal(page.format, 'markdown');
   assert.equal(page.html, '');
@@ -63,6 +64,7 @@ test('network errors and forbidden responses are explicit failures', async () =>
   await assert.rejects(create({fetchImpl: async () => { throw new TypeError('Failed to fetch'); }}).readPage('https://company.org'), {code: 'NETWORK'});
   await assert.rejects(create({fetchImpl: async () => response('Forbidden', 403)}).readPage('https://company.org'), {code: 'BLOCKED'});
   await assert.rejects(create({fetchImpl: async () => response('Unavailable', 503)}).readPage('https://company.org'), {code: 'SOURCE_UNAVAILABLE'});
+  await assert.rejects(create({fetchImpl: async () => response('Title: Not found\nWarning: Target URL returned error 404: Not Found\nMarkdown Content:\nNo page')}).readPage('https://company.org'), {code: 'PAGE_UNAVAILABLE'});
 });
 
 test('timeout aborts the transport and does not become an empty result', async () => {
@@ -101,6 +103,8 @@ test('discovery scopes city within region and maps only published business conta
   ];
   const sources = create({fetchImpl: async (url, options) => {
     assert.equal(url, 'https://overpass-api.de/api/interpreter');
+    assert.equal(options.headers['Content-Type'], 'application/x-www-form-urlencoded');
+    assert.equal(options.referrerPolicy, 'strict-origin-when-cross-origin');
     queries.push(decodeURIComponent(options.body.slice(5)));
     return response(replies.shift());
   }});

@@ -159,7 +159,7 @@
       if (signal) signal.addEventListener('abort', stopped, {once: true});
       const timer = setTimeout(function () { timedOut = true; controller.abort(); }, timeoutMs);
       try {
-        const response = await fetchImpl(url, Object.assign({}, init, {signal: controller.signal, credentials: 'omit', referrerPolicy: 'no-referrer'}));
+        const response = await fetchImpl(url, Object.assign({}, init, {signal: controller.signal, credentials: 'omit', referrerPolicy: 'strict-origin-when-cross-origin'}));
         if (response.status === 429) {
           const failure = error('RATE_LIMIT', (source === 'reader' ? 'The website reader' : 'OpenStreetMap') + ' has reached its public request limit. This source is stopped for this run. Try again later.');
           stoppedSources[source] = failure;
@@ -191,6 +191,8 @@
         onStatus({phase: 'reading', message: 'Reading ' + new URL(url).hostname + '.', url});
         const content = await request(READER + url, {method: 'GET'}, 'reader', settings.signal);
         if (!content.trim()) throw error('EMPTY_PAGE', 'The page returned no readable public content.');
+        const upstreamError = content.match(/^Warning:\s*Target URL returned error\s+(\d{3})\b/im);
+        if (upstreamError) throw error('PAGE_UNAVAILABLE', 'The website returned HTTP ' + upstreamError[1] + '. Try another public page on the business website.');
         // Jina's plain response is Markdown; never treat it as executable HTML.
         const result = {url, sourceUrl: url, text: content, html: '', content, format: 'markdown'};
         if (pages.size >= 20) pages.delete(pages.keys().next().value);
@@ -199,7 +201,7 @@
       });
     }
     async function queryOverpass(query, signal) {
-      const content = await request(OVERPASS, {method: 'POST', body: 'data=' + encodeURIComponent(query)}, 'overpass', signal);
+      const content = await request(OVERPASS, {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: 'data=' + encodeURIComponent(query)}, 'overpass', signal);
       let data;
       try { data = JSON.parse(content); } catch (_) { throw error('INVALID_RESPONSE', 'OpenStreetMap returned an unreadable response. Try again later.'); }
       if (!Array.isArray(data.elements) || data.remark) throw error('INCOMPLETE_RESPONSE', 'OpenStreetMap could not complete this search. Try a smaller city or try later.');
