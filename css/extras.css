@@ -693,27 +693,27 @@ html,body {max-width:100%; overflow-x:clip;}
   object-fit:contain;
 }
 
-/* Slightly smaller homepage industry cards; full images remain uncropped. */
+/* Compact homepage industry cards: images retain their full natural proportions. */
 @media (min-width:900px) {
   .vf-home-industries-preview .vf-industry-panels-compact {
-    max-width:1080px;
+    max-width:920px;
     margin-inline:auto;
-    gap:20px;
+    gap:18px;
   }
   .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-copy,
   .vf-home-industries-preview .vf-industry-panels-compact .vf-panel-reverse .vf-industry-panel-copy {
-    padding:22px 24px 25px;
+    padding:18px 20px 21px;
   }
   .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel h3 {
-    font-size:clamp(1.5rem,2vw,1.85rem);
-    margin:8px 0 10px;
+    font-size:clamp(1.35rem,1.75vw,1.65rem);
+    margin:6px 0 9px;
   }
   .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-description {
-    font-size:.9rem;
-    line-height:1.58;
-    margin-bottom:12px;
+    font-size:.86rem;
+    line-height:1.53;
+    margin-bottom:10px;
   }
   .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-chips {
-    margin-bottom:10px;
+    margin-bottom:8px;
   }
 }
