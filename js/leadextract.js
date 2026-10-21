@@ -34,7 +34,16 @@
     try {
       const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
       // A separate schema/key prevents the former demo's synthetic vault entering live results.
-      if (Array.isArray(data)) state.saved = data.filter(item => item && item.version === 1 && P.validatePublicUrl(item.sourceUrl || item.website)).slice(0, 100);
+      if (Array.isArray(data)) state.saved = data.filter(item => item && item.version === 1 && P.validatePublicUrl(item.sourceUrl || item.website)).slice(0, 100).map(item => {
+        const strings = {};
+        ['name', 'website', 'sourceUrl', 'address', 'status', 'checkedAt'].forEach(field => { strings[field] = typeof item[field] === 'string' ? item[field].slice(0, 2000) : ''; });
+        const people = (Array.isArray(item.people) ? item.people : []).filter(p => p && typeof p.name === 'string' && P.validatePublicUrl(p.sourceUrl)).slice(0, 100).map(p => {
+          const person = {};
+          ['name', 'role', 'email', 'phone', 'sourceUrl', 'evidence', 'emailSourceUrl', 'phoneSourceUrl'].forEach(field => { person[field] = typeof p[field] === 'string' ? p[field].slice(0, 2000) : ''; });
+          return person;
+        });
+        return makeBusiness(Object.assign(strings, {people, emails: contacts(item.emails), phones: contacts(item.phones), sources: (Array.isArray(item.sources) ? item.sources : []).filter(url => typeof url === 'string' && P.validatePublicUrl(url))}));
+      });
     } catch (_) { state.saved = []; }
   }
   function toggleSave(business) {
@@ -63,6 +72,8 @@
     head.append(el('h3', '', business.name || host(business.website) || 'Business website'));
     const save = el('button', 'le-save', state.saved.some(item => key(item) === key(business)) ? 'Saved ✓' : 'Save');
     save.type = 'button'; save.setAttribute('aria-pressed', String(state.saved.some(item => key(item) === key(business))));
+    save.disabled = state.busy;
+    if (state.busy) save.title = 'Save after research finishes or is stopped.';
     save.setAttribute('aria-label', 'Save ' + (business.name || host(business.website)));
     save.addEventListener('click', () => toggleSave(business)); head.append(save); card.append(head);
     if (business.website) card.append(safeLink(business.website, host(business.website) + ' ↗', 'le-website'));
@@ -155,6 +166,20 @@
         }
       }
     });
+    // Repeated details across different people are shared contacts, even when
+    // those people were found on separate pages in this run.
+    for (const field of ['email', 'phone']) {
+      const normalized = value => field === 'email' ? value.toLowerCase() : value.replace(/\D/g, '');
+      const counts = new Map();
+      for (const person of business.people) if (person[field]) {
+        const value = normalized(person[field]); counts.set(value, (counts.get(value) || 0) + 1);
+      }
+      business.sharedContacts = business.sharedContacts || {email: [], phone: []};
+      business.sharedContacts[field] = unique([...business.sharedContacts[field], ...[...counts].filter(([, n]) => n > 1).map(([value]) => value)]);
+      for (const person of business.people) if (person[field] && business.sharedContacts[field].includes(normalized(person[field]))) {
+        person[field] = ''; person[field + 'SourceUrl'] = '';
+      }
+    }
     business.sources = unique([...business.sources, sourceUrl]);
     business.checkedAt = new Date().toISOString();
   }
@@ -219,9 +244,9 @@
     $('savedOnly').checked = false; $('resultFilter').value = ''; $('logEntries').replaceChildren();
     state.controller = new AbortController(); const signal = state.controller.signal;
     setBusy(true); render(); notify('Starting your public contact research…', 'busy');
-    const source = window.LeadExtractSources.create({onStatus: info => { notify(info.message, 'busy'); }});
     let stopped = false, failure = '';
     try {
+      const source = window.LeadExtractSources.create({onStatus: info => { notify(info.message, 'busy'); }});
       if (settings.mode === 'paste') {
         const business = makeBusiness({name: host(settings.url), website: settings.url, sourceUrl: settings.url});
         const html = /<\/?[a-z][\s\S]*>/i.test(settings.content) ? settings.content : '';
@@ -260,7 +285,7 @@
       notify(stopped ? 'Stopped. ' + count + ' businesses retained; you can export or save partial results.'
         : failure ? failure + (count ? ' Available results are retained below.' : ' Try Website URLs or Paste a page.')
         : !count ? 'No matching listings found. Try another category, the full city name, or Website URLs.'
-        : 'Research finished: ' + count + ' businesses and ' + named + ' named people found. Missing details were not published in the sources read.', failure ? 'error' : 'info');
+        : 'Research finished: ' + count + ' businesses and ' + named + ' named people found. Only details found in sources successfully read are included.', failure ? 'error' : 'info');
     }
   }
   function buildCsv(businesses) {
@@ -276,6 +301,8 @@
     });
     return '\uFEFF' + rows.map(row => row.map(value => P.escapeCsvCell(value == null ? '' : value)).join(',')).join('\r\n');
   }
+  // Validation is mode-specific; hidden URL fields must not block another mode.
+  $('leadSearchForm').noValidate = true;
   $('leadSearchForm').addEventListener('submit', run);
   $('stopSearch').addEventListener('click', () => { state.controller?.abort(); notify('Stopping…', 'busy'); });
   document.querySelectorAll('[data-mode]').forEach(button => {

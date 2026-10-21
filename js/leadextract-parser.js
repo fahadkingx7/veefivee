@@ -32,7 +32,7 @@
       if (!/^https?:$/.test(parsed.protocol) || parsed.username || parsed.password) return null;
       const host = parsed.hostname.toLowerCase().replace(/\.$/, '');
       if (!host.includes('.') || host.includes(':') || host.startsWith('[')) return null;
-      if (/(?:^|\.)(?:localhost|local|internal|intranet|lan|home|test|invalid|example|onion)$/.test(host)) return null;
+      if (/(?:^|\.)(?:localhost|localdomain|local|internal|intranet|lan|home|home\.arpa|test|invalid|example|onion)$/.test(host)) return null;
       const ip = host.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
       if (ip) {
         const n = ip.slice(1).map(Number);
@@ -50,7 +50,7 @@
   }
   function escapeCsvCell(value) {
     let text = String(value == null ? '' : value).replace(/\u0000/g, '');
-    if (/^[\s\uFEFF]*[=+@-]/.test(text) || /^[\t\r\n]/.test(text)) text = "'" + text;
+    if (/^[\s\u0000-\u001f\u007f\uFEFF]*[=+@-]/.test(text) || /^[\t\r\n]/.test(text)) text = "'" + text;
     return '"' + text.replace(/"/g, '""') + '"';
   }
   function emailValue(value) {
@@ -160,7 +160,7 @@
       const nodes = [], ids = new Map(), excluded = new Set(), excludedIds = new Set(), businessNodes = new Set();
       function walk(value, path, depth) {
         const excludedPath = path.some(key => /^(?:author|creator|review|reviewer|customer|testimonial|comment|publisher)$/i.test(key));
-        if (excludedPath && typeof value === 'string' && /^(?:#|https?:)/i.test(value)) excludedIds.add(value);
+        if (excludedPath && typeof value === 'string') excludedIds.add(value);
         if (!value || typeof value !== 'object' || depth > 24 || nodes.length > 3000) return;
         if (Array.isArray(value)) { value.forEach(item => walk(item, path, depth + 1)); return; }
         nodes.push(value);
@@ -273,7 +273,7 @@
         if (parent.textContent.length <= 1800) parseStaffBlock(parent, false);
       });
       function parseStaffBlock(block, isExplicitCard) {
-        if (seenBlocks.has(block) || block.closest('header,footer,nav,blockquote,[class*="testimonial"],[class*="review"],article[itemtype*="Article"]')) return;
+        if (seenBlocks.has(block) || block.closest('header,footer,nav,blockquote,[class*="testimonial"],[class*="review"],article[itemtype*="Article"],[itemprop="author"],[rel="author"],.author,[class*="byline"],[class*="author-"],[class*="-author"]')) return;
         seenBlocks.add(block);
         if (block.querySelector(STAFF_CARD_SELECTOR) || block.querySelectorAll('[itemprop="name"],h2,h3,h4,h5').length > 1) return;
         const heading = block.querySelector('[itemprop="name"],h2,h3,h4,h5');
@@ -334,10 +334,16 @@
       }
       const headingIndices = [];
       for (let i = 0; i < lines.length; i++) {
-        if (/^\s*#{1,6}\s+/.test(lines[i]) || /^\s*\*\*[^*]+\*\*\s*$/.test(lines[i]) || (i + 1 < lines.length && /^\s*[-=]{3,}\s*$/.test(lines[i + 1]))) headingIndices.push(i);
+        if (/^\s*#{1,6}\s+/.test(lines[i]) || (/^\s*\*\*[^*]+\*\*\s*$/.test(lines[i]) && !roleValue(lines[i])) || (i + 1 < lines.length && /^\s*[-=]{3,}\s*$/.test(lines[i + 1]))) headingIndices.push(i);
       }
+      const sectionStack = [];
       for (let h = 0; h < headingIndices.length; h++) {
         const start = headingIndices[h], end = headingIndices[h + 1] || lines.length;
+        const headingMatch = lines[start].match(/^\s*(#{1,6})\s+/);
+        const level = headingMatch ? headingMatch[1].length : /^\s*=/.test(lines[start + 1] || '') ? 1 : /^\s*-{3,}/.test(lines[start + 1] || '') ? 2 : 6;
+        while (sectionStack.length && sectionStack[sectionStack.length - 1].level >= level) sectionStack.pop();
+        sectionStack.push({level, excluded:/\b(?:testimonials?|reviews?|customer stories|article authors?|blog authors?|written by|posted by)\b/i.test(lines[start])});
+        if (sectionStack.some(section => section.excluded)) continue;
         const blockLines = lines.slice(start, Math.min(end, start + 18));
         const parsed = personFromLines(blockLines);
         if (!parsed || parsed.nameIndex > 1) continue;
@@ -385,7 +391,7 @@
     }
     return result;
   }
-  const api = Object.freeze({parsePage, validatePublicUrl, escapeCsvCell});
+  const api = Object.freeze({parsePage, validatePublicUrl, escapeCsvCell, emailValue, phoneValue});
   root.LeadExtractParser = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : window);
