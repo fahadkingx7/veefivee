@@ -761,16 +761,49 @@ html,body {max-width:100%; overflow-x:clip;}
   -moz-osx-font-smoothing: auto;
 }
 
-/* Mobile navigation: preserve the 700ms entrance motion without the heavy
-   blur repaint that intermittently flashes during rapid page navigation.
-   Desktop styling, homepage hero, and all other animations are unchanged. */
-@media (max-width: 767.98px) and (prefers-reduced-motion: no-preference) {
-  .about-page .about-topline,
-  .services-page .service-header,
-  .vf-ind-page-hero > .vf-ind-hero-content,
-  .contact-page .contact-main > .section-kicker,
-  .contact-page .contact-main > h1,
-  .contact-page .contact-main > .contact-intro {
-    animation-name: vf-enter-composited;
+/* Mobile navigation v36. Historical audit:
+   Older pages start CSS animations at parse time, so on cached or slow
+   navigations their 700ms animation may finish before the first visible paint.
+   Arm entry in the document head; start consistently after the first paint.
+   Keep the same 700ms timing/easing and a 24px upward fade (no filter or scale).
+   Home hero and desktop animations are deliberately untouched. */
+@keyframes vf-mobile-nav-enter {
+  from {opacity:0;transform:translateY(24px)}
+  to {opacity:1;transform:translateY(0)}
+}
+@media (max-width:767.98px) and (prefers-reduced-motion:no-preference) {
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .about-page .about-topline,
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .about-page .about-intro-grid,
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .services-page .service-header,
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .vf-industries-page .vf-ind-hero-content,
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .vf-products-page > section:first-child > [data-reveal],
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .contact-page .contact-main > .section-kicker,
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .contact-page .contact-main > h1,
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .contact-page .contact-main > .contact-intro,
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .contact-page .contact-main > .contact-options,
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .contact-page .contact-main > .contact-location,
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .vf-blog-hero-inner,
+  html.vf-mobile-entry-armed:not(.vf-mobile-entry-ready) .vf-consult-layout {
+    animation:none!important;
+    opacity:0!important;
+    transform:translateY(24px)!important;
+  }
+  html.vf-mobile-entry-ready .about-page .about-topline,
+  html.vf-mobile-entry-ready .about-page .about-intro-grid,
+  html.vf-mobile-entry-ready .services-page .service-header,
+  html.vf-mobile-entry-ready .vf-industries-page .vf-ind-hero-content,
+  html.vf-mobile-entry-ready .vf-products-page > section:first-child > [data-reveal],
+  html.vf-mobile-entry-ready .contact-page .contact-main > .section-kicker,
+  html.vf-mobile-entry-ready .contact-page .contact-main > h1,
+  html.vf-mobile-entry-ready .contact-page .contact-main > .contact-intro,
+  html.vf-mobile-entry-ready .contact-page .contact-main > .contact-options,
+  html.vf-mobile-entry-ready .contact-page .contact-main > .contact-location,
+  html.vf-mobile-entry-ready .vf-blog-hero-inner,
+  html.vf-mobile-entry-ready .vf-consult-layout {
+    animation:vf-mobile-nav-enter .7s cubic-bezier(.22,1,.36,1) both!important;
+  }
+  /* Preserve Products' original stagger between its two opening columns. */
+  html.vf-mobile-entry-ready .vf-products-page > section:first-child > [data-reveal]:nth-child(2) {
+    animation-delay:.15s!important;
   }
 }
