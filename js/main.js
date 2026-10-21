@@ -48,28 +48,6 @@
     });
   }
 
-
-  // Scope smooth scrolling to deliberate same-document hash navigation.
-  // Global scroll-behavior:smooth can animate browser history restoration on
-  // mobile Chrome, which made the header and content drift during page changes.
-  document.addEventListener("click", function (event) {
-    var link = event.target.closest && event.target.closest('a[href^="#"]');
-    if (!link || event.defaultPrevented || event.button !== 0 ||
-        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    var hash = link.getAttribute("href");
-    if (!hash || hash.length < 2) return;
-    var target;
-    try { target = document.getElementById(decodeURIComponent(hash.slice(1))); }
-    catch (_) { return; }
-    if (!target) return;
-    event.preventDefault();
-    history.pushState(null, "", hash);
-    target.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-      block: "start"
-    });
-  });
-
   var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   if (!fine) return;
 

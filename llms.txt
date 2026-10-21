@@ -14,7 +14,7 @@ Creative and technology director: Fahad
 - [Blog & Insights](https://veefivee.com/blog.html): Guides about software, AI, marketing, creators, education, operations and local businesses, with a searchable archive sourced from a public JSON catalog.
 - [Contact](https://veefivee.com/contact.html): Let’s build your next idea together. Contact veefivee on WhatsApp, Instagram or email about AI automation, custom software, websites and growth.
 
-- [LeadExtract public business contacts](https://veefivee.com/leadextract.html): Research public OpenStreetMap business listings and extract published names, phones and emails from business websites through Jina Reader. Includes source links, local saving and CSV export. No user API key; coverage and service limits apply.
+- [LeadExtract Me Pro interactive demo](https://veefivee.com/leadextract.html): Explore synthetic local business owner samples, browser-based parser examples, contact research concepts and CRM CSV export; not a live search or scraping service.
 
 ## What veefivee helps with
 - Technology: AI agents, AI voice and reception systems, custom websites, web apps, SaaS, mobile experiences, desktop software, browser tools, integrations, cloud and APIs.
@@ -45,4 +45,4 @@ Information in these files summarizes public website content. Check the linked p
 - [Local shops & neighborhood brands](https://veefivee.com/industries/local-shops-restaurants-salons.html): Websites, local SEO, Google Business Profile guidance, booking systems and marketing for restaurants, salons, cafés and shops across the USA, UK, Pakistan and worldwide.
 - [Freelancers & first-time founders](https://veefivee.com/industries/freelancers-first-time-founders.html): Practical startup advice, freelancer portfolios, simple websites, branding and MVP support for founders in the USA, UK, Pakistan and worldwide.
 
-- [Try Tools](https://veefivee.com/tools.html): Veefivee's public tools directory with LeadExtract public contact research and CSV/Excel to VCF converter.
+- [Try Tools](https://veefivee.com/tools.html): Veefivee's public tools directory with LeadExtract interactive sample research and CSV/Excel to VCF converter.

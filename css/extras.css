@@ -1,6 +1,6 @@
 
 /* Local extras: unprefixed glass blur, link underline, smooth scroll */
-html { scroll-behavior: auto; /* Smooth in-page links are handled in js/main.js. */ }
+html { scroll-behavior: smooth; }
 .glass-panel { backdrop-filter: blur(28px) saturate(180%); }
 .glass-panel-strong { backdrop-filter: blur(40px) saturate(200%); }
 .glass-pill { backdrop-filter: blur(20px) saturate(180%); }
@@ -31,8 +31,12 @@ html { scroll-behavior: auto; /* Smooth in-page links are handled in js/main.js.
    Deliberately additive: original Tailwind build and animations remain intact.
    ────────────────────────────────────────────────────────────────────────── */
 :root{--vf-ink:#202036;--vf-muted:#565773;--vf-purple:#6457e9;--vf-border:rgba(255,255,255,.65)}
-body{overflow-x:clip;background:radial-gradient(ellipse at 88% 22%,rgba(194,182,255,.18),transparent 38%),radial-gradient(ellipse at 10% 78%,rgba(125,230,218,.14),transparent 40%),#f9f9ff}
+body{overflow-x:hidden;background:radial-gradient(ellipse at 88% 22%,rgba(194,182,255,.18),transparent 38%),radial-gradient(ellipse at 10% 78%,rgba(125,230,218,.14),transparent 40%),#f9f9ff}
 body::selection{background:#d7d1ff;color:#1e194c}
+[data-nav-pill]{background:rgba(255,255,255,.73)!important;backdrop-filter:blur(30px) saturate(170%)!important;-webkit-backdrop-filter:blur(30px) saturate(170%)!important;border:1px solid rgba(255,255,255,.92)!important;box-shadow:0 8px 35px rgba(72,64,126,.13),inset 0 1px 0 #fff!important}
+[data-nav-pill] a:first-child{color:#282340!important;white-space:nowrap}
+[data-nav-pill] a{white-space:nowrap}
+[data-nav-pill] a:hover{transform:translateY(-1px)}
 a:focus-visible,button:focus-visible{outline:3px solid #7972f7!important;outline-offset:4px}
 .section-kicker{display:block;text-transform:uppercase;letter-spacing:.23em;font-size:.72rem;font-weight:800;color:#6756db;line-height:1.6}
 .text-shimmer{background-image:linear-gradient(105deg,#5958da 8%,#b05ac7 35%,#537cdd 60%,#6258dd 90%);background-size:210% auto}
@@ -166,6 +170,7 @@ main > section:first-of-type .glass-panel:hover{background:rgba(255,255,255,.85)
 .footer-fine{flex-direction:column;align-items:center;text-align:center}
 }
 @media(max-width:520px){
+[data-nav-pill]{max-width:calc(100vw - 14px)!important;padding:6px!important;gap:0!important}[data-nav-pill] a{font-size:.65rem!important;padding:7px 8px!important}
 .home-hero{min-height:735px}.hero-heading{font-size:clamp(2.6rem,10.8vw,4rem);line-height:1.03;padding-inline:.08em}.home-hero .glass-pill{font-size:.72rem;padding:6px 11px}.home-hero .rise-in.mt-10{gap:10px}.home-hero .rise-in.mt-10 a{padding:12px 16px;font-size:.77rem}
 .founder-story h2{font-size:2.3rem}.founder-story p:not(.section-kicker){font-size:.94rem}.founder-stats{gap:6px}.founder-stats span{font-size:.7rem}
 .about-topline h1{font-size:clamp(2.55rem,10vw,3.65rem)}.about-narrative{padding:24px 22px}.about-narrative h2{font-size:2.25rem}.about-connect>a{width:100%}.story-milestones{grid-template-columns:1fr}
@@ -178,12 +183,53 @@ main > section:first-of-type .glass-panel:hover{background:rgba(255,255,255,.85)
 /* Same Android/Noto palm glyph across iOS, macOS, Android and Windows. */
 .android-palm{display:inline-block;width:1em;height:1em;vertical-align:-.12em;object-fit:contain;flex-shrink:0}
 
+/* Mobile-only: add the veefivee brand as a first row inside the ORIGINAL
+   rounded-full liquid-glass navigation. Original desktop appearance untouched. */
+.vf-mobile-brand { display:none; }
+.vf-nav-contact-mobile { display:none; }
+@media (max-width: 767.98px) {
+  [data-nav-pill] {
+    flex-wrap:wrap;
+    justify-content:center;
+    border-radius:9999px;
+    row-gap:1px;
+  }
+  [data-nav-pill] > .vf-mobile-brand {
+    display:flex;
+    flex:0 0 100%;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+    padding:3px 0 2px;
+    margin:0;
+    color:#282340;
+    font-size:.875rem;
+    line-height:1.3;
+    text-decoration:none;
+  }
+  [data-nav-pill] > .vf-mobile-brand .android-palm { margin:0; }
+  .vf-nav-contact-desktop { display:none; }
+  .vf-nav-contact-mobile { display:inline; }
+}
+@media (max-width: 520px) {
+  [data-nav-pill] > .vf-mobile-brand {
+    font-size:.875rem!important;
+    padding:3px 0 2px!important;
+  }
+}
+
+
 /* ═══════════════════════════════════════════════════════════════════════
    veefivee v4: How We Help + Industries. Additive styles only.
    Existing liquid glass, typography, animations and pill nav are preserved.
    ═══════════════════════════════════════════════════════════════════════ */
 /* Optical correction for a visual balance between the colorful palm and wordmark. */
 .footer-brand{position:relative;left:-4px}
+@media(max-width:767.98px){[data-nav-pill]>.vf-mobile-brand{position:relative;left:-5px}}
+/* Keep six links on the ORIGINAL rounded-pill mobile navbar. No font changes. */
+@media(max-width:410px){[data-nav-pill]>a:not(.vf-mobile-brand):not(.hidden){padding-left:6px!important;padding-right:6px!important}}
+@media(max-width:360px){[data-nav-pill]>a:not(.vf-mobile-brand):not(.hidden){padding-left:4px!important;padding-right:4px!important}}
+
 .vf-section-shell{max-width:1170px;margin:0 auto}
 .vf-section-heading{text-align:center;max-width:805px;margin:0 auto 45px}
 .vf-section-heading h2{color:#26233f;font-size:clamp(2.45rem,5.2vw,4.7rem);font-weight:850;letter-spacing:-.067em;line-height:1.12;margin:14px 0 18px;text-wrap:balance}
@@ -531,7 +577,26 @@ html,body {max-width:100%; overflow-x:clip;}
     min-width:0;
   }
 
+  /* Preserve the single rounded glass outer capsule, but not the individual selection pills. */
+  [data-nav-pill] > a[data-status="active"]:not(.vf-mobile-brand) {
+    background:transparent!important;
+    box-shadow:none!important;
+    font-weight:800!important;
+    color:#26243d!important;
+  }
+  /* Recover space around all six labels on narrow phones without shrinking the text. */
+  [data-nav-pill] > a:not(.vf-mobile-brand):not(.hidden) {
+    padding-left:clamp(4px,1.2vw,7px)!important;
+    padding-right:clamp(4px,1.2vw,7px)!important;
+  }
+}
 
+@media (max-width:340px) {
+  /* Keep all six pages on one line even on compact 320px screens. */
+  [data-nav-pill] > a:not(.vf-mobile-brand):not(.hidden) {
+    padding-left:2px!important;
+    padding-right:2px!important;
+  }
 }
 
 /* v22: Place the live green status dot directly beside the first mobile greeting line. */
@@ -552,5 +617,122 @@ html,body {max-width:100%; overflow-x:clip;}
 .vf-industry-panel .vf-industry-secondary-link:hover{color:#6457e9;text-decoration:underline}
 .vf-industry-panel .vf-industry-secondary-link:focus-visible{outline:2px solid #6457e9;outline-offset:3px}
 
-/* Shared navigation styles are consolidated in css/site-nav.css. */
+/* Contact link responsive styling is maintained in css/blog-nav.css (v28). */
 
+/* Homepage Industries experiment: two balanced editorial cards per row.
+   Only the home preview is affected; /industries.html keeps its own layout. */
+@media (min-width: 900px) {
+  .vf-home-industries-preview .vf-industry-panels-compact {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    align-items:stretch;
+    gap:26px;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact > .vf-industry-panel,
+  .vf-home-industries-preview .vf-industry-panels-compact > .vf-industry-panel.vf-panel-reverse {
+    display:flex;
+    flex-direction:column;
+    grid-template-columns:none;
+    min-width:0;
+    height:100%;
+    border-radius:30px;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media,
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-panel-reverse .vf-industry-panel-media {
+    order:0;
+    height:245px;
+    min-height:245px;
+    flex:0 0 245px;
+    overflow:hidden;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-copy,
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-panel-reverse .vf-industry-panel-copy {
+    order:1;
+    flex:1;
+    justify-content:flex-start;
+    padding:27px 30px 30px;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel h3 {
+    font-size:clamp(1.65rem,2.35vw,2.1rem);
+    line-height:1.16;
+    margin:9px 0 12px;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-description {
+    font-size:.94rem;
+    line-height:1.65;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-cta {
+    margin-top:auto;
+    align-self:flex-start;
+  }
+}
+@media (min-width: 900px) and (max-width: 1050px) {
+  .vf-home-industries-preview .vf-industry-panels-compact {gap:18px}
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-copy {padding:23px 22px 25px}
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media {height:210px;min-height:210px;flex-basis:210px}
+}
+
+/* Homepage preview: show each complete industry image at its natural aspect
+   ratio; do not clip or crop it in the two-column experiment or on mobile. */
+.vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media,
+.vf-home-industries-preview .vf-industry-panels-compact .vf-panel-reverse .vf-industry-panel-media {
+  height:auto;
+  min-height:0;
+  flex:0 0 auto;
+}
+.vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media img {
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+
+/* Compact homepage industry cards: images retain their full natural proportions. */
+@media (min-width:900px) {
+  .vf-home-industries-preview .vf-industry-panels-compact {
+    max-width:1140px;
+    margin-inline:auto;
+    gap:18px;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-copy,
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-panel-reverse .vf-industry-panel-copy {
+    padding:18px 20px 21px;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel h3 {
+    font-size:clamp(1.35rem,1.75vw,1.65rem);
+    margin:6px 0 9px;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-description {
+    font-size:.86rem;
+    line-height:1.53;
+    margin-bottom:10px;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-chips {
+    margin-bottom:8px;
+  }
+}
+
+/* Homepage Industries: compact widescreen photography on mobile only.
+   Desktop cards and dedicated Industries page remain unchanged. */
+@media (max-width: 899.98px) {
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media,
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-panel-reverse .vf-industry-panel-media {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    flex: 0 0 auto;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
