@@ -1,0 +1,56 @@
+name: Check blog archive consistency
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'blogs/**'
+      - 'data/blog-posts.json'
+      - 'blog.html'
+      - 'index.html'
+      - 'about.html'
+      - 'services.html'
+      - 'scripts/build_blog_index.py'
+      - 'assets/blog-*.webp'
+      - '.github/workflows/check-blog-index.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify published articles, images and featured links
+        run: |
+          python3 - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          root = Path('.')
+          index = json.loads((root / 'data/blog-posts.json').read_text(encoding='utf-8'))['posts']
+          urls = [p['url'] for p in index]
+          assert len(urls) == len(set(urls)), 'Duplicate blog entries'
+          articles = {f'blogs/{p.name}' for p in (root/'blogs').glob('*.html')}
+          assert articles <= set(urls), 'Missing articles from JSON: ' + str(articles - set(urls))
+          assert all((root/p['image']).is_file() for p in index), 'An indexed blog image is missing'
+          html = (root/'blog.html').read_text(encoding='utf-8')
+          m = re.search(r'<!-- FALLBACK_JSON_START -->(.*?)<!-- FALLBACK_JSON_END -->', html, re.S)
+          assert m, 'Missing blog HTML fallback'
+          fallback = json.loads(m.group(1))
+          assert set(urls) == {p['url'] for p in fallback}, 'Archive fallback disagrees with JSON index'
+          assert f'{len(index)} stories to explore' in html, 'Archive article count is stale'
+          for name in ('index.html','about.html','services.html'):
+              contents = (root/name).read_text(encoding='utf-8')
+              m = re.search(r'<!-- STUDIO_FEATURED_START -->(.*?)<!-- STUDIO_FEATURED_END -->', contents, re.S)
+              assert m, f'{name} missing featured stories marker'
+              for post in index[:3]:
+                  assert post['url'] in m.group(1), f'{name} missing recent article {post["url"]}'
+              assert m.group(1).count('class="vf-home-journal-card"') == 3, f'{name} needs three cards'
+          sitemap = (root/'sitemap.xml').read_text(encoding='utf-8')
+          for path in articles:
+              assert 'https://veefivee.com/'+path in sitemap, f'Sitemap missing {path}'
+          print(f'Blog archive healthy: {len(index)} stories, {len(articles)} standalone blog posts, featured stories synced.')
+          PY

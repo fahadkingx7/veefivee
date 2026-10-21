@@ -142,7 +142,16 @@
   try{local=JSON.parse((fallback.textContent||'[]').replace(/<!--[^>]*-->/g,'').trim());}catch(_){}
   if(Array.isArray(local))init(local);
   // Same-origin static JSON file is the source of truth. No GitHub API keys/rate limits.
-  fetch('data/blog-posts.json',{cache:'default'}).then(r=>{if(!r.ok)throw Error('Index unavailable');return r.json();})
-    .then(data=>{if(data&&Array.isArray(data.posts)){init(data.posts);}else throw Error('Invalid index');})
-    .catch(()=>{/* Site still works from embedded, generator-produced fallback while offline. */});
+  // Treat the embedded HTML index as a safety net: a stale cached JSON file
+  // must never make a newly published article disappear from the archive.
+  fetch('data/blog-posts.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Index unavailable');return r.json();})
+    .then(data=>{
+      if (!data || !Array.isArray(data.posts)) throw Error('Invalid index');
+      const merged = data.posts.slice();
+      const urls = new Set(merged.map(p=>p.url));
+      for (const post of local) {
+        if (post && !urls.has(post.url)) {merged.push(post);urls.add(post.url);}
+      }
+      init(merged);
+    }).catch(()=>{/* Use embedded posts if JSON is temporarily unavailable. */});
 })();

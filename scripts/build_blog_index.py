@@ -90,6 +90,20 @@ def render_card(p,i):
     label=datetime.strptime(published,'%Y-%m-%d').strftime('%b %Y') if published else 'Guide'
     return f'''<article class="vf-blog-card"><a class="vf-blog-card-image" href="{escape(p['url'])}" tabindex="-1" aria-hidden="true"><img src="{escape(p['image'])}" alt="{escape(p.get('imageAlt') or p['title'])}" width="740" height="480" decoding="async" loading="{'eager' if i<3 else 'lazy'}"><span class="vf-blog-card-category">{escape(p['category'])}</span></a><div class="vf-blog-card-copy"><div class="vf-blog-card-overline"><span>{escape(label)}</span><span class="vf-dot"></span><span>{p['readMinutes']} min read</span></div><h3><a href="{escape(p['url'])}">{escape(p['title'])}</a></h3><p>{escape(p['excerpt'])}</p><a class="vf-blog-card-link" href="{escape(p['url'])}" aria-label="Read: {escape(p['title'])}">Read the story <span aria-hidden="true">↗</span></a></div></article>'''
 
+def render_studio_card(p):
+    escape=lambda x:html.escape(str(x),quote=True)
+    return f'''<article class="vf-home-journal-card">
+      <a class="vf-home-journal-image" href="{escape(p['url'])}" aria-label="Read {escape(p['title'])}">
+        <img loading="lazy" decoding="async" width="740" height="480" src="{escape(p['image'])}" alt="{escape(p.get('imageAlt') or p['title'])}" />
+      </a>
+      <div class="vf-home-journal-copy">
+        <span class="vf-home-journal-tag">{escape(p['category'])} <span aria-hidden="true">·</span> {p['readMinutes']} min read</span>
+        <h3><a href="{escape(p['url'])}">{escape(p['title'])}</a></h3>
+        <p>{escape(p['excerpt'])}</p>
+        <a class="vf-home-journal-read" href="{escape(p['url'])}">Read the story <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>'''
+
 def fill_section(content,mark,body):
     pattern=f'<!-- {mark}_START -->'+r'.*?'+f'<!-- {mark}_END -->'
     out,n=re.subn(pattern,lambda _: f'<!-- {mark}_START -->'+body+f'<!-- {mark}_END -->',content,flags=re.S)
@@ -110,6 +124,13 @@ def build():
     content=re.sub(r'<span class="vf-blog-post-count" id="blogTotal" aria-live="polite">.*?</span>',f'<span class="vf-blog-post-count" id="blogTotal" aria-live="polite">{len(posts)} stories to explore</span>',content,count=1)
     content=re.sub(r'(<div id="blogResults" class="vf-blog-results-info" aria-live="polite">).*?(</div>)',rf'\g<1>Showing {min(6,len(posts))} of {len(posts)} stories\g<2>',content,count=1)
     (ROOT/'blog.html').write_text(content,encoding='utf8')
+    # Keep Home, About and Services' three featured stories synced to the same
+    # index used by the blog. Static HTML preserves SEO and no-JS availability.
+    top_stories='\n'+'\n'.join(render_studio_card(p) for p in posts[:3])+'\n'
+    for name in ('index.html','about.html','services.html'):
+        page=ROOT/name
+        page.write_text(fill_section(page.read_text(encoding='utf8'),
+                                     'STUDIO_FEATURED',top_stories),encoding='utf8')
     # Preserve existing URLs; append blog archive and any new blog articles to sitemap.
     sitemap=ROOT/'sitemap.xml';ET.register_namespace('','http://www.sitemaps.org/schemas/sitemap/0.9')
     ns='{http://www.sitemaps.org/schemas/sitemap/0.9}'
