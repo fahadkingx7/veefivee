@@ -24,6 +24,19 @@ required.
   in-page anchor links scroll smoothly without global scroll restoration effects.
 - Page-specific CSS continues after extras and before site-nav.
 
+## iPhone Chrome cross-page 100vh viewport correction
+The shared site wrapper historically used Tailwind `min-h-screen`, which sets
+`min-height:100vh`. On iOS Chrome, 100vh can reflect the larger viewport
+even while its toolbar is visible; when Chrome expands/collapses its toolbar
+during a cross-document navigation, the incoming document can briefly start
+with the previous toolbar's scroll offset. The refactor adds a `100svh`
+override on the shared frame, retaining `100vh` as a browser fallback.
+No header design, layout content, or CSS animations are changed.
+
+This is backed by a same-symptom report:
+https://github.com/vercel/next.js/discussions/64435
+An iPhone Chrome real-device test is still required to verify resolution.
+
 ## Layout invariant
 ```html
 <body>

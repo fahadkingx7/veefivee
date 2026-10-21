@@ -2,7 +2,13 @@
    Owns every mobile/desktop navigation variant, link state and glass appearance.
    Keep layout wrappers out of the header's fixed-position containing block. */
 [data-vf-site-nav] { position:fixed; top:0; inset-inline:0; z-index:50; }
-.vf-site-frame { overflow-x:clip; overflow-y:visible; }
+/* Avoid the 100vh (largest viewport) layout shift that Chrome iOS can carry
+   across page transitions while its bottom toolbar expands/collapses.
+   Tailwind's min-h-screen still provides the fallback for older browsers. */
+.vf-site-frame { overflow-x:clip; overflow-y:visible; min-height:100vh; }
+@supports (height: 100svh) {
+  .vf-site-frame { min-height:100svh; }
+}
 
 /* Existing glass rules */
 [data-nav-pill]{background:rgba(255,255,255,.73)!important;backdrop-filter:blur(30px) saturate(170%)!important;-webkit-backdrop-filter:blur(30px) saturate(170%)!important;border:1px solid rgba(255,255,255,.92)!important;box-shadow:0 8px 35px rgba(72,64,126,.13),inset 0 1px 0 #fff!important}
