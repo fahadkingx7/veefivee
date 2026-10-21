@@ -760,3 +760,10 @@ html,body {max-width:100%; overflow-x:clip;}
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
 }
+
+/* Match the hero introduction to the existing “curious by design” label. */
+.home-hero .hero-summary .hero-summary-intro {
+  color:#77718e;
+  font-weight:500;
+  letter-spacing:0;
+}
