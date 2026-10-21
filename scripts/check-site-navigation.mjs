@@ -16,7 +16,7 @@ let checked = 0;
 for (const file of htmlFiles) {
   const source = readFileSync(file, "utf8");
   const name = relative(root, file);
-  const usesSharedNav = /(?:\.{2}\/)?css\/site-nav\.css\?v=1/.test(source);
+  const usesSharedNav = /(?:\.{2}\/)?css\/site-nav\.css\?v=2/.test(source);
   if (!usesSharedNav) {
     if (/css\/blog-nav\.css\?v=/.test(source)) fail(name + ": stale navigation stylesheet");
     continue;
