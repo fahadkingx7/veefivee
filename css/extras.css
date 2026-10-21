@@ -749,10 +749,3 @@ html,body {max-width:100%; overflow-x:clip;}
     height:100%;
   }
 }
-/* Faster, composited homepage hero entrance (no expensive full-hero blur).
-   Other pages, below-the-fold reveals and hover animations are unchanged. */
-@media (prefers-reduced-motion: no-preference) {
-  .vf-home-page > .home-hero > .mx-auto.max-w-4xl {
-    animation: .32s cubic-bezier(.22,1,.36,1) both vf-enter-composited;
-  }
-}
