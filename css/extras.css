@@ -677,3 +677,18 @@ html,body {max-width:100%; overflow-x:clip;}
   .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-copy {padding:23px 22px 25px}
   .vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media {height:210px;min-height:210px;flex-basis:210px}
 }
+
+/* Homepage preview: show each complete industry image at its natural aspect
+   ratio; do not clip or crop it in the two-column experiment or on mobile. */
+.vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media,
+.vf-home-industries-preview .vf-industry-panels-compact .vf-panel-reverse .vf-industry-panel-media {
+  height:auto;
+  min-height:0;
+  flex:0 0 auto;
+}
+.vf-home-industries-preview .vf-industry-panels-compact .vf-industry-panel-media img {
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
