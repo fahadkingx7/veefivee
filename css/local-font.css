@@ -1,9 +1,9 @@
 /* Local variable Inter: single Latin WOFF2 for all weights (300–900).
-   Preloaded by the page to prevent visible late font swaps. */
+   Preloaded by each page. Optional display avoids both prolonged invisible text and late font swaps. */
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 100 900;
-  font-display: block;
+  font-display: optional;
   src: url("../assets/fonts/inter-latin-variable.woff2") format("woff2");
 }
