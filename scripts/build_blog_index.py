@@ -124,9 +124,20 @@ def build():
     content=re.sub(r'<span class="vf-blog-post-count" id="blogTotal" aria-live="polite">.*?</span>',f'<span class="vf-blog-post-count" id="blogTotal" aria-live="polite">{len(posts)} stories to explore</span>',content,count=1)
     content=re.sub(r'(<div id="blogResults" class="vf-blog-results-info" aria-live="polite">).*?(</div>)',rf'\g<1>Showing {min(6,len(posts))} of {len(posts)} stories\g<2>',content,count=1)
     (ROOT/'blog.html').write_text(content,encoding='utf8')
-    # Keep Home, About and Services' three featured stories synced to the same
-    # index used by the blog. Static HTML preserves SEO and no-JS availability.
-    top_stories='\n'+'\n'.join(render_studio_card(p) for p in posts[:3])+'\n'
+    # Feature one editorially pinned story, then the two newest remaining
+    # stories. The main blog archive keeps its normal newest-first order.
+    config=json.loads((ROOT/'data/blog-featured.json').read_text(encoding='utf-8'))
+    pinned_url=config.get('pinned_url')
+    if not isinstance(pinned_url,str) or not pinned_url:
+        raise ValueError('data/blog-featured.json must define a nonempty pinned_url')
+    matches=[p for p in posts if p['url']==pinned_url]
+    if len(matches)!=1:
+        raise ValueError(f'Pinned blog article not found in the index: {pinned_url}')
+    featured=matches+ [p for p in posts if p['url']!=pinned_url][:2]
+    if len(featured)!=3 or len({p['url'] for p in featured})!=3:
+        raise ValueError('Exactly three unique featured articles are required')
+    # Static HTML preserves SEO, fast loads and no-JavaScript availability.
+    top_stories='\n'+'\n'.join(render_studio_card(p) for p in featured)+'\n'
     for name in ('index.html','about.html','services.html'):
         page=ROOT/name
         page.write_text(fill_section(page.read_text(encoding='utf8'),
