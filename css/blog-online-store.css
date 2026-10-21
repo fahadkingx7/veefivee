@@ -1,0 +1,48 @@
+/* veefivee | A beginner's online store. Lightweight layered on existing blog-article.css. */
+.vf-shop-buttons{display:flex;gap:11px;flex-wrap:wrap;margin:23px 0 3px}
+.vf-shop-btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;border-radius:999px;text-decoration:none!important;font-weight:820;font-size:.86rem;transition:transform .22s,box-shadow .22s}
+.vf-shop-btn:hover{transform:translateY(-2px)}
+.vf-shop-btn.primary{background:#6c55d5;color:#fff;box-shadow:0 12px 27px #7061be26}
+.vf-shop-btn.secondary{background:#fff;color:#6252ba;border:1px solid #ded6f5}
+.vf-shop-kicker{font-size:.76rem;letter-spacing:.045em;color:#725dc4;font-weight:850;text-transform:uppercase}
+.vf-shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:14px;margin:25px 0}
+.vf-shop-card{border:1px solid #e9def4;border-radius:21px;padding:21px;background:#fff;box-shadow:0 12px 30px #544a9f09}
+.vf-shop-card h3{color:#332b50;margin:0 0 9px!important;font-size:1.05rem!important}
+.vf-shop-card p{font-size:.89rem;margin:0!important}
+.vf-shop-cta{margin:35px 0;padding:28px;border-radius:24px;border:1px solid #e2d7fa;background:linear-gradient(120deg,#faf6ff,#f3f6ff 65%,#fff7fc)}
+.vf-shop-cta h3{font-size:1.45rem!important;margin:0 0 9px!important;color:#302748}
+.vf-shop-cta p{margin:0 0 16px}
+.vf-shop-playground{border:1px solid #ded3f4;background:linear-gradient(140deg,#fcfaff,#f5f1ff 65%,#f2fcfa);border-radius:26px;padding:clamp(18px,3vw,30px);margin:30px 0;box-shadow:0 18px 48px #6c5dbc12}
+.vf-shop-playground>h3{margin:9px 0 10px!important;font-size:1.55rem!important}
+.vf-shop-playground>p{margin:0 0 17px}
+.vf-shop-preview-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.93fr);gap:22px;align-items:start}
+.vf-shop-fields{display:grid;gap:11px}
+.vf-shop-fields label{display:block;font-weight:770;color:#4b3f65;font-size:.83rem}
+.vf-shop-fields input,.vf-shop-fields select{width:100%;display:block;min-width:0;margin-top:6px;padding:12px 13px;border:1px solid #dbd0f0;background:#fff;border-radius:12px;color:#382d57;font:500 .89rem Inter,system-ui,sans-serif;outline-offset:2px}
+.vf-shop-fields input:focus,.vf-shop-fields select:focus{outline:2px solid #8068d8}
+.vf-shop-preview{border-radius:19px;border:1px solid #e5ddf6;background:#fff;padding:14px;box-shadow:0 12px 25px #6652aa14;min-width:0}
+.vf-shop-preview-visual{min-height:135px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(130deg,#f0e8fd,#f8ebf1 55%,#e7f7f3);font-size:2.9rem}
+.vf-shop-preview-visual span{filter:drop-shadow(0 5px 9px #7967b71d)}
+.vf-shop-preview-type{font-size:.7rem;color:#886fbd;font-weight:820;text-transform:uppercase;letter-spacing:.05em;margin:12px 0 4px}
+.vf-shop-preview strong{display:block;font-size:1.08rem;color:#342a51;overflow-wrap:anywhere}
+.vf-shop-preview-price{font-weight:900;color:#6851c3;font-size:1.02rem;margin:5px 0 11px}
+.vf-shop-preview-buy{display:block;text-align:center;background:#7359d4;color:#fff;border-radius:11px;padding:10px;font-size:.78rem;font-weight:800}
+.vf-shop-note{font-size:.78rem;color:#796f8d;line-height:1.6;margin-top:14px}
+.vf-shop-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.vf-shop-checks label{display:flex;gap:11px;align-items:start;padding:14px 15px;border:1px solid #dfd7f0;border-radius:15px;background:#fff;font-weight:690;font-size:.86rem;color:#4a405d;cursor:pointer}
+.vf-shop-checks input{width:18px;height:18px;accent-color:#765dcf;margin-top:1px;flex:none}
+.vf-shop-progress{height:10px;margin:19px 0 9px;border-radius:99px;background:#e4dff2;overflow:hidden}
+.vf-shop-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#8065d5,#51baa9);border-radius:99px;transition:width .28s}
+.vf-shop-progress-status{font-size:.83rem;color:#645489;font-weight:820}
+.vf-shop-faq details{border:1px solid #e8def6;background:#fff;border-radius:16px;padding:17px 18px;margin:11px 0}
+.vf-shop-faq summary{cursor:pointer;color:#322949;font-weight:800}
+.vf-shop-faq details p{margin:10px 0 0}
+.vf-shop-table{overflow-x:auto;border:1px solid #e4d9f1;border-radius:18px;margin:26px 0}
+.vf-shop-table table{width:100%;border-collapse:collapse;font-size:.9rem}
+.vf-shop-table th,.vf-shop-table td{text-align:left;vertical-align:top;padding:14px 16px;border-bottom:1px solid #eee6fa}
+.vf-shop-table th{color:#503e86;background:#f8f5ff}
+.vf-shop-table tr:last-child td{border-bottom:0}
+.vf-shop-hero-subtle{animation:vf-shop-fade-up .75s ease both}
+@keyframes vf-shop-fade-up{from{opacity:0;transform:translate3d(0,15px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@media(max-width:650px){.vf-shop-preview-layout{grid-template-columns:1fr}.vf-shop-checks{grid-template-columns:1fr}.vf-shop-playground,.vf-shop-cta{padding:19px}.vf-shop-preview-visual{min-height:110px}.vf-shop-btn{padding:11px 16px}}
+@media(prefers-reduced-motion:reduce){.vf-shop-hero-subtle{animation:none}.vf-shop-btn,.vf-shop-progress span{transition:none}}
