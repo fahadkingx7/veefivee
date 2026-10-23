@@ -62,6 +62,45 @@ html{scroll-padding-top:110px}
 @media(max-width:760px){.ip-main{padding:145px 15px 74px}.ip-feature{padding:27px 22px;border-radius:26px}.ip-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ip-cell{padding:19px;min-height:116px}.ip-help{padding:24px 21px}.ip-number{min-height:50px}}
 @media(max-width:440px){.ip-grid{grid-template-columns:1fr}.ip-intro h1{font-size:43px}.ip-actions{align-items:stretch}.ip-primary,.ip-secondary{flex:1}.ip-feature{padding:24px 18px}}
 @media(prefers-reduced-motion:reduce){.ip-primary,.ip-secondary{transition:none}}
+
+/* IP-first dashboard layout: one hero row, strong country identity and live embedded map. */
+.ip-main{max-width:1220px;padding-top:125px;padding-bottom:90px}
+.ip-intro{max-width:720px;margin-bottom:25px}
+.ip-intro h1{font-size:clamp(32px,4.2vw,49px);margin:12px auto 6px;line-height:1.13;letter-spacing:-.06em}
+.ip-intro p{font-size:14px;line-height:1.6}
+.ip-eyebrow{font-size:10px;padding:7px 12px}
+.ip-spotlight{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:18px;align-items:stretch}
+.ip-spotlight > *{min-width:0}
+.ip-feature{padding:33px 35px;border-radius:30px;display:flex;flex-direction:column;min-height:394px}
+.ip-feature:before{pointer-events:none}
+.ip-number{font-size:clamp(29px,3.75vw,49px);margin:28px 0 26px;min-height:65px}
+.ip-country-feature{display:flex;gap:15px;align-items:center;padding:17px 19px;border-radius:21px;border:1px solid #eee8ff;background:linear-gradient(110deg,#f6f1ff,#eff5ff);margin-bottom:23px}
+.ip-country-flag{display:grid;place-items:center;flex:0 0 57px;height:57px;border-radius:17px;background:#fff;border:1px solid #ffffffef;box-shadow:0 7px 19px #695bb319;font-size:28px}
+.ip-country-text{min-width:0;display:flex;flex-direction:column}
+.ip-country-caption{font-size:10px;font-weight:850;letter-spacing:.085em;color:#9584b8}
+.ip-country-text strong{font-size:clamp(20px,2.3vw,28px);font-weight:830;line-height:1.28;letter-spacing:-.04em;color:#302747;overflow-wrap:anywhere;margin:4px 0}
+.ip-country-text > span:last-child{font-size:12px;color:#777087}
+.ip-actions{margin-top:auto}
+.ip-feature .ip-small-note{margin-bottom:0}
+.ip-map-card{min-height:394px;border-radius:30px;display:flex;flex-direction:column;overflow:hidden;border:1px solid #fff;background:#ffffffdf;box-shadow:0 27px 80px #544a9616}
+.ip-map-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:23px 23px 17px}
+.ip-map-top > div{display:grid;gap:5px}
+.ip-map-top strong{font-size:22px;line-height:1.2;letter-spacing:-.04em;color:#302747}
+.ip-map-chip{font-size:10px;font-weight:800;color:#6f5bba;background:#f2eeff;border:1px solid #e8defc;border-radius:30px;padding:7px 10px}
+.ip-map-area{position:relative;flex:1;min-height:254px;margin:0 14px;background:radial-gradient(circle at 28% 30%,#e1dcff 0,#e9ecff 31%,#dceef7 78%,#e3f1fb 100%);border-radius:20px;overflow:hidden}
+.ip-map-area iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.82)}
+.ip-map-empty{height:100%;min-height:254px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px;text-align:center;padding:24px}
+.ip-map-empty strong{font-size:16px;color:#4b436c}
+.ip-map-empty > span:last-child{font-size:12px;line-height:1.5;max-width:230px;color:#7e7896}
+.ip-map-orbit{display:grid;place-items:center;width:65px;height:65px;border-radius:20px;background:#ffffffa6;border:1px solid #fff;font-size:39px;color:#7762d4;margin-bottom:4px}
+.ip-map-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 21px;min-height:57px;font-size:11px;font-weight:680;color:#817a94}
+.ip-map-bottom > span{display:inline-flex;align-items:center;gap:8px;min-width:0}
+.ip-map-bottom a{color:#6b57ca;text-decoration:none;font-weight:800;white-space:nowrap}
+.ip-map-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#6fbca9}
+.ip-grid{margin-top:18px}
+@media(max-width:900px){.ip-spotlight{grid-template-columns:1fr}.ip-feature,.ip-map-card{min-height:unset}.ip-map-area{height:300px;flex:none}.ip-main{padding-top:137px}}
+@media(max-width:760px){.ip-intro{margin-bottom:20px}.ip-intro h1{font-size:clamp(31px,7vw,42px)}.ip-number{font-size:clamp(28px,6vw,43px);margin:22px 0}.ip-feature{padding:25px 23px}.ip-map-area{height:280px}.ip-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:440px){.ip-main{padding-top:124px}.ip-feature{padding:24px 18px}.ip-country-feature{padding:13px;gap:10px}.ip-country-flag{flex-basis:48px;height:48px;font-size:24px}.ip-map-top{padding:20px 18px 14px}.ip-map-area{height:250px;margin:0 10px}.ip-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.ip-cell{min-height:108px;padding:16px}.ip-value{font-size:14px}}
 </style>
 </head>
 <body>
@@ -69,19 +108,33 @@ html{scroll-padding-top:110px}
 <main class="ip-page" id="content">
 <div class="ip-main">
   <section class="ip-intro" aria-labelledby="ip-title">
-    <div class="ip-eyebrow"><span class="ip-pulse" aria-hidden="true"></span> FREE NETWORK TOOL</div>
-    <h1 id="ip-title">What's my <span class="ip-gradient">IP address?</span></h1>
-    <p>See the public IP your internet connection is using right now, plus the network and approximate location it reveals.</p>
+    <div class="ip-eyebrow"><span class="ip-pulse" aria-hidden="true"></span> LIVE NETWORK LOOKUP</div>
+    <h1 id="ip-title">Your IP. <span class="ip-gradient">At a glance.</span></h1>
+    <p>Your public address and approximate location, together in one place.</p>
   </section>
-  <section class="ip-feature" aria-label="Public IP result">
-    <div class="ip-top"><span class="ip-tag">Your public IP address</span><span class="ip-status" id="ip-status" role="status" aria-live="polite"><i aria-hidden="true"></i><span>Checking connection…</span></span></div>
-    <div class="ip-number" id="ip-number" aria-live="polite">Detecting…</div>
-    <div class="ip-actions">
-      <button class="ip-primary" id="ip-copy" type="button" disabled>Copy IP <span aria-hidden="true">↗</span></button>
-      <button class="ip-secondary" id="ip-refresh" type="button">↻ &nbsp;Refresh lookup</button>
+  <section class="ip-spotlight" aria-label="Your public IP and approximate location">
+    <div class="ip-feature">
+      <div class="ip-top"><span class="ip-tag">YOUR PUBLIC IP ADDRESS</span><span class="ip-status" id="ip-status" role="status" aria-live="polite"><i aria-hidden="true"></i><span>Checking connection…</span></span></div>
+      <div class="ip-number" id="ip-number" aria-live="polite">Detecting…</div>
+      <div class="ip-country-feature">
+        <div class="ip-country-flag" id="ip-flag" aria-hidden="true">◎</div>
+        <div class="ip-country-text"><span class="ip-country-caption">APPROXIMATE LOCATION</span><strong id="ip-country-hero">Checking your country…</strong><span id="ip-city-hero">Looking up your network</span></div>
+      </div>
+      <div class="ip-actions">
+        <button class="ip-primary" id="ip-copy" type="button" disabled>Copy IP <span aria-hidden="true">↗</span></button>
+        <button class="ip-secondary" id="ip-refresh" type="button">↻ &nbsp;Refresh lookup</button>
+      </div>
+      <p class="ip-error" id="ip-error" role="alert"></p>
+      <p class="ip-small-note">Your IP and location reflect the network seen by the provider. VPNs and proxies may change these results.</p>
     </div>
-    <p class="ip-error" id="ip-error" role="alert"></p>
-    <p class="ip-small-note">Results reflect the connection seen by the lookup provider. A VPN, proxy, or mobile network can change the displayed address.</p>
+    <div class="ip-map-card">
+      <div class="ip-map-top"><div><span class="ip-tag">NETWORK LOCATION</span><strong>On the map</strong></div><span class="ip-map-chip">Approximate</span></div>
+      <div class="ip-map-area" id="ip-map-area" aria-label="Approximate IP geolocation map">
+        <div class="ip-map-empty" id="ip-map-empty"><span class="ip-map-orbit" aria-hidden="true">⌾</span><strong id="ip-map-heading">Finding your location</strong><span id="ip-map-message">The map appears when a location is available.</span></div>
+        <iframe id="ip-map-frame" title="Map showing the approximate network location" loading="lazy" referrerpolicy="no-referrer" hidden></iframe>
+      </div>
+      <div class="ip-map-bottom"><span><span class="ip-map-dot" aria-hidden="true"></span><span id="ip-map-caption">Waiting for IP geolocation</span></span><a id="ip-map-link" href="https://www.openstreetmap.org/" target="_blank" rel="noopener noreferrer" hidden>Explore map ↗</a></div>
+    </div>
   </section>
   <section class="ip-grid" aria-label="Connection details">
     <div class="ip-cell"><span class="ip-label">IP version</span><strong class="ip-value" id="ip-version">—</strong></div>
@@ -135,6 +188,41 @@ html{scroll-padding-top:110px}
     put("org",d.connection&&(d.connection.org||d.connection.domain));
     put("asn",d.connection&&d.connection.asn?"AS"+d.connection.asn:null);
     put("timezone",d.timezone&&d.timezone.id);
+    el("ip-flag").textContent=d.flag&&d.flag.emoji?d.flag.emoji:"◎";
+    el("ip-country-hero").textContent=d.country||"Country unavailable";
+    el("ip-city-hero").textContent=[d.city,d.region].filter(Boolean).join(", ")||"Location estimated from your IP";
+    drawMap(d);
+  }
+
+  function clearMap(title,description){
+    var frame=el("ip-map-frame"),link=el("ip-map-link");
+    frame.hidden=true;
+    frame.removeAttribute("src");
+    link.hidden=true;
+    link.removeAttribute("href");
+    el("ip-map-empty").hidden=false;
+    el("ip-map-heading").textContent=title;
+    el("ip-map-message").textContent=description;
+    el("ip-map-caption").textContent="Approximate location · no GPS used";
+  }
+  function drawMap(d){
+    var lat=Number(d.latitude),lon=Number(d.longitude);
+    if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180){
+      clearMap("Map unavailable","The IP provider did not return a valid map location.");
+      return;
+    }
+    // A broad regional view intentionally avoids implying street-level accuracy.
+    var span=1.25,west=Math.max(-180,lon-span),east=Math.min(180,lon+span);
+    var south=Math.max(-85,lat-span*.7),north=Math.min(85,lat+span*.7);
+    var bbox=[west,south,east,north].map(function(n){return n.toFixed(5)}).join("%2C");
+    var url="https://www.openstreetmap.org/export/embed.html?bbox="+bbox+"&layer=mapnik&marker="+lat.toFixed(5)+"%2C"+lon.toFixed(5);
+    el("ip-map-frame").src=url;
+    el("ip-map-frame").hidden=false;
+    el("ip-map-empty").hidden=true;
+    var link=el("ip-map-link");
+    link.href="https://www.openstreetmap.org/?mlat="+encodeURIComponent(lat.toFixed(5))+"&mlon="+encodeURIComponent(lon.toFixed(5))+"#map=9/"+encodeURIComponent(lat.toFixed(5))+"/"+encodeURIComponent(lon.toFixed(5));
+    link.hidden=false;
+    el("ip-map-caption").textContent=(d.city||d.region||d.country||"Network area")+" · approximate";
   }
   async function update(){
     var id=++requestId;
@@ -146,6 +234,10 @@ html{scroll-padding-top:110px}
     el("ip-error").classList.remove("visible");
     for(var i=0;i<values.length;i++)put(values[i],"—");
     browserInfo();
+    el("ip-flag").textContent="◎";
+    el("ip-country-hero").textContent="Checking your country…";
+    el("ip-city-hero").textContent="Looking up your network";
+    clearMap("Finding your location","The map appears when a location is available.");
     status("Checking connection…","");
     try{
       var data=await query("https://ipwho.is/",9000);
@@ -164,6 +256,9 @@ html{scroll-padding-top:110px}
         if(!fallback||!fallback.ip)throw Error("No IP returned");
         result=String(fallback.ip);
         el("ip-number").textContent=result;
+        el("ip-country-hero").textContent="Location unavailable";
+        el("ip-city-hero").textContent="Your public IP was detected";
+        clearMap("Location unavailable","IP detection worked, but location lookup could not be completed.");
         el("ip-copy").disabled=false;
         put("version",result.includes(":")?"IPv6":"IPv4");
         status("IP detected · location unavailable","ready");
@@ -172,6 +267,9 @@ html{scroll-padding-top:110px}
       }catch(error){
         if(id!==requestId)return;
         el("ip-number").textContent="Unable to detect IP";
+        el("ip-country-hero").textContent="Not available";
+        el("ip-city-hero").textContent="Check your connection and try again";
+        clearMap("Unable to locate network","We couldn't obtain location information.");
         status("Connection check unavailable","error");
         el("ip-error").textContent="The lookup services couldn't be reached. Check your connection, VPN or content blocker, then try again.";
         el("ip-error").classList.add("visible");
