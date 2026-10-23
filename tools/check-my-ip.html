@@ -126,7 +126,7 @@ html{scroll-padding-top:110px}
   <section class="ip-spotlight" aria-label="Your public IP and approximate location">
     <div class="ip-feature">
       <div class="ip-top"><span class="ip-tag">YOUR PUBLIC IP ADDRESS</span><span class="ip-status" id="ip-status" role="status" aria-live="polite"><i aria-hidden="true"></i><span>Checking connection…</span></span></div>
-      <div class="ip-number" aria-live="polite"><span id="ip-number">Detecting…</span><span class="ip-port" id="ip-port" title="Website connection port (HTTPS), not your device's outgoing port" hidden>:443</span></div>
+      <div class="ip-number" aria-live="polite"><span id="ip-number">Detecting…</span><span class="ip-port" id="ip-port" title="Website connection port (HTTPS), not your device's outgoing port" hidden>: 443</span></div>
       <div class="ip-country-feature">
         <div class="ip-country-flag" id="ip-flag" aria-hidden="true">◎</div>
         <div class="ip-country-text"><span class="ip-country-caption">APPROXIMATE LOCATION</span><strong id="ip-country-hero">Checking your country…</strong><span id="ip-city-hero">Looking up your network</span></div>
@@ -191,7 +191,7 @@ html{scroll-padding-top:110px}
   var result="";
   // Browsers do not expose their ephemeral source port; show only the website destination port.
   var websitePort=location.port || (location.protocol==="https:"?"443":location.protocol==="http:"?"80":"");
-  function showPort(visible){var node=el("ip-port");node.hidden=!(visible&&websitePort);node.textContent=websitePort?":"+websitePort:"";}
+  function showPort(visible){var node=el("ip-port");node.hidden=!(visible&&websitePort);node.textContent=websitePort?": "+websitePort:"";}
   function put(key,value){el("ip-"+key).textContent=value===0?"0":(value||"Not available")}
   function browserInfo(){
     var ua=navigator.userAgent||"";
