@@ -44,41 +44,24 @@
 @media(max-width:760px){.welcome-guide{padding-top:38px}.welcome-guide-heading{margin-bottom:26px}.welcome-guide-item{grid-template-columns:62px minmax(0,1fr);gap:16px;padding:24px 20px;border-radius:24px}.welcome-guide-number{width:56px;height:56px;border-radius:17px;font-size:20px}.welcome-guide-visual{grid-column:1/-1;min-height:100px;flex-direction:row;gap:18px}.welcome-guide-symbol{width:56px;height:56px;border-radius:17px;font-size:25px}.welcome-guide-item p{font-size:14px}.welcome-guide-item h3{font-size:24px}.welcome-guide-heading h2{font-size:clamp(32px,8vw,45px)}}
 @media(prefers-reduced-motion:reduce){.welcome-guide *{scroll-behavior:auto!important}}
 
-/* The atmospheric header wallpaper belongs to the page canvas, not the
-   inset/overflow-clipped hero layer. Keep the gradient and original drift
-   animation while painting from the true viewport edges. */
-html:has(body.vf-login-welcome){background:#faf9ff;}
+/* Paint the header/hero color directly on the root canvas.
+   The prior decorative pseudo-element drifted and faded before the right edge. */
+html:has(body.vf-login-welcome) {
+  background-color:#faf9ff;
+  background-image:
+    radial-gradient(ellipse 68% 540px at 0% 0%,rgba(187,167,249,.30) 0%,rgba(187,167,249,.15) 55%,transparent 100%),
+    radial-gradient(ellipse 68% 540px at 100% 0%,rgba(152,208,239,.29) 0%,rgba(152,208,239,.14) 55%,transparent 100%),
+    radial-gradient(ellipse 60% 410px at 50% 0%,rgba(252,210,220,.18),transparent 90%);
+  background-repeat:no-repeat;
+}
 body.vf-login-welcome {
-  margin:0 !important;
-  padding:0 !important;
-  min-width:0;
-  background:#faf9ff;
-}
-body.vf-login-welcome::before {
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  width:100%;
-  height:720px;
-  pointer-events:none;
-  z-index:0;
-  background:
-    radial-gradient(ellipse 37% 48% at 11% 15%,rgba(187,167,249,.24),transparent 82%),
-    radial-gradient(ellipse 35% 48% at 87% 11%,rgba(152,208,239,.22),transparent 83%),
-    radial-gradient(ellipse 39% 45% at 55% 5%,rgba(252,210,220,.24),transparent 83%);
-  background-size:110% 110%;
-  animation:dl-drift 22s ease-in-out infinite alternate;
-}
-.vf-login-welcome .vf-site-shell,
-.vf-login-welcome .dl-page{
+  margin:0;
+  padding:0;
   background:transparent;
 }
+.vf-login-welcome .vf-site-shell,
+.vf-login-welcome .dl-page { background:transparent; }
 .vf-login-welcome .dl-glow {display:none;}
-@media(prefers-reduced-motion:reduce){
- body.vf-login-welcome::before{animation:none;}
-}
 </style>
 </head><body class="vf-login-welcome"><nav class="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4"><div class="flex max-w-full items-center gap-0.5 rounded-full border border-foreground/10 px-2 py-2 shadow-lg transition-all duration-500 sm:gap-1 sm:px-4 bg-background/40 backdrop-blur-xl" data-nav-pill=""><a aria-label="veefivee home" class="liquid-hover hidden rounded-full px-2 py-1 text-sm font-semibold tracking-tight md:block" href="../index.html"><img class="android-palm" src="../assets/android-palm.png" alt="🌴" width="26" height="26" decoding="async"/> veefivee</a><div class="mx-1 hidden h-4 w-px bg-foreground/15 md:block"></div><a aria-label="veefivee home" class="vf-mobile-brand liquid-hover rounded-full text-sm font-semibold tracking-tight" href="../index.html"><img class="android-palm" src="../assets/android-palm.png" alt="🌴" width="26" height="26" decoding="async"/><span>veefivee</span></a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../index.html">Home</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../about.html">About</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../industries.html">Industries</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../services.html">Services</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../products.html">Products</a><a class="vf-nav-blog liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../blog.html">Blog</a><a class="vf-nav-consultation liquid-hover rounded-full bg-primary px-2.5 py-1.5 text-[0.7rem] font-semibold text-primary-foreground transition-transform duration-300 hover:scale-105 sm:px-3 sm:text-sm" aria-label="Free consultation with veefivee" href="../free-consultation.html"><span class="vf-nav-contact-desktop">Free Consultation</span><span class="vf-nav-contact-mobile">Free Consultation</span></a></div></nav><div class="relative min-h-screen vf-site-shell">
 <main class="dl-page" id="content">
