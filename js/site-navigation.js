@@ -101,10 +101,6 @@
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
     var link = event.target.closest && event.target.closest('a[href]');
     if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
-    // On touch devices, let the browser follow links immediately instead of
-    // intercepting taps for an asynchronous fetch/navigation transition.
-    // This avoids a link appearing only hovered while the first request waits.
-    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
     var url = new URL(link.href, location.href);
     if (url.origin !== location.origin || !routes.has(url.pathname)) {
       ++generation; if (pending) pending.abort(); return;
