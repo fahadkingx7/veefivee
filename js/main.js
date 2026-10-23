@@ -28,6 +28,17 @@
         destination.search === location.search) event.preventDefault();
   });
 
+  // Form confirmation must also initialize on client-side navigation.
+  if (document.body.classList.contains("vf-consultation-page") &&
+      new URLSearchParams(location.search).get("sent") === "1") {
+    var success = document.getElementById("vf-consult-success");
+    var form = document.getElementById("vf-consult-form");
+    if (success && form) {
+      form.hidden = true;
+      success.hidden = false;
+    }
+  }
+
   var pill = document.querySelector("[data-nav-pill]");
   if (pill) {
     // The scroll state changes only when crossing 20px, not on every scroll event.
