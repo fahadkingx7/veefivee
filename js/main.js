@@ -3,6 +3,22 @@
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  // Repeated taps on the selected navigation item must not reload the document
+  // and replay its entrance animation. Keep modified clicks, hashes, queries,
+  // downloads and links to other pages under normal browser navigation.
+  document.addEventListener("click", function (event) {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey ||
+        event.ctrlKey || event.shiftKey || event.altKey) return;
+    var link = event.target.closest && event.target.closest("[data-nav-pill] a[href]");
+    if (!link || link.hasAttribute("download") ||
+        (link.target && link.target !== "_self")) return;
+    var destination = new URL(link.href, location.href);
+    function documentPath(path) { return path.replace(/\/index\.html$/, "/"); }
+    if (destination.origin === location.origin && !destination.hash &&
+        documentPath(destination.pathname) === documentPath(location.pathname) &&
+        destination.search === location.search) event.preventDefault();
+  });
+
   var pill = document.querySelector("[data-nav-pill]");
   if (pill) {
     // The scroll state changes only when crossing 20px, not on every scroll event.

@@ -419,7 +419,11 @@ main > section:first-of-type .glass-panel:hover{background:rgba(255,255,255,.85)
 
 /* v16: Fix true headline overflow (not only gradient's last glyph).
    Preserve fonts, gradient, content and animations. */
-html,body {max-width:100%; overflow-x:clip;}
+html {max-width:100%; overflow:visible;}
+body {max-width:100%; overflow-x:clip;}
+/* Clip decoration without making a second vertical scroll container.
+   The fixed site navigation is a body child, outside this content shell. */
+.vf-site-shell {overflow-x:clip; overflow-y:visible;}
 .home-hero .hero-heading,
 .founder-story h2,
 .about-topline h1,
