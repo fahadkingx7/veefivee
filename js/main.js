@@ -1,12 +1,21 @@
 (function () {
   "use strict";
+  var dispose = [];
+  function unmount() { dispose.splice(0).forEach(function (fn) { fn(); }); }
+  function listen(target, type, callback, options) {
+    target.addEventListener(type, callback, options);
+    dispose.push(function () { target.removeEventListener(type, callback, options); });
+  }
+  function mount() {
+  unmount();
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
   // Repeated taps on the selected navigation item must not reload the document
   // and replay its entrance animation. Keep modified clicks, hashes, queries,
   // downloads and links to other pages under normal browser navigation.
-  document.addEventListener("click", function (event) {
+  listen(document, "click", function (event) {
+    if (window.VFNavigation) return;
     if (event.defaultPrevented || event.button !== 0 || event.metaKey ||
         event.ctrlKey || event.shiftKey || event.altKey) return;
     var link = event.target.closest && event.target.closest("[data-nav-pill] a[href]");
@@ -33,7 +42,7 @@
       pill.classList.toggle("backdrop-blur-2xl", scrolled);
     }
     updateNav();
-    window.addEventListener("scroll", updateNav, { passive: true });
+    listen(window, "scroll", updateNav, { passive: true });
   }
 
   var reveals = document.querySelectorAll("[data-reveal]");
@@ -47,6 +56,7 @@
       });
     }, { threshold: 0.15 });
     reveals.forEach(function (el) { io.observe(el); });
+    dispose.push(function () { io.disconnect(); });
 
     // Keep every existing CSS animation while visible. Stop off-screen animations
     // from consuming rendering time; their playback resumes when scrolled into view.
@@ -57,6 +67,7 @@
       });
     }, { rootMargin: "100px" });
     looping.forEach(function (el) { motionObserver.observe(el); });
+    dispose.push(function () { motionObserver.disconnect(); });
   } else {
     reveals.forEach(function (el) {
       el.style.opacity = "1";
@@ -71,11 +82,12 @@
     var bounds = null;
     var pending = 0;
     var coords = null;
+    dispose.push(function () { if (pending) window.cancelAnimationFrame(pending); });
 
-    el.addEventListener("mouseenter", function () {
+    listen(el, "mouseenter", function () {
       bounds = el.getBoundingClientRect();
     });
-    el.addEventListener("mousemove", function (e) {
+    listen(el, "mousemove", function (e) {
       // Cache geometry: reading it after a transform can trigger layout + feedback jitter.
       if (!bounds) bounds = el.getBoundingClientRect();
       coords = { x: e.clientX - bounds.left, y: e.clientY - bounds.top };
@@ -85,14 +97,14 @@
         compute(bounds, coords);
       });
     }, { passive: true });
-    el.addEventListener("mouseleave", function () {
+    listen(el, "mouseleave", function () {
       if (pending) window.cancelAnimationFrame(pending);
       pending = 0;
       bounds = null;
       coords = null;
       reset();
     });
-    window.addEventListener("resize", function () { bounds = null; }, { passive: true });
+    listen(window, "resize", function () { bounds = null; }, { passive: true });
   }
 
   document.querySelectorAll("[data-magnetic]").forEach(function (a) {
@@ -115,7 +127,7 @@
   document.querySelectorAll("[data-tilt]").forEach(function (el) {
     var max = Number(el.getAttribute("data-tilt")) || 8;
     var glow = el.querySelector(":scope > [data-sheen]");
-    el.addEventListener("mouseenter", function () {
+    listen(el, "mouseenter", function () {
       el.style.transition = "transform 0.1s ease-out";
     });
     trackMouse(el, function (r, pos) {
@@ -132,4 +144,7 @@
       if (glow) glow.style.opacity = "0";
     });
   });
+  }
+  window.VFPage = { mount: mount, unmount: unmount };
+  mount();
 })();

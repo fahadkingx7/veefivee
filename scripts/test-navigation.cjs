@@ -10,7 +10,7 @@ const root = path.resolve(__dirname, '..');
 const pages = [];
 function scan(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (entry.name.startsWith('.')) continue;
+    if (entry.name.startsWith('.') || entry.name === 'test') continue;
     const file = path.join(dir, entry.name);
     if (entry.isDirectory()) scan(file);
     else if (file.endsWith('.html') && fs.readFileSync(file, 'utf8').includes('data-nav-pill'))
@@ -57,12 +57,15 @@ const server = http.createServer((req, res) => {
         assert(result.width <= result.viewport + 1, file + ' horizontal overflow');
       }
       await page.goto(base + '/services.html');
-      await page.evaluate(() => { window.__navigationMarker = 1; window.scrollTo({top: 500, behavior:'instant'}); });
+      await page.evaluate(() => { window.__navigationMarker = 1; window.__header = document.querySelector('[data-nav-pill]'); window.scrollTo({top: 500, behavior:'instant'}); });
       await page.locator('[data-nav-pill] a[href="services.html"]').click();
       assert.equal(await page.evaluate(() => window.__navigationMarker), 1, 'selected link reloaded document');
       assert(await page.evaluate(() => scrollY > 450), 'selected link reset scroll');
       await page.locator('[data-nav-pill] a[href="about.html"]').click();
       await page.waitForURL('**/about.html');
+      assert.equal(await page.evaluate(() => window.__navigationMarker), 1, 'cross-page navigation replaced document');
+      assert(await page.evaluate(() => window.__header === document.querySelector('[data-nav-pill]')), 'header recreated');
+      assert((await page.title()).toLowerCase().includes('about'), 'title not updated');
       assert.equal(await page.evaluate(() => scrollY), 0, 'new page must open at top');
       await page.goBack();
       await page.waitForTimeout(900);
@@ -74,6 +77,28 @@ const server = http.createServer((req, res) => {
       await page.locator('.service-tabs a').first().click();
       await page.waitForTimeout(900);
       assert(await page.evaluate(() => location.hash.length > 1 && scrollY > 0), 'same-page anchor failed');
+      // Rapid taps: an older response must not replace the latest requested page.
+      await page.goto(base + '/about.html');
+      await page.evaluate(() => { window.__navigationMarker = 2; });
+      await page.route('**/services.html', async route => {
+        if (route.request().resourceType() === 'fetch') await new Promise(resolve => setTimeout(resolve, 250));
+        await route.continue().catch(() => {});
+      });
+      await page.evaluate(() => {
+        document.querySelector('[data-nav-pill] a[href="services.html"]').click();
+        document.querySelector('[data-nav-pill] a[href="products.html"]').click();
+      });
+      await page.waitForURL('**/products.html');
+      await page.waitForTimeout(400);
+      assert(page.url().endsWith('/products.html'), 'stale response won');
+      assert.equal(await page.evaluate(() => window.__navigationMarker), 2, 'rapid taps caused document reload');
+      await page.unroute('**/services.html');
+      // A failed enhanced request falls back to a complete, functional document.
+      await page.route('**/contact.html', route => route.request().resourceType() === 'fetch' ? route.abort() : route.continue());
+      await page.locator('.footer-links a[href="contact.html"]').click();
+      await page.waitForURL('**/contact.html');
+      assert.equal(await page.evaluate(() => window.__navigationMarker), undefined, 'native fallback did not load');
+      await page.unroute('**/contact.html');
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.goto(base + '/index.html');
       assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector('.home-hero > .mx-auto')).animationName), 'none');
