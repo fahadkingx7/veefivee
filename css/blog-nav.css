@@ -82,3 +82,12 @@
   [data-nav-pill]>a:not(.vf-mobile-brand):not(.hidden){font-size:.565rem!important;padding-left:2px!important;padding-right:2px!important}
   [data-nav-pill]>.vf-nav-consultation{font-size:.565rem!important}
 }
+
+/* Mobile touch responsiveness: visible navigation remains tappable from first paint. */
+@media (hover:none) and (pointer:coarse){
+  [data-nav-pill] a{touch-action:manipulation;-webkit-tap-highlight-color:transparent;position:relative;pointer-events:auto;}
+  [data-nav-pill] a:hover{transform:none!important;}
+  [data-nav-pill] a:active{transform:none!important;opacity:.77;}
+  nav:has([data-nav-pill]){pointer-events:none;}
+  nav:has([data-nav-pill]) [data-nav-pill]{pointer-events:auto;}
+}
