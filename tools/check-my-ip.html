@@ -39,7 +39,7 @@ html{scroll-padding-top:110px}
 .ip-status.ready i{background:#29be88;box-shadow:0 0 0 4px #22c9941d}
 .ip-status.error i{background:#ef857b}
 .ip-number{font-size:clamp(26px,5.8vw,58px);font-weight:850;letter-spacing:-.052em;line-height:1.23;overflow-wrap:anywhere;min-height:75px;margin:21px 0 15px;font-variant-numeric:tabular-nums}
-.ip-port{display:inline-block;margin-left:.18em;color:#92909b;font-size:.46em;font-weight:500;letter-spacing:0;vertical-align:baseline;white-space:nowrap;overflow-wrap:normal}
+.ip-port{display:inline;color:#92909b;font:inherit;letter-spacing:inherit;white-space:nowrap;overflow-wrap:normal}
 .ip-port[hidden]{display:none!important}
 .ip-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .ip-primary,.ip-secondary{border-radius:100px;display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:14px 19px;text-decoration:none!important;font-weight:740;font-size:13px;transition:transform .18s,box-shadow .18s;cursor:pointer}
@@ -126,7 +126,7 @@ html{scroll-padding-top:110px}
   <section class="ip-spotlight" aria-label="Your public IP and approximate location">
     <div class="ip-feature">
       <div class="ip-top"><span class="ip-tag">YOUR PUBLIC IP ADDRESS</span><span class="ip-status" id="ip-status" role="status" aria-live="polite"><i aria-hidden="true"></i><span>Checking connection…</span></span></div>
-      <div class="ip-number" aria-live="polite"><span id="ip-number">Detecting…</span><span class="ip-port" id="ip-port" title="Website connection port (HTTPS), not your device's outgoing port" hidden> · Port 443</span></div>
+      <div class="ip-number" aria-live="polite"><span id="ip-number">Detecting…</span><span class="ip-port" id="ip-port" title="Website connection port (HTTPS), not your device's outgoing port" hidden>:443</span></div>
       <div class="ip-country-feature">
         <div class="ip-country-flag" id="ip-flag" aria-hidden="true">◎</div>
         <div class="ip-country-text"><span class="ip-country-caption">APPROXIMATE LOCATION</span><strong id="ip-country-hero">Checking your country…</strong><span id="ip-city-hero">Looking up your network</span></div>
@@ -191,7 +191,7 @@ html{scroll-padding-top:110px}
   var result="";
   // Browsers do not expose their ephemeral source port; show only the website destination port.
   var websitePort=location.port || (location.protocol==="https:"?"443":location.protocol==="http:"?"80":"");
-  function showPort(visible){var node=el("ip-port");node.hidden=!(visible&&websitePort);node.textContent=websitePort?" · Port "+websitePort:"";}
+  function showPort(visible){var node=el("ip-port");node.hidden=!(visible&&websitePort);node.textContent=websitePort?":"+websitePort:"";}
   function put(key,value){el("ip-"+key).textContent=value===0?"0":(value||"Not available")}
   function browserInfo(){
     var ua=navigator.userAgent||"";
