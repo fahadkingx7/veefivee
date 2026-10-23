@@ -65,7 +65,7 @@
         entry.target.style.transform = "translateY(0)";
         io.unobserve(entry.target);
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.01, rootMargin: "400px 0px" });
     reveals.forEach(function (el) { io.observe(el); });
     dispose.push(function () { io.disconnect(); });
 
