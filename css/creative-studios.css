@@ -18,3 +18,5 @@
 .studio-page[data-studio="email-signature"] .studio-preview{font-family:Arial,Helvetica,sans-serif}
 .studio-page[data-studio="digital-business-card"] .studio-result{background:radial-gradient(circle at center,#dfeafa,#edf2ff,#fff)}
 .studio-page[data-studio="digital-business-card"] .studio-preview{background:transparent;border:0}
+
+.studio-capture-img{display:block;width:100%;height:auto;min-height:180px;object-fit:contain;background:#f5f3fb}.studio-capture-error,.studio-capture-message{background:#f7f2ff;color:#615183;text-align:center;border-radius:12px;padding:35px 16px;font-size:13px;line-height:1.65}.studio-capture-error[hidden]{display:none}.studio-capture-links{text-align:center;font-size:12px;margin:14px 0}.studio-capture-links a{color:#3a79b1;font-weight:780}.studio-page[data-studio="screenshot-studio"] .studio-preview .device{overflow:hidden}.studio-page[data-studio="screenshot-studio"] .studio-preview .device img{max-width:100%}
