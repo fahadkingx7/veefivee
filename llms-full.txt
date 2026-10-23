@@ -12,6 +12,7 @@ veefivee is a creative technology and growth studio combining AI, software, desi
 - Products: https://veefivee.com/products.html
 - Blog & Insights: https://veefivee.com/blog.html
 - Contact: https://veefivee.com/contact.html
+- What’s My IP Address? Free IP Checker: https://veefivee.com/tools/check-my-ip.html — public IP, approximate location, ISP, ASN and map.
 
 ## Services
 

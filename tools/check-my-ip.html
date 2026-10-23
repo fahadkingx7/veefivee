@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-086Y2TSZTM"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What’s My IP Address? Check IPv4, IPv6 & Location | veefivee</title>
+<meta name="description" content="What’s my IP address? Instantly check your public IPv4 or IPv6, approximate IP location, country, ISP, ASN and timezone on a free live map.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://veefivee.com/tools/check-my-ip.html">
+<meta property="og:type" content="website"><meta property="og:title" content="What’s My IP Address? Free Public IP Checker | veefivee">
+<meta property="og:description" content="Check your public IP, IPv4 or IPv6, approximate country, ISP and network location on a live map.">
+<meta property="og:url" content="https://veefivee.com/tools/check-my-ip.html">
+<meta property="og:image" content="https://veefivee.com/assets/og-products.jpg">
+<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#f8f7ff">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/extras.css?v=20261023"><link rel="stylesheet" href="../css/blog-nav.css?v=20261023">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://veefivee.com/tools/check-my-ip.html#webpage","url":"https://veefivee.com/tools/check-my-ip.html","name":"What’s My IP Address? Check IPv4, IPv6 & Location","description":"Free live public IP checker with approximate country, network details and a regional map.","isPartOf":{"@id":"https://veefivee.com/#website"},"about":[{"@type":"Thing","name":"Public IP address"},{"@type":"Thing","name":"IPv4 and IPv6"}]},{"@type":"WebApplication","@id":"https://veefivee.com/tools/check-my-ip.html#app","name":"Check My IP — veefivee","url":"https://veefivee.com/tools/check-my-ip.html","description":"See your live public IP address and approximate IP-based geolocation, ISP and ASN.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any modern browser","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"veefivee","url":"https://veefivee.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://veefivee.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://veefivee.com/tools.html"},{"@type":"ListItem","position":3,"name":"Check My IP","item":"https://veefivee.com/tools/check-my-ip.html"}]}]}</script>
+<style>
+html{scroll-padding-top:110px}
+.ip-page{position:relative;isolation:isolate;min-height:100vh;overflow:hidden;background:#faf9ff;color:#292441;font-family:Inter,system-ui,sans-serif}
+.ip-page:before{content:"";position:absolute;inset:0 0 auto;height:850px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 54% 45% at 0 0,rgba(177,159,249,.29),transparent 95%),radial-gradient(ellipse 55% 48% at 100% 0,rgba(144,204,239,.3),transparent 94%),radial-gradient(ellipse 50% 47% at 50% 0,rgba(254,211,223,.2),transparent 95%)}
+.ip-page *{box-sizing:border-box}
+.ip-main{max-width:1160px;margin:0 auto;padding:172px 24px 120px}
+.ip-intro{text-align:center;max-width:790px;margin:0 auto 40px}
+.ip-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border-radius:100px;background:#ffffffc9;border:1px solid #fff;color:#705ccc;font-size:11px;font-weight:800;letter-spacing:.11em}
+.ip-pulse{width:8px;height:8px;background:#26bc86;border-radius:50%;box-shadow:0 0 0 4px #2ac59a22}
+.ip-intro h1{font-size:clamp(45px,7vw,78px);line-height:1.09;letter-spacing:-.073em;font-weight:850;margin:24px auto 17px}
+.ip-gradient{color:#8160d8;background:linear-gradient(105deg,#6559e1,#af61bb,#5b8cde);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ip-intro p{color:#736d85;font-size:clamp(14px,1.6vw,17px);line-height:1.75;max-width:610px;margin:auto}
+.ip-feature{position:relative;overflow:hidden;border:1px solid #fff;background:linear-gradient(135deg,#ffffffed,#fefcffd8);border-radius:35px;box-shadow:0 27px 80px #544a9618;padding:39px 43px}
+.ip-feature:before{content:"";position:absolute;width:270px;height:270px;right:-80px;top:-140px;border-radius:50%;background:#dfd3ff63;filter:blur(65px);pointer-events:none}
+.ip-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ip-tag{font-size:11px;letter-spacing:.12em;color:#777087;font-weight:800;text-transform:uppercase}
+.ip-status{display:inline-flex;align-items:center;gap:8px;color:#6e6a86;font-size:12px;font-weight:700}
+.ip-status i{width:7px;height:7px;border-radius:50%;background:#afa2d6}
+.ip-status.ready i{background:#29be88;box-shadow:0 0 0 4px #22c9941d}
+.ip-status.error i{background:#ef857b}
+.ip-number{font-size:clamp(26px,5.8vw,58px);font-weight:850;letter-spacing:-.052em;line-height:1.23;overflow-wrap:anywhere;min-height:75px;margin:21px 0 15px;font-variant-numeric:tabular-nums}
+.ip-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ip-primary,.ip-secondary{border-radius:100px;display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:14px 19px;text-decoration:none!important;font-weight:740;font-size:13px;transition:transform .18s,box-shadow .18s;cursor:pointer}
+.ip-primary{color:white!important;background:linear-gradient(110deg,#665aec,#9e60d1);box-shadow:0 12px 29px #6b5bd52c}
+.ip-secondary{color:#6358aa!important;background:#f6f3ff;border:1px solid #e9e3fc}
+.ip-primary:hover,.ip-secondary:hover{transform:translateY(-2px)}
+.ip-primary:focus-visible,.ip-secondary:focus-visible{outline:3px solid #7564df;outline-offset:3px}
+.ip-primary:disabled{opacity:.65;cursor:wait;transform:none}
+.ip-small-note{color:#89839c;font-size:12px;line-height:1.65;margin-top:18px}
+.ip-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
+.ip-cell{background:#ffffffcf;border:1px solid #fff;box-shadow:0 15px 40px #50468a0b;border-radius:24px;padding:25px;min-height:127px;min-width:0}
+.ip-label{display:block;font-size:11px;font-weight:760;letter-spacing:.075em;color:#88809d;text-transform:uppercase;margin-bottom:16px}
+.ip-value{display:block;color:#322c4d;font-size:clamp(15px,1.6vw,18px);font-weight:790;line-height:1.4;overflow-wrap:anywhere}
+.ip-help{margin-top:38px;padding:30px 36px;border:1px solid #fff;border-radius:27px;background:#ffffffa6}
+.ip-help h2{color:#302744;font-size:25px;letter-spacing:-.05em;font-weight:800;margin:0 0 10px}
+.ip-help p{color:#78738a;font-size:14px;line-height:1.8;margin:0}
+.ip-help a{color:#6b55d2;font-weight:750}
+.ip-bottom{text-align:center;color:#898198;font-size:13px;margin-top:30px}
+.ip-bottom a{color:#6654ca;font-weight:750;text-decoration:none}
+.ip-error{font-size:13px;color:#ae454c;margin-top:13px;display:none}
+.ip-error.visible{display:block}
+@media(max-width:760px){.ip-main{padding:145px 15px 74px}.ip-feature{padding:27px 22px;border-radius:26px}.ip-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ip-cell{padding:19px;min-height:116px}.ip-help{padding:24px 21px}.ip-number{min-height:50px}}
+@media(max-width:440px){.ip-grid{grid-template-columns:1fr}.ip-intro h1{font-size:43px}.ip-actions{align-items:stretch}.ip-primary,.ip-secondary{flex:1}.ip-feature{padding:24px 18px}}
+@media(prefers-reduced-motion:reduce){.ip-primary,.ip-secondary{transition:none}}
+
+/* IP-first dashboard layout: one hero row, strong country identity and live embedded map. */
+.ip-main{max-width:1220px;padding-top:125px;padding-bottom:90px}
+.ip-intro{max-width:720px;margin-bottom:25px}
+.ip-intro h1{font-size:clamp(32px,4.2vw,49px);margin:12px auto 6px;line-height:1.13;letter-spacing:-.06em}
+.ip-intro p{font-size:14px;line-height:1.6}
+.ip-eyebrow{font-size:10px;padding:7px 12px}
+.ip-spotlight{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:18px;align-items:stretch}
+.ip-spotlight > *{min-width:0}
+.ip-feature{padding:33px 35px;border-radius:30px;display:flex;flex-direction:column;min-height:394px}
+.ip-feature:before{pointer-events:none}
+.ip-number{font-size:clamp(29px,3.75vw,49px);margin:28px 0 26px;min-height:65px}
+.ip-country-feature{display:flex;gap:15px;align-items:center;padding:17px 19px;border-radius:21px;border:1px solid #eee8ff;background:linear-gradient(110deg,#f6f1ff,#eff5ff);margin-bottom:23px}
+.ip-country-flag{display:grid;place-items:center;flex:0 0 57px;height:57px;border-radius:17px;background:#fff;border:1px solid #ffffffef;box-shadow:0 7px 19px #695bb319;font-size:28px}
+.ip-country-text{min-width:0;display:flex;flex-direction:column}
+.ip-country-caption{font-size:10px;font-weight:850;letter-spacing:.085em;color:#9584b8}
+.ip-country-text strong{font-size:clamp(20px,2.3vw,28px);font-weight:830;line-height:1.28;letter-spacing:-.04em;color:#302747;overflow-wrap:anywhere;margin:4px 0}
+.ip-country-text > span:last-child{font-size:12px;color:#777087}
+.ip-actions{margin-top:auto}
+.ip-feature .ip-small-note{margin-bottom:0}
+.ip-map-card{min-height:394px;border-radius:30px;display:flex;flex-direction:column;overflow:hidden;border:1px solid #fff;background:#ffffffdf;box-shadow:0 27px 80px #544a9616}
+.ip-map-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:23px 23px 17px}
+.ip-map-top > div{display:grid;gap:5px}
+.ip-map-top strong{font-size:22px;line-height:1.2;letter-spacing:-.04em;color:#302747}
+.ip-map-chip{font-size:10px;font-weight:800;color:#6f5bba;background:#f2eeff;border:1px solid #e8defc;border-radius:30px;padding:7px 10px}
+.ip-map-area{position:relative;flex:1;min-height:254px;margin:0 14px;background:radial-gradient(circle at 28% 30%,#e1dcff 0,#e9ecff 31%,#dceef7 78%,#e3f1fb 100%);border-radius:20px;overflow:hidden}
+.ip-map-area iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.82)}
+.ip-map-empty{height:100%;min-height:254px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px;text-align:center;padding:24px}
+.ip-map-empty strong{font-size:16px;color:#4b436c}
+.ip-map-empty > span:last-child{font-size:12px;line-height:1.5;max-width:230px;color:#7e7896}
+.ip-map-orbit{display:grid;place-items:center;width:65px;height:65px;border-radius:20px;background:#ffffffa6;border:1px solid #fff;font-size:39px;color:#7762d4;margin-bottom:4px}
+.ip-map-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 21px;min-height:57px;font-size:11px;font-weight:680;color:#817a94}
+.ip-map-bottom > span{display:inline-flex;align-items:center;gap:8px;min-width:0}
+.ip-map-bottom a{color:#6b57ca;text-decoration:none;font-weight:800;white-space:nowrap}
+.ip-map-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#6fbca9}
+.ip-grid{margin-top:18px}
+@media(max-width:900px){.ip-spotlight{grid-template-columns:1fr}.ip-feature,.ip-map-card{min-height:unset}.ip-map-area{height:300px;flex:none}.ip-main{padding-top:137px}}
+@media(max-width:760px){.ip-intro{margin-bottom:20px}.ip-intro h1{font-size:clamp(31px,7vw,42px)}.ip-number{font-size:clamp(28px,6vw,43px);margin:22px 0}.ip-feature{padding:25px 23px}.ip-map-area{height:280px}.ip-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:440px){.ip-main{padding-top:124px}.ip-feature{padding:24px 18px}.ip-country-feature{padding:13px;gap:10px}.ip-country-flag{flex-basis:48px;height:48px;font-size:24px}.ip-map-top{padding:20px 18px 14px}.ip-map-area{height:250px;margin:0 10px}.ip-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.ip-cell{min-height:108px;padding:16px}.ip-value{font-size:14px}}
+
+.ip-faq{margin-top:22px;padding:33px 36px;border-radius:28px;border:1px solid #fff;background:#ffffffbf}
+.ip-faq h2{font-size:clamp(24px,3vw,33px);font-weight:800;letter-spacing:-.045em;margin:0 0 9px;color:#302744}
+.ip-faq-intro{font-size:14px;color:#767087;line-height:1.75;margin-bottom:21px}
+.ip-faq details{padding:17px 0;border-top:1px solid #ece8f5}
+.ip-faq summary{font-size:15px;font-weight:750;color:#39314f;cursor:pointer;line-height:1.5}
+.ip-faq details p{font-size:14px;line-height:1.8;color:#777087;margin:12px 0 0;max-width:910px}
+.ip-faq a{color:#6654ca;font-weight:750}
+@media(max-width:760px){.ip-faq{padding:25px 21px}}
+</style>
+</head>
+<body>
+<nav class="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4"><div class="flex max-w-full items-center gap-0.5 rounded-full border border-foreground/10 px-2 py-2 shadow-lg transition-all duration-500 sm:gap-1 sm:px-4 bg-background/40 backdrop-blur-xl" data-nav-pill=""><a aria-label="veefivee home" class="liquid-hover hidden rounded-full px-2 py-1 text-sm font-semibold tracking-tight md:block" href="../index.html"><img alt="🌴" class="android-palm" decoding="async" height="26" src="../assets/android-palm.png" width="26"/> veefivee</a><div class="mx-1 hidden h-4 w-px bg-foreground/15 md:block"></div><a aria-label="veefivee home" class="vf-mobile-brand liquid-hover rounded-full text-sm font-semibold tracking-tight" href="../index.html"><img alt="🌴" class="android-palm" decoding="async" height="26" src="../assets/android-palm.png" width="26"/><span>veefivee</span></a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../index.html">Home</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../about.html">About</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../industries.html">Industries</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../services.html">Services</a><a class="vf-nav-products liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../products.html">Products</a><a class="vf-nav-blog liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../blog.html">Blog</a><a aria-label="Free consultation with veefivee" class="vf-nav-consultation liquid-hover rounded-full bg-primary px-2.5 py-1.5 text-[0.7rem] font-semibold text-primary-foreground transition-transform duration-300 hover:scale-105 sm:px-3 sm:text-sm" href="../free-consultation.html"><span class="vf-nav-contact-desktop">Free Consultation</span><span class="vf-nav-contact-mobile">Free Consultation</span></a></div></nav>
+<main class="ip-page" id="content">
+<div class="ip-main">
+  <section class="ip-intro" aria-labelledby="ip-title">
+    <div class="ip-eyebrow"><span class="ip-pulse" aria-hidden="true"></span> LIVE NETWORK LOOKUP</div>
+    <h1 id="ip-title">What’s my <span class="ip-gradient">IP address?</span></h1>
+    <p>Your public address and approximate location, together in one place.</p>
+  </section>
+  <section class="ip-spotlight" aria-label="Your public IP and approximate location">
+    <div class="ip-feature">
+      <div class="ip-top"><span class="ip-tag">YOUR PUBLIC IP ADDRESS</span><span class="ip-status" id="ip-status" role="status" aria-live="polite"><i aria-hidden="true"></i><span>Checking connection…</span></span></div>
+      <div class="ip-number" id="ip-number" aria-live="polite">Detecting…</div>
+      <div class="ip-country-feature">
+        <div class="ip-country-flag" id="ip-flag" aria-hidden="true">◎</div>
+        <div class="ip-country-text"><span class="ip-country-caption">APPROXIMATE LOCATION</span><strong id="ip-country-hero">Checking your country…</strong><span id="ip-city-hero">Looking up your network</span></div>
+      </div>
+      <div class="ip-actions">
+        <button class="ip-primary" id="ip-copy" type="button" disabled>Copy IP <span aria-hidden="true">↗</span></button>
+        <button class="ip-secondary" id="ip-refresh" type="button">↻ &nbsp;Refresh lookup</button>
+      </div>
+      <p class="ip-error" id="ip-error" role="alert"></p>
+      <p class="ip-small-note">Your IP and location reflect the network seen by the provider. VPNs and proxies may change these results.</p>
+    </div>
+    <div class="ip-map-card">
+      <div class="ip-map-top"><div><span class="ip-tag">NETWORK LOCATION</span><strong>On the map</strong></div><span class="ip-map-chip">Approximate</span></div>
+      <div class="ip-map-area" id="ip-map-area" aria-label="Approximate IP geolocation map">
+        <div class="ip-map-empty" id="ip-map-empty"><span class="ip-map-orbit" aria-hidden="true">⌾</span><strong id="ip-map-heading">Finding your location</strong><span id="ip-map-message">The map appears when a location is available.</span></div>
+        <iframe id="ip-map-frame" title="Map showing the approximate network location" loading="lazy" referrerpolicy="no-referrer" hidden></iframe>
+      </div>
+      <div class="ip-map-bottom"><span><span class="ip-map-dot" aria-hidden="true"></span><span id="ip-map-caption">Waiting for IP geolocation</span></span><a id="ip-map-link" href="https://www.openstreetmap.org/" target="_blank" rel="noopener noreferrer" hidden>Explore map ↗</a></div>
+    </div>
+  </section>
+  <section class="ip-grid" aria-label="Connection details">
+    <div class="ip-cell"><span class="ip-label">IP version</span><strong class="ip-value" id="ip-version">—</strong></div>
+    <div class="ip-cell"><span class="ip-label">Country</span><strong class="ip-value" id="ip-country">—</strong></div>
+    <div class="ip-cell"><span class="ip-label">City / region <span style="text-transform:none;letter-spacing:0">(approx.)</span></span><strong class="ip-value" id="ip-city">—</strong></div>
+    <div class="ip-cell"><span class="ip-label">Internet provider</span><strong class="ip-value" id="ip-isp">—</strong></div>
+    <div class="ip-cell"><span class="ip-label">Network / organization</span><strong class="ip-value" id="ip-org">—</strong></div>
+    <div class="ip-cell"><span class="ip-label">ASN</span><strong class="ip-value" id="ip-asn">—</strong></div>
+    <div class="ip-cell"><span class="ip-label">Timezone</span><strong class="ip-value" id="ip-timezone">—</strong></div>
+    <div class="ip-cell"><span class="ip-label">Browser</span><strong class="ip-value" id="ip-browser">—</strong></div>
+    <div class="ip-cell"><span class="ip-label">Device platform</span><strong class="ip-value" id="ip-platform">—</strong></div>
+  </section>
+  <section class="ip-help" aria-labelledby="ip-explain">
+    <h2 id="ip-explain">What does your IP reveal?</h2>
+    <p>Your public IP identifies your internet connection to websites. It may suggest a city, region or network operator, but <strong>it does not reveal your exact street address</strong>. Location estimates can be inaccurate, especially with VPNs, proxies, mobile carriers and shared networks. The checker uses a third-party lookup service; opening this page sends a request to that provider. We don't ask for device location permission.</p>
+  </section>
+  <section class="ip-faq" aria-labelledby="ip-faq-title">
+    <h2 id="ip-faq-title">IP address questions, answered.</h2>
+    <p class="ip-faq-intro">A quick guide to understanding the numbers, your network, and what websites can see.</p>
+    <details><summary>What is my public IP address?</summary><p>Your public IP address is the address websites see when you connect to them. The checker above requests your current public address from an external lookup service. It can change when you switch networks or use a VPN, and it may differ from your device's private local IP address.</p></details>
+    <details><summary>What is the difference between IPv4 and IPv6?</summary><p>IPv4 addresses use four groups of numbers, such as 203.0.113.10. IPv6 uses longer hexadecimal addresses, created to support many more internet devices. Depending on the network and lookup provider, you may see either version of your public address.</p></details>
+    <details><summary>Does my IP address show my exact location?</summary><p>No. IP-based geolocation estimates a city, region or country associated with a network address. The marker on this page represents an <strong>approximate network location</strong>, not your precise physical position or home address. VPNs, corporate connections and mobile providers can make the estimate less accurate.</p></details>
+    <details><summary>Why does my IP address change?</summary><p>Many internet providers assign dynamic addresses that can change over time. Switching between Wi-Fi, mobile data, a VPN, or a proxy can also change the public IP address websites observe.</p></details>
+    <details><summary>Can I check whether my VPN changed my IP?</summary><p>Yes. Check your public IP before turning on your VPN, connect the VPN, then select <strong>Refresh lookup</strong>. If the displayed address changes, the lookup provider is seeing a different public IP. This doesn't by itself prove that every type of traffic or DNS request is protected.</p></details>
+    <details><summary>Is this IP checker free?</summary><p>Yes. The checker is free and doesn't need an account. It uses third-party services to look up your public address and approximate network location. Explore more of our <a href="../tools.html">free browser tools</a>, or <a href="../services.html">see how veefivee builds custom software and web tools</a>.</p></details>
+  </section>
+  <div class="ip-bottom">A little clarity, powered by <a href="../index.html">veefivee</a>. · <a href="../tools.html">Explore more tools ↗</a></div>
+</div>
+</main>
+<footer class="site-footer relative px-4 pb-12 pt-8"><div class="footer-luxe mx-auto max-w-5xl rounded-[2rem] p-8 text-center">
+<a class="footer-brand" href="../index.html"><img alt="🌴" class="android-palm" decoding="async" height="26" src="../assets/android-palm.png" width="26"/> veefivee<span class="footer-brand-dot">.</span></a>
+<p class="footer-tagline">The curious minds behind the next big thing.</p>
+<div class="footer-links"><a href="../index.html">Home</a><a href="../about.html">Our story</a><a href="../industries.html">Industries</a><a href="../services.html">Services</a><a href="../products.html">Products</a><a href="../blog.html">Blog</a><a href="../tools.html">Try Tools</a><a href="../contact.html">Contact</a><a href="../privacy-policy.html">Privacy Policy</a><a href="../terms-of-service.html">Terms of Service</a></div>
+<div class="footer-socials"><a aria-label="Instagram @fahadkingx7" href="https://www.instagram.com/fahadkingx7/" rel="noopener noreferrer" target="_blank">Instagram · @veefivee ↗</a><a aria-label="Chat on WhatsApp" href="https://wa.me/923254891223" rel="noopener noreferrer" target="_blank">WhatsApp ↗</a><a href="mailto:info@veefivee.com">Email ↗</a></div>
+<div class="footer-fine"><span>© <span id="year">2026</span> veefivee. All rights reserved.</span><span>Made with curiosity and a little magic. <strong><img alt="🌴" class="android-palm" decoding="async" height="26" src="../assets/android-palm.png" width="26"/> veefivee</strong></span></div></div></footer>
+<script defer src="../js/main.js?v=20261023"></script>
+<script>
+(function(){
+  "use strict";
+  var requestId=0;
+  var el=function(id){return document.getElementById(id)};
+  var values=["version","country","city","isp","org","asn","timezone"];
+  var result="";
+  function put(key,value){el("ip-"+key).textContent=value===0?"0":(value||"Not available")}
+  function browserInfo(){
+    var ua=navigator.userAgent||"";
+    var browser=/Edg\//.test(ua)?"Microsoft Edge":/CriOS\//.test(ua)?"Chrome (iOS)":/Chrome\//.test(ua)?"Google Chrome":/FxiOS\//.test(ua)?"Firefox (iOS)":/Firefox\//.test(ua)?"Firefox":/Safari\//.test(ua)?"Safari":"Other browser";
+    put("browser",browser);
+    put("platform",navigator.userAgentData?.platform||navigator.platform||"Unknown");
+  }
+  async function query(url,timeoutMs){
+    var ctrl=new AbortController(),timer=setTimeout(function(){ctrl.abort()},timeoutMs);
+    try{var res=await fetch(url,{signal:ctrl.signal,cache:"no-store",mode:"cors"});if(!res.ok)throw Error("HTTP "+res.status);return await res.json()}finally{clearTimeout(timer)}
+  }
+  function status(label,type){el("ip-status").className="ip-status"+(type?" "+type:"");el("ip-status").querySelector("span").textContent=label}
+  function fillGeo(d){
+    put("version",d.type||(result.includes(":")?"IPv6":"IPv4"));
+    put("country",[(d.flag&&d.flag.emoji)||"",d.country||""].filter(Boolean).join(" "));
+    put("city",[d.city,d.region].filter(Boolean).join(", "));
+    put("isp",d.connection&&d.connection.isp);
+    put("org",d.connection&&(d.connection.org||d.connection.domain));
+    put("asn",d.connection&&d.connection.asn?"AS"+d.connection.asn:null);
+    put("timezone",d.timezone&&d.timezone.id);
+    el("ip-flag").textContent=d.flag&&d.flag.emoji?d.flag.emoji:"◎";
+    el("ip-country-hero").textContent=d.country||"Country unavailable";
+    el("ip-city-hero").textContent=[d.city,d.region].filter(Boolean).join(", ")||"Location estimated from your IP";
+    drawMap(d);
+  }
+
+  function clearMap(title,description){
+    var frame=el("ip-map-frame"),link=el("ip-map-link");
+    frame.hidden=true;
+    frame.removeAttribute("src");
+    link.hidden=true;
+    link.removeAttribute("href");
+    el("ip-map-empty").hidden=false;
+    el("ip-map-heading").textContent=title;
+    el("ip-map-message").textContent=description;
+    el("ip-map-caption").textContent="Approximate location · no GPS used";
+  }
+  function drawMap(d){
+    var lat=Number(d.latitude),lon=Number(d.longitude);
+    if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180){
+      clearMap("Map unavailable","The IP provider did not return a valid map location.");
+      return;
+    }
+    // A broad regional view intentionally avoids implying street-level accuracy.
+    var span=1.25,west=Math.max(-180,lon-span),east=Math.min(180,lon+span);
+    var south=Math.max(-85,lat-span*.7),north=Math.min(85,lat+span*.7);
+    var bbox=[west,south,east,north].map(function(n){return n.toFixed(5)}).join("%2C");
+    var url="https://www.openstreetmap.org/export/embed.html?bbox="+bbox+"&layer=mapnik&marker="+lat.toFixed(5)+"%2C"+lon.toFixed(5);
+    el("ip-map-frame").src=url;
+    el("ip-map-frame").hidden=false;
+    el("ip-map-empty").hidden=true;
+    var link=el("ip-map-link");
+    link.href="https://www.openstreetmap.org/?mlat="+encodeURIComponent(lat.toFixed(5))+"&mlon="+encodeURIComponent(lon.toFixed(5))+"#map=9/"+encodeURIComponent(lat.toFixed(5))+"/"+encodeURIComponent(lon.toFixed(5));
+    link.hidden=false;
+    el("ip-map-caption").textContent=(d.city||d.region||d.country||"Network area")+" · approximate";
+  }
+  async function update(){
+    var id=++requestId;
+    var refresh=el("ip-refresh");
+    refresh.disabled=true;
+    result="";
+    el("ip-copy").disabled=true;
+    el("ip-number").textContent="Detecting…";
+    el("ip-error").classList.remove("visible");
+    for(var i=0;i<values.length;i++)put(values[i],"—");
+    browserInfo();
+    el("ip-flag").textContent="◎";
+    el("ip-country-hero").textContent="Checking your country…";
+    el("ip-city-hero").textContent="Looking up your network";
+    clearMap("Finding your location","The map appears when a location is available.");
+    status("Checking connection…","");
+    try{
+      var data=await query("https://ipwho.is/",9000);
+      if(id!==requestId)return;
+      if(!data||data.success!==true||!data.ip)throw Error("Location lookup unavailable");
+      result=String(data.ip);
+      el("ip-number").textContent=result;
+      el("ip-copy").disabled=false;
+      fillGeo(data);
+      status("Live connection detected","ready");
+    }catch(e){
+      if(id!==requestId)return;
+      try{
+        var fallback=await query("https://api64.ipify.org?format=json",8000);
+        if(id!==requestId)return;
+        if(!fallback||!fallback.ip)throw Error("No IP returned");
+        result=String(fallback.ip);
+        el("ip-number").textContent=result;
+        el("ip-country-hero").textContent="Location unavailable";
+        el("ip-city-hero").textContent="Your public IP was detected";
+        clearMap("Location unavailable","IP detection worked, but location lookup could not be completed.");
+        el("ip-copy").disabled=false;
+        put("version",result.includes(":")?"IPv6":"IPv4");
+        status("IP detected · location unavailable","ready");
+        el("ip-error").textContent="IP detected, but the location provider is temporarily unavailable. Refresh to retry the details.";
+        el("ip-error").classList.add("visible");
+      }catch(error){
+        if(id!==requestId)return;
+        el("ip-number").textContent="Unable to detect IP";
+        el("ip-country-hero").textContent="Not available";
+        el("ip-city-hero").textContent="Check your connection and try again";
+        clearMap("Unable to locate network","We couldn't obtain location information.");
+        status("Connection check unavailable","error");
+        el("ip-error").textContent="The lookup services couldn't be reached. Check your connection, VPN or content blocker, then try again.";
+        el("ip-error").classList.add("visible");
+      }
+    }finally{if(id===requestId)refresh.disabled=false}
+  }
+  el("ip-copy").addEventListener("click",async function(){
+    if(!result)return;
+    try{await navigator.clipboard.writeText(result)}catch(e){
+      var input=document.createElement("textarea");input.value=result;input.style.position="fixed";input.style.opacity="0";document.body.appendChild(input);input.select();var ok=document.execCommand("copy");input.remove();if(!ok)return;
+    }
+    var button=el("ip-copy");
+    button.firstChild.textContent="Copied! ";
+    setTimeout(function(){button.firstChild.textContent="Copy IP "},1600);
+  });
+  el("ip-refresh").addEventListener("click",update);
+  browserInfo();update();
+})();
+</script>
+</body></html>

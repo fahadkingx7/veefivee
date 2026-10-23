@@ -16,6 +16,8 @@ Creative and technology director: Fahad
 
 - [LeadExtract Me Pro interactive demo](https://veefivee.com/leadextract.html): Explore synthetic local business owner samples, browser-based parser examples, contact research concepts and CRM CSV export; not a live search or scraping service.
 
+- [What’s my IP address? Free IP checker](https://veefivee.com/tools/check-my-ip.html): Check a live public IPv4 or IPv6 address, approximate country and city, ISP, ASN, timezone and network-location map. IP location is approximate.
+
 ## What veefivee helps with
 - Technology: AI agents, AI voice and reception systems, custom websites, web apps, SaaS, mobile experiences, desktop software, browser tools, integrations, cloud and APIs.
 - Marketing: branding, search engine optimization, advertising, social media strategy, content, lifecycle email, conversion optimization and analytics.
