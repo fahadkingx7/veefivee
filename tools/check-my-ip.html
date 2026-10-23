@@ -110,6 +110,7 @@ html{scroll-padding-top:110px}
 .ip-faq details p{font-size:14px;line-height:1.8;color:#777087;margin:12px 0 0;max-width:910px}
 .ip-faq a{color:#6654ca;font-weight:750}
 @media(max-width:760px){.ip-faq{padding:25px 21px}}
+.ip-port-detail{display:flex;flex-wrap:wrap;align-items:center;gap:7px 12px;margin:12px 0 20px;color:var(--vf-muted);font-size:12px;font-weight:700}.ip-port-detail>span{letter-spacing:.09em;font-size:10px}.ip-port-detail strong{font-size:17px;color:#6358aa}.ip-port-detail small{font-size:11px;font-weight:500;flex-basis:100%;opacity:.85}
 </style>
 </head>
 <body>
@@ -124,7 +125,7 @@ html{scroll-padding-top:110px}
   <section class="ip-spotlight" aria-label="Your public IP and approximate location">
     <div class="ip-feature">
       <div class="ip-top"><span class="ip-tag">YOUR PUBLIC IP ADDRESS</span><span class="ip-status" id="ip-status" role="status" aria-live="polite"><i aria-hidden="true"></i><span>Checking connection…</span></span></div>
-      <div class="ip-number" aria-live="polite"><span id="ip-number">Detecting…</span></div>
+      <div class="ip-number" aria-live="polite"><span id="ip-number">Detecting…</span></div><div class="ip-port-detail" aria-label="Website connection port"><span>WEBSITE PORT</span> <strong id="ip-site-port">—</strong><small>HTTPS destination port, not your device’s source port</small></div>
       <div class="ip-country-feature">
         <div class="ip-country-flag" id="ip-flag" aria-hidden="true">◎</div>
         <div class="ip-country-text"><span class="ip-country-caption">APPROXIMATE LOCATION</span><strong id="ip-country-hero">Checking your country…</strong><span id="ip-city-hero">Looking up your network</span></div>
@@ -134,7 +135,7 @@ html{scroll-padding-top:110px}
         <button class="ip-secondary" id="ip-refresh" type="button">↻ &nbsp;Refresh lookup</button>
       </div>
       <p class="ip-error" id="ip-error" role="alert"></p>
-      <p class="ip-small-note">Your IP and location reflect the network seen by the provider. VPNs and proxies may change these results. Browsers cannot determine your device’s outgoing connection port from a normal web page.</p>
+      <p class="ip-small-note">Your IP and location reflect the network seen by the provider. VPNs and proxies may change these results. The website port shown is the HTTPS/HTTP destination port. Browsers cannot read your device’s outgoing source port.</p>
     </div>
     <div class="ip-map-card">
       <div class="ip-map-top"><div><span class="ip-tag">NETWORK LOCATION</span><strong>On the map</strong></div><span class="ip-map-chip">Approximate</span></div>
@@ -187,6 +188,8 @@ html{scroll-padding-top:110px}
   var el=function(id){return document.getElementById(id)};
   var values=["version","country","city","isp","org","asn","timezone"];
   var result="";
+  var sitePort=location.port || (location.protocol==="https:"?"443":location.protocol==="http:"?"80":"Not available");
+  el("ip-site-port").textContent=sitePort;
   function put(key,value){el("ip-"+key).textContent=value===0?"0":(value||"Not available")}
   function browserInfo(){
     var ua=navigator.userAgent||"";
