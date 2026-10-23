@@ -21,6 +21,29 @@
 <link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/extras.css?v=20261023"><link rel="stylesheet" href="../css/extension-download.css?v=4">
 
 <link rel="stylesheet" href="../css/blog-nav.css?v=20261023">
+
+<style>
+/* Scoped welcome-only content layout; website navigation and footer unchanged. */
+.welcome-guide{scroll-margin-top:112px;padding:64px 0 35px}
+.welcome-guide-heading{text-align:center;max-width:730px;margin:0 auto 46px}
+.welcome-guide-heading h2{font-size:clamp(32px,4.9vw,55px);line-height:1.12;letter-spacing:-.06em;font-weight:850;color:#2c2648;margin:14px 0 16px}
+.welcome-guide-heading h2 span{background:linear-gradient(106deg,#6954d7,#a963c9 52%,#6487dd);-webkit-background-clip:text;background-clip:text;color:transparent}
+.welcome-guide-heading p{font-size:clamp(14px,1.55vw,17px);line-height:1.8;color:#777087;margin:0 auto;max-width:580px}
+.welcome-guide-list{display:grid;gap:20px;max-width:1000px;margin:0 auto}
+.welcome-guide-item{display:grid;grid-template-columns:88px minmax(0,1fr) 205px;gap:25px;align-items:center;padding:35px 38px;border:1px solid rgba(255,255,255,.96);border-radius:30px;background:linear-gradient(120deg,rgba(255,255,255,.94),rgba(252,250,255,.81));box-shadow:0 18px 52px rgba(87,73,155,.075)}
+.welcome-guide-number{align-self:start;display:grid;place-items:center;width:73px;height:73px;border-radius:23px;background:#f1ecff;color:#7961d3;font-size:24px;font-weight:850;letter-spacing:-.07em}
+.welcome-guide-item h3{font-size:clamp(23px,2.6vw,31px);font-weight:810;line-height:1.2;letter-spacing:-.05em;color:#29243f;margin:0 0 13px}
+.welcome-guide-item p{color:#756f86;font-size:15px;line-height:1.76;margin:0;max-width:580px}
+.welcome-guide-item strong{color:#443958;font-weight:760}
+.welcome-guide-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:152px;padding:18px;border:1px solid rgba(205,192,244,.45);border-radius:24px;background:linear-gradient(145deg,#f0edff,#e8f2ff 80%);color:#6958aa;text-align:center}
+.welcome-guide-symbol{display:grid;place-items:center;width:70px;height:70px;border:1px solid #ffffffc9;border-radius:21px;background:#ffffffb7;box-shadow:0 10px 27px #7f70be18;font-size:31px;line-height:1}
+.welcome-guide-visual small{font-size:11px;font-weight:790;letter-spacing:.04em}
+.welcome-guide-item:nth-child(2) .welcome-guide-visual{background:linear-gradient(145deg,#f4eaff,#f1ecff)}
+.welcome-guide-item:nth-child(3) .welcome-guide-visual{background:linear-gradient(145deg,#e8f9f4,#ecf5ff)}
+.welcome-guide-help{max-width:1000px;margin:30px auto 0}
+@media(max-width:760px){.welcome-guide{padding-top:38px}.welcome-guide-heading{margin-bottom:26px}.welcome-guide-item{grid-template-columns:62px minmax(0,1fr);gap:16px;padding:24px 20px;border-radius:24px}.welcome-guide-number{width:56px;height:56px;border-radius:17px;font-size:20px}.welcome-guide-visual{grid-column:1/-1;min-height:100px;flex-direction:row;gap:18px}.welcome-guide-symbol{width:56px;height:56px;border-radius:17px;font-size:25px}.welcome-guide-item p{font-size:14px}.welcome-guide-item h3{font-size:24px}.welcome-guide-heading h2{font-size:clamp(32px,8vw,45px)}}
+@media(prefers-reduced-motion:reduce){.welcome-guide *{scroll-behavior:auto!important}}
+</style>
 </head><body><nav class="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4"><div class="flex max-w-full items-center gap-0.5 rounded-full border border-foreground/10 px-2 py-2 shadow-lg transition-all duration-500 sm:gap-1 sm:px-4 bg-background/40 backdrop-blur-xl" data-nav-pill=""><a aria-label="veefivee home" class="liquid-hover hidden rounded-full px-2 py-1 text-sm font-semibold tracking-tight md:block" href="../index.html"><img class="android-palm" src="../assets/android-palm.png" alt="🌴" width="26" height="26" decoding="async"/> veefivee</a><div class="mx-1 hidden h-4 w-px bg-foreground/15 md:block"></div><a aria-label="veefivee home" class="vf-mobile-brand liquid-hover rounded-full text-sm font-semibold tracking-tight" href="../index.html"><img class="android-palm" src="../assets/android-palm.png" alt="🌴" width="26" height="26" decoding="async"/><span>veefivee</span></a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../index.html">Home</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../about.html">About</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../industries.html">Industries</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../services.html">Services</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../products.html">Products</a><a class="vf-nav-blog liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="../blog.html">Blog</a><a class="vf-nav-consultation liquid-hover rounded-full bg-primary px-2.5 py-1.5 text-[0.7rem] font-semibold text-primary-foreground transition-transform duration-300 hover:scale-105 sm:px-3 sm:text-sm" aria-label="Free consultation with veefivee" href="../free-consultation.html"><span class="vf-nav-contact-desktop">Free Consultation</span><span class="vf-nav-contact-mobile">Free Consultation</span></a></div></nav><div class="relative min-h-screen vf-site-shell">
 <main class="dl-page" id="content">
   <div class="dl-glow" aria-hidden="true"></div>
@@ -31,35 +54,39 @@
       <h1 id="welcome-title">Congratulations!<br><em>LogIn is installed.</em></h1>
       <p class="dl-lead">You're one step closer to simpler, shared access. Open LogIn in Chrome, sign in with the account provided by your administrator, and you're ready to go.</p>
       <div class="dl-install-actions">
-        <a class="dl-button" href="#setup">Get started <span aria-hidden="true">↗</span></a>
-        <span class="dl-steps-subtitle">No additional download needed</span>
+        <a class="dl-button" href="#setup" id="welcome-get-started">Get started <span aria-hidden="true">↗</span></a>
       </div>
     </section>
-    <section class="dl-panel" id="setup" aria-labelledby="setup-title">
-      <div class="dl-panel-head">
-        <div><span class="dl-small">YOUR NEXT STEPS</span><h2 id="setup-title">Let's get you signed in.</h2></div>
-        <div class="dl-steps-subtitle">Just 3 simple steps</div>
+    <section class="welcome-guide" id="setup" aria-labelledby="setup-title">
+      <div class="welcome-guide-heading">
+        <div class="dl-small">YOUR LOGIn JOURNEY STARTS HERE</div>
+        <h2 id="setup-title">Three steps.<br><span>You're all set.</span></h2>
+        <p>Getting connected is simple. Follow the guide below to start using your team's shared access with LogIn.</p>
       </div>
-      <div class="dl-steps">
-        <article class="dl-step">
-          <span class="dl-number">01</span>
-          <h3>Open LogIn</h3>
-          <p>Click Chrome's <strong>Extensions (puzzle-piece) icon</strong> near the address bar. Find <strong>LogIn</strong> and pin it for easy access.</p>
+      <div class="welcome-guide-list">
+        <article class="welcome-guide-item">
+          <span class="welcome-guide-number" aria-label="Step one">01</span>
+          <div><h3>Find and pin LogIn.</h3>
+            <p>Click the <strong>puzzle-piece Extensions icon</strong> in Chrome's toolbar. Find <strong>LogIn</strong>, click the pin icon, and keep it within easy reach next to your address bar.</p></div>
+          <div class="welcome-guide-visual" aria-hidden="true"><span class="welcome-guide-symbol">🧩</span><small>FIND YOUR EXTENSION</small></div>
         </article>
-        <article class="dl-step">
-          <span class="dl-number">02</span>
-          <h3>Sign in</h3>
-          <p>Click the <strong>LogIn</strong> extension icon and enter the account credentials provided by your administrator.</p>
+        <article class="welcome-guide-item">
+          <span class="welcome-guide-number" aria-label="Step two">02</span>
+          <div><h3>Sign in to your account.</h3>
+            <p>Click your <strong>LogIn extension icon</strong>, then enter the credentials provided by your administrator. Follow any prompts to complete your device setup.</p></div>
+          <div class="welcome-guide-visual" aria-hidden="true"><span class="welcome-guide-symbol">↗</span><small>SIGN IN SECURELY</small></div>
         </article>
-        <article class="dl-step">
-          <span class="dl-number">03</span>
-          <h3>Start using LogIn</h3>
-          <p>Once you're signed in and your access is ready, follow the extension's prompts to open your <strong>assigned website</strong>.</p>
+        <article class="welcome-guide-item">
+          <span class="welcome-guide-number" aria-label="Step three">03</span>
+          <div><h3>You're ready to get going.</h3>
+            <p>Once your account is connected, use LogIn to open your <strong>assigned website</strong>. Your administrator manages your access and shared session settings.</p></div>
+          <div class="welcome-guide-visual" aria-hidden="true"><span class="welcome-guide-symbol">✓</span><small>ACCESS YOUR WORKSPACE</small></div>
         </article>
       </div>
-    </section>
+      <div class="welcome-guide-help">
     <div class="dl-note"><span class="dl-note-mark" aria-hidden="true">✦</span>
       <p><strong>Need your login details?</strong> Your administrator manages accounts and website access. Contact them if you haven't received your credentials or need help getting started.</p>
+    </div>
     </div>
     <div class="dl-bottom">Curious about what LogIn can do? <a href="../login.html">Explore LogIn ↗</a></div>
   </div>
@@ -69,4 +96,19 @@
 <div class="footer-links"><a href="../index.html">Home</a><a href="../about.html">Our story</a><a href="../industries.html">Industries</a><a href="../services.html">Services</a><a href="../products.html">Products</a><a href="../blog.html">Blog</a><a href="../tools.html">Try Tools</a><a href="../contact.html">Contact</a><a href="../privacy-policy.html">Privacy Policy</a><a href="../terms-of-service.html">Terms of Service</a></div>
 <div class="footer-socials"><a aria-label="Instagram @fahadkingx7" href="https://www.instagram.com/fahadkingx7/" rel="noopener noreferrer" target="_blank">Instagram · @fahadkingx7 ↗</a><a aria-label="Chat on WhatsApp" href="https://wa.me/923254891223" rel="noopener noreferrer" target="_blank">WhatsApp ↗</a><a href="mailto:info@veefivee.com">Email ↗</a></div>
 <div class="footer-fine"><span>© <span id="year">2026</span> veefivee. All rights reserved.</span><span>Made with curiosity and a little magic. <strong><img class="android-palm" src="../assets/android-palm.png" alt="🌴" width="26" height="26" decoding="async"/> veefivee</strong></span></div></div></footer></div>
+<script>
+(function(){
+  var button=document.getElementById("welcome-get-started");
+  var guide=document.getElementById("setup");
+  if(!button||!guide)return;
+  button.addEventListener("click",function(event){
+    event.preventDefault();
+    var nav=document.querySelector("nav[data-vf-site-nav], nav:has([data-nav-pill])");
+    var offset=nav?Math.max(98,Math.ceil(nav.getBoundingClientRect().height)+26):110;
+    var top=Math.max(0,window.scrollY+guide.getBoundingClientRect().top-offset);
+    window.scrollTo({top:top,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+    if(history.replaceState)history.replaceState(null,"",location.pathname+location.search+"#setup");
+  });
+})();
+</script>
 <script src="../js/main.js?v=20261023"></script></body></html>
