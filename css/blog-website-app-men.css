@@ -8,8 +8,8 @@
 .vf-build-button:hover{transform:translateY(-2px)}
 .vf-build-button.is-primary{background:#6e59d8;color:#fff;box-shadow:0 12px 25px #6c58cb34}
 .vf-build-button.is-secondary{background:#fff;color:#6453be;border:1px solid #ddd2f4}
-.vf-build-hero .vf-article-figure{margin-top:32px;aspect-ratio:1250/710;background:#dedaff}
-.vf-build-hero .vf-article-figure img{display:block;width:100%;height:100%;object-fit:cover}
+.vf-build-hero .vf-article-figure{margin-top:32px;aspect-ratio:auto;background:#dedaff}
+.vf-build-hero .vf-article-figure img{display:block;width:100%;height:auto;aspect-ratio:1250/710;object-fit:cover}
 .vf-build-hero figcaption{font-size:.72rem;line-height:1.55;color:#77728b;text-align:center;padding:10px 12px;background:#fff}
 .vf-build-copy{width:min(830px,calc(100% - 36px))}
 .vf-build-copy h2{scroll-margin-top:130px}
