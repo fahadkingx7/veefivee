@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7ff">
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="Welcome to LogIn. Your Chrome extension is installed. Learn how to pin LogIn, sign in with your administrator-provided account, and get started.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="veefivee">
+  <meta property="og:title" content="Welcome to LogIn — You're ready to begin">
+  <meta property="og:description" content="LogIn is installed. Open the extension, sign in, and access your assigned website.">
+  <title>Welcome to LogIn — Installation complete | veefivee</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preload" href="../assets/login-mark.png" as="image">
+  <link rel="stylesheet" href="../css/local-font.css?v=1">
+  <style>
+    :root{color-scheme:light;--ink:#29243e;--muted:#77738d;--purple:#6858dd;--outline:#e8e2f6}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;background:#f8f7ff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    a:focus-visible{outline:3px solid #7666ec;outline-offset:5px}
+    .site{position:relative;isolation:isolate;min-height:100vh;overflow:hidden}
+    .site::before{content:"";position:absolute;inset:0 0 auto;height:770px;z-index:-1;background:radial-gradient(ellipse 37% 48% at 12% 12%,#dfd8ffad,transparent 80%),radial-gradient(ellipse 35% 52% at 88% 20%,#cee9ffab,transparent 80%),radial-gradient(ellipse 30% 40% at 53% 2%,#f5d8eeb0,transparent 80%);pointer-events:none}
+    .topbar{width:min(1080px,calc(100% - 42px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;min-height:94px;gap:16px}
+    .brand{display:inline-flex;align-items:center;gap:8px;color:#302a46;font-size:17px;font-weight:790;letter-spacing:-.045em;text-decoration:none}
+    .brand img{width:27px;height:27px;object-fit:contain}
+    .toplink{font-size:12px;font-weight:700;color:#7269a2;text-decoration:none;padding:10px 0}
+    .toplink:hover,.bottom a:hover{color:#5d4ec7}
+    .shell{width:min(900px,calc(100% - 38px));margin:0 auto;padding:22px 0 64px}
+    .hero{text-align:center;animation:appear .75s both cubic-bezier(.22,1,.36,1)}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;background:#ffffffad;border:1px solid #fff;border-radius:999px;padding:9px 15px;color:#6960a0;font-size:10px;font-weight:800;letter-spacing:.115em;box-shadow:0 7px 23px #7564bd0b}
+    .eyebrow span{width:7px;height:7px;background:#27b887;border-radius:50%;box-shadow:0 0 0 4px #27b8871c}
+    .logo-wrap{width:108px;height:108px;margin:26px auto 20px;position:relative;display:grid;place-items:center;background:#ffffffbc;border:1px solid #fff;border-radius:33px;box-shadow:0 20px 55px #7564b623}
+    .logo-wrap::after{content:"";position:absolute;right:-7px;bottom:-7px;width:35px;height:35px;display:grid;place-items:center;background:#22ae78;border:4px solid #f8f7ff;border-radius:50%;box-shadow:0 6px 17px #1ca4722f}
+    .logo-check{position:absolute;z-index:2;right:0;bottom:2px;width:22px;height:22px;color:white}
+    .app-logo{width:81px;height:81px;object-fit:contain}
+    h1{font-size:clamp(43px,6.5vw,72px);line-height:1.065;letter-spacing:-.07em;font-weight:840;margin:0 auto 18px;max-width:760px}
+    h1 em{font-style:normal;background:linear-gradient(105deg,#6253d5,#a660bf 51%,#5688d9);color:transparent;background-clip:text;-webkit-background-clip:text}
+    .description{font-size:clamp(15px,2.1vw,18px);line-height:1.72;max-width:565px;color:#716d85;margin:0 auto}
+    .description strong{color:#3b3555;font-weight:730}
+    .actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:11px;margin:26px auto 0}
+    .primary,.secondary{display:inline-flex;align-items:center;justify-content:center;gap:15px;min-height:54px;padding:15px 26px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:770;transition:transform .2s,box-shadow .2s}
+    .primary{background:linear-gradient(110deg,#6558e9,#a15fcf);color:#fff;box-shadow:0 14px 29px #7460d83f}
+    .primary:hover,.secondary:hover{transform:translateY(-2px)}.primary:hover{box-shadow:0 18px 36px #7460d84c}
+    .secondary{color:#665d93;background:#ffffffaf;border:1px solid #fff;box-shadow:0 9px 28px #6758ae10}
+    .hint{font-size:12px;color:#9994a8;margin:16px auto 0}
+    .panel{margin:49px auto 0;background:#ffffffc7;border:1px solid #fff;border-radius:32px;box-shadow:0 24px 65px #7063a913;padding:32px 35px 35px;scroll-margin-top:25px}
+    .panel-header{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px}
+    .tiny{font-size:10px;letter-spacing:.145em;color:#7561ca;font-weight:820}
+    h2{font-size:clamp(24px,3vw,33px);line-height:1.15;letter-spacing:-.055em;font-weight:820;margin:9px 0 0}
+    .panel-header p{color:#9a94aa;font-size:12px;margin:0 0 4px}
+    .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .step{background:linear-gradient(160deg,#fff,#faf8ff);border:1px solid #eee8f8;border-radius:23px;padding:23px 22px 24px;min-width:0;transition:transform .22s,border-color .22s}
+    .step:hover{transform:translateY(-3px);border-color:#d9cef4}
+    .step-index{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:#eee9ff;color:#6756d7;font-size:12px;font-weight:850}
+    .step-icon{display:flex;align-items:center;justify-content:flex-start;height:45px;color:#7464c8;margin-top:13px}
+    .step-icon svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .step h3{font-size:18px;font-weight:790;letter-spacing:-.045em;margin:4px 0 10px}
+    .step p{font-size:13px;color:#797488;line-height:1.7;margin:0}
+    .step strong{color:#494261;font-weight:750}
+    .note{display:flex;gap:15px;align-items:flex-start;margin:19px auto 0;padding:20px 23px;border:1px solid #fff;border-radius:22px;background:#ffffff8f;color:#746e86;font-size:13px;line-height:1.72}
+    .note svg{width:21px;height:21px;flex:none;margin-top:1px;color:#7867d8}
+    .note p{margin:0}.note strong{color:#45405f}
+    .bottom{text-align:center;font-size:12px;color:#908ba4;margin-top:36px}.bottom a{font-weight:740;text-decoration:none;color:#7461cb}
+    footer{border-top:1px solid #ffffffba;margin-top:63px;padding-top:23px;color:#aaa5b8;text-align:center;font-size:11px}
+    @keyframes appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:730px){.topbar{min-height:76px}.shell{padding-top:12px}.panel{padding:26px 19px 21px;margin-top:40px}.panel-header{display:block}.panel-header p{margin:11px 0 0}.steps{grid-template-columns:1fr}.step{padding:20px;display:grid;grid-template-columns:48px 1fr;column-gap:15px}.step-index{grid-row:1 / span 2}.step-icon{grid-column:1;grid-row:3;display:none}.step h3{grid-column:2;margin:1px 0 6px}.step p{grid-column:2}.logo-wrap{margin-top:23px}.note{padding:18px}.panel-header{margin-bottom:17px}}
+    @media(max-width:400px){.topbar{width:calc(100% - 28px)}.shell{width:calc(100% - 28px)}.primary,.secondary{width:100%}h1{font-size:42px}.description{font-size:14px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero,.step,.primary,.secondary{animation:none;transition:none}}
+  </style>
+</head>
+<body>
+<div class="site">
+  <header class="topbar">
+    <a class="brand" href="../login.html" aria-label="About LogIn from veefivee"><img src="../assets/login-mark.png" alt=""> LogIn</a>
+    <a class="toplink" href="../downloads/login/">Installation guide <span aria-hidden="true">↗</span></a>
+  </header>
+  <main class="shell">
+    <section class="hero" aria-labelledby="welcome-title">
+      <div class="eyebrow"><span aria-hidden="true"></span> YOU'RE READY TO GO</div>
+      <div class="logo-wrap"><img class="app-logo" src="../assets/login-mark.png" alt="LogIn extension logo" width="81" height="81"><svg class="logo-check" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+      <h1>Congratulations!<br><em>LogIn is installed.</em></h1>
+      <p class="description">You're one step closer to simpler shared access. <strong>Open LogIn in Chrome, sign in with your assigned account,</strong> and you're ready to get started.</p>
+      <div class="actions"><a class="primary" href="#get-started">Let's get started <span aria-hidden="true">→</span></a><a class="secondary" href="../login.html">Explore LogIn <span aria-hidden="true">↗</span></a></div>
+      <p class="hint">LogIn, share simply. ✦</p>
+    </section>
+    <section class="panel" id="get-started" aria-labelledby="steps-title">
+      <div class="panel-header"><div><span class="tiny">YOUR NEXT STEPS</span><h2 id="steps-title">Three steps. You're in.</h2></div><p>No complicated setup needed.</p></div>
+      <div class="steps">
+        <article class="step">
+          <span class="step-index">01</span>
+          <div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/><path d="M18 3v6"/></svg></div>
+          <h3>Find &amp; pin LogIn</h3>
+          <p>Click the <strong>Extensions puzzle icon (🧩)</strong> in Chrome's toolbar. Find <strong>LogIn</strong> and pin it for easy access.</p>
+        </article>
+        <article class="step">
+          <span class="step-index">02</span>
+          <div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/><path d="M12 14v3"/></svg></div>
+          <h3>Sign in</h3>
+          <p>Click the <strong>LogIn extension icon</strong> and enter the username and password provided by your administrator.</p>
+        </article>
+        <article class="step">
+          <span class="step-index">03</span>
+          <div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/><path d="M4 4h16v16H4z"/></svg></div>
+          <h3>You're connected</h3>
+          <p>Finish any device verification if prompted, then use LogIn to open the websites <strong>assigned to your account</strong>.</p>
+        </article>
+      </div>
+    </section>
+    <aside class="note" aria-label="Need help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.5 1.6c-.6.7-2.1 1.3-2.1 2.7"/><path d="M12 17h.01"/></svg><p><strong>Don't have your sign-in details?</strong> Your administrator will provide your LogIn username, password, and assigned access. Please contact them if you need help signing in.</p></aside>
+    <div class="bottom">Built with care by <a href="../index.html">veefivee ↗</a></div>
+    <footer>© <span id="year">2026</span> veefivee. All rights reserved.</footer>
+  </main>
+</div>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
