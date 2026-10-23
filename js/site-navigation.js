@@ -4,7 +4,7 @@
 (function () {
   'use strict';
   if (!window.fetch || !window.DOMParser || !window.VFPage || !history.pushState) return;
-  var routes = new Set(['/', '/index.html', '/about.html', '/industries.html', '/services.html', '/products.html', '/contact.html']);
+  var routes = new Set(['/', '/index.html', '/about.html', '/industries.html', '/services.html', '/products.html', '/contact.html', '/free-consultation.html']);
   if (!routes.has(location.pathname)) return;
   window.VFNavigation = true;
   var active = location.href, pending = null, generation = 0;
@@ -70,6 +70,8 @@
       if (!traversal) { saveScroll(); history.pushState({ vfScroll: [0, 0] }, '', url.href); }
       window.VFPage.unmount();
       document.querySelector('.vf-site-shell').replaceWith(document.importNode(shell, true));
+      // Page-specific body theme must follow the destination when navigating without reload.
+      document.body.classList.toggle('vf-consultation-page', next.body.classList.contains('vf-consultation-page'));
       // Keep the glass header node itself; only selected link content changes.
       var currentPill = document.querySelector('[data-nav-pill]');
       currentPill.replaceChildren.apply(currentPill, Array.from(pill.childNodes).map(function (node) { return document.importNode(node, true); }));
