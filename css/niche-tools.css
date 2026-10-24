@@ -1,0 +1,58 @@
+/* veefivee niche business toolkit | shared mobile-first styles */
+.nt-page{background:#faf9ff;color:#302846;font-family:Inter,system-ui,sans-serif}
+.nt-page *, .nt-page *:before,.nt-page *:after{box-sizing:border-box}
+.nt-main{max-width:1170px;margin:auto;padding:142px 22px 85px}
+.nt-back{display:inline-flex;align-items:center;gap:8px;color:#715dc0;font-size:12px;font-weight:800;text-decoration:none;margin-bottom:30px}
+.nt-hero{max-width:900px;margin-bottom:35px}
+.nt-kicker{display:inline-block;letter-spacing:.11em;text-transform:uppercase;font-size:11px;font-weight:820;color:#7260c6;margin-bottom:10px}
+.nt-hero h1{font-size:clamp(35px,5.2vw,61px);line-height:1.09;letter-spacing:-.064em;font-weight:850;margin:8px 0 17px;text-wrap:balance}
+.nt-hero h1 span{background:linear-gradient(110deg,#6654d6,#b369bb,#4f8bcd);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nt-hero p{font-size:clamp(14px,1.7vw,17px);line-height:1.75;color:#756c86;max-width:780px}
+.nt-flags{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.nt-flags span{font-size:11px;padding:7px 11px;border-radius:999px;background:#fff;border:1px solid #e8e0f4;color:#6c5f82;font-weight:730}
+.nt-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.78fr);gap:20px;align-items:start}
+.nt-form,.nt-results,.nt-section{background:white;border-radius:25px;border:1px solid #e9e2f5;padding:clamp(18px,3vw,29px);box-shadow:0 12px 32px #56457c0b}
+.nt-form-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:20px}
+.nt-form-head h2,.nt-results h2{font-size:20px;font-weight:820;letter-spacing:-.035em;margin:0}
+.nt-form-head small{font-size:11px;color:#877b95}
+.nt-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.nt-field{display:block;min-width:0}
+.nt-field.nt-wide{grid-column:1/-1}
+.nt-field span{display:block;font-size:12px;font-weight:790;color:#544a68;margin-bottom:6px}
+.nt-field small{display:block;font-size:10px;line-height:1.5;color:#8e849b;margin-top:6px}
+.nt-field :is(input,select,textarea){width:100%;border:1px solid #ddd6ef;background:#fdfcff;border-radius:12px;min-height:47px;padding:12px;color:#2e2643;font:600 14px Inter,system-ui,sans-serif}
+.nt-field textarea{min-height:83px;resize:vertical}
+.nt-field :is(input,select,textarea):focus-visible{outline:3px solid #9580e4;outline-offset:1px}
+.nt-form-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.nt-btn{cursor:pointer;border-radius:12px;border:1px solid #e4daf4;padding:12px 16px;background:#f8f5ff;color:#644fbf;font:780 13px Inter,system-ui,sans-serif}
+.nt-btn.nt-primary{background:linear-gradient(115deg,#6c58d4,#8667db);border-color:transparent;color:#fff;box-shadow:0 8px 23px #7560cf35}
+.nt-results{position:sticky;top:16px;background:linear-gradient(148deg,#fdfbff 0%,#f7f3ff 100%)}
+.nt-results>p{font-size:12px;color:#80758f;line-height:1.65;margin:10px 0 20px}
+.nt-result-main{border:1px solid #e4ddf2;border-radius:19px;background:white;padding:21px;margin-bottom:12px}
+.nt-result-main small{display:block;font-size:10px;color:#857799;text-transform:uppercase;letter-spacing:.08em;font-weight:820}
+.nt-result-main strong{display:block;font-size:clamp(27px,3.4vw,40px);color:#31254d;letter-spacing:-.05em;line-height:1.27;overflow-wrap:anywhere;margin-top:5px}
+.nt-result{display:flex;justify-content:space-between;gap:13px;border-bottom:1px solid #e9e2f3;padding:13px 2px;font-size:12px;line-height:1.5}
+.nt-result span{color:#655a78}.nt-result strong{font-size:13px;text-align:right;font-weight:820;color:#3c3158;overflow-wrap:anywhere}
+.nt-result:last-child{border-bottom:0}
+.nt-result-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.nt-result-actions .nt-btn{flex:1}
+.nt-note{font-size:11px!important;line-height:1.65!important;color:#82788f;margin-top:20px!important}
+.nt-toast{position:fixed;z-index:1000;right:18px;top:95px;max-width:calc(100% - 36px);padding:13px 18px;border-left:4px solid #735fd0;border-radius:12px;background:#fff;color:#483963;box-shadow:0 9px 30px #30234b38;font-size:13px;font-weight:720}
+.nt-toast[hidden]{display:none}
+.nt-content{max-width:1000px;margin:50px auto 0}
+.nt-content h2{font-size:clamp(25px,3vw,35px);color:#352b4e;letter-spacing:-.045em;font-weight:820;margin:35px 0 15px}
+.nt-content>p,.nt-content li{font-size:15px;line-height:1.9;color:#665b76}
+.nt-content ul{padding-left:24px}.nt-content li{margin:8px 0}
+.nt-info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:22px 0}
+.nt-section h3{font-weight:820;font-size:17px;margin:0 0 10px;color:#423456}
+.nt-section p{color:#726780;font-size:13px;line-height:1.8;margin:0}
+.nt-content details{padding:17px 0;border-bottom:1px solid #e7def3}
+.nt-content summary{cursor:pointer;font-size:15px;font-weight:780;color:#453657}
+.nt-content details p{font-size:14px;line-height:1.8;color:#6b607c}
+.nt-cta{background:linear-gradient(115deg,#f0eaff,#f5f7ff 65%,#fff1f7);border:1px solid #e0d6f4;border-radius:23px;padding:27px;margin-top:35px}
+.nt-cta h2{margin:0 0 9px}.nt-cta p{line-height:1.8;color:#655978}.nt-cta a{display:inline-block;border-radius:999px;background:#6b55ce;color:white;font-weight:800;font-size:13px;text-decoration:none;padding:12px 18px}
+.nt-related{display:flex;flex-wrap:wrap;gap:9px;margin:30px 0}
+.nt-related a{border:1px solid #e5dcf4;background:white;padding:9px 12px;border-radius:12px;color:#6955c4;text-decoration:none;font-size:12px;font-weight:740}
+@media(max-width:870px){.nt-layout{grid-template-columns:1fr}.nt-results{position:static}.nt-main{padding-top:125px}}
+@media(max-width:550px){.nt-main{padding:120px 13px 60px}.nt-fields{grid-template-columns:1fr}.nt-info-grid{grid-template-columns:1fr}.nt-result-actions .nt-btn{flex:1 1 100%}}
+@media print{@page{size:A4;margin:16mm}.nt-page{background:white!important}.nt-page nav,.nt-back,.nt-hero,.nt-form,.nt-content,.nt-result-actions,.nt-toast,.site-footer{display:none!important}.nt-layout,.nt-main{display:block!important;padding:0!important;margin:0!important}.nt-results{display:block!important;position:static!important;padding:10px!important;box-shadow:none!important;background:white!important;border:0!important}.nt-results h2{font-size:23px!important}.nt-results:before{content:"veefivee • Business calculation summary";display:block;color:#6651bf;margin-bottom:20px;font-weight:800}.nt-result-main,.nt-result{break-inside:avoid}}

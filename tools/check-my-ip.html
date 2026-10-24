@@ -39,8 +39,6 @@ html{scroll-padding-top:110px}
 .ip-status.ready i{background:#29be88;box-shadow:0 0 0 4px #22c9941d}
 .ip-status.error i{background:#ef857b}
 .ip-number{font-size:clamp(26px,5.8vw,58px);font-weight:850;letter-spacing:-.052em;line-height:1.23;overflow-wrap:anywhere;min-height:75px;margin:21px 0 15px;font-variant-numeric:tabular-nums}
-.ip-port{display:inline-block;margin-left:.14em;color:var(--vf-muted);font:inherit;letter-spacing:inherit;white-space:nowrap;overflow-wrap:normal}
-.ip-port[hidden]{display:none!important}
 .ip-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .ip-primary,.ip-secondary{border-radius:100px;display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:14px 19px;text-decoration:none!important;font-weight:740;font-size:13px;transition:transform .18s,box-shadow .18s;cursor:pointer}
 .ip-primary{color:white!important;background:linear-gradient(110deg,#665aec,#9e60d1);box-shadow:0 12px 29px #6b5bd52c}
@@ -126,7 +124,7 @@ html{scroll-padding-top:110px}
   <section class="ip-spotlight" aria-label="Your public IP and approximate location">
     <div class="ip-feature">
       <div class="ip-top"><span class="ip-tag">YOUR PUBLIC IP ADDRESS</span><span class="ip-status" id="ip-status" role="status" aria-live="polite"><i aria-hidden="true"></i><span>Checking connection…</span></span></div>
-      <div class="ip-number" aria-live="polite"><span id="ip-number">Detecting…</span><span class="ip-port" id="ip-port" title="Website connection port (HTTPS), not your device's outgoing port" hidden>: 443</span></div>
+      <div class="ip-number" aria-live="polite"><span id="ip-number">Detecting…</span></div>
       <div class="ip-country-feature">
         <div class="ip-country-flag" id="ip-flag" aria-hidden="true">◎</div>
         <div class="ip-country-text"><span class="ip-country-caption">APPROXIMATE LOCATION</span><strong id="ip-country-hero">Checking your country…</strong><span id="ip-city-hero">Looking up your network</span></div>
@@ -136,7 +134,7 @@ html{scroll-padding-top:110px}
         <button class="ip-secondary" id="ip-refresh" type="button">↻ &nbsp;Refresh lookup</button>
       </div>
       <p class="ip-error" id="ip-error" role="alert"></p>
-      <p class="ip-small-note">Your IP and location reflect the network seen by the provider. VPNs and proxies may change these results. The grey port is the website’s connection port, not your device’s outgoing port.</p>
+      <p class="ip-small-note">Your IP and location reflect the network seen by the provider. VPNs and proxies may change these results. Browsers cannot determine your device’s outgoing connection port from a normal web page.</p>
     </div>
     <div class="ip-map-card">
       <div class="ip-map-top"><div><span class="ip-tag">NETWORK LOCATION</span><strong>On the map</strong></div><span class="ip-map-chip">Approximate</span></div>
@@ -189,9 +187,6 @@ html{scroll-padding-top:110px}
   var el=function(id){return document.getElementById(id)};
   var values=["version","country","city","isp","org","asn","timezone"];
   var result="";
-  // Browsers do not expose their ephemeral source port; show only the website destination port.
-  var websitePort=location.port || (location.protocol==="https:"?"443":location.protocol==="http:"?"80":"");
-  function showPort(visible){var node=el("ip-port");node.hidden=!(visible&&websitePort);node.textContent=websitePort?": "+websitePort:"";}
   function put(key,value){el("ip-"+key).textContent=value===0?"0":(value||"Not available")}
   function browserInfo(){
     var ua=navigator.userAgent||"";
@@ -255,7 +250,7 @@ html{scroll-padding-top:110px}
     result="";
     el("ip-copy").disabled=true;
     el("ip-number").textContent="Detecting…";
-    showPort(false);
+
     el("ip-error").classList.remove("visible");
     for(var i=0;i<values.length;i++)put(values[i],"—");
     browserInfo();
@@ -270,7 +265,7 @@ html{scroll-padding-top:110px}
       if(!data||data.success!==true||!data.ip)throw Error("Location lookup unavailable");
       result=String(data.ip);
       el("ip-number").textContent=result;
-      showPort(true);
+
       el("ip-copy").disabled=false;
       fillGeo(data);
       status("Live connection detected","ready");
@@ -282,7 +277,7 @@ html{scroll-padding-top:110px}
         if(!fallback||!fallback.ip)throw Error("No IP returned");
         result=String(fallback.ip);
         el("ip-number").textContent=result;
-      showPort(true);
+
         el("ip-country-hero").textContent="Location unavailable";
         el("ip-city-hero").textContent="Your public IP was detected";
         clearMap("Location unavailable","IP detection worked, but location lookup could not be completed.");
@@ -294,7 +289,7 @@ html{scroll-padding-top:110px}
       }catch(error){
         if(id!==requestId)return;
         el("ip-number").textContent="Unable to detect IP";
-        showPort(false);
+
         el("ip-country-hero").textContent="Not available";
         el("ip-city-hero").textContent="Check your connection and try again";
         clearMap("Unable to locate network","We couldn't obtain location information.");

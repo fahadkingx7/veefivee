@@ -51,7 +51,7 @@
   const renderCard = (a, index) => {
     const href = attrURL(a.url,'post');
     const image = attrURL(a.image,'image');
-    const imageLoading = index < 3 ? 'eager' : 'lazy';
+    const imageLoading = index < 2 ? 'eager' : 'lazy';
     return `<article class="vf-blog-card">
       <a class="vf-blog-card-image" href="${href}" tabindex="-1" aria-hidden="true"><img src="${image}" alt="${escapeHTML(a.imageAlt || a.title)}" width="740" height="480" decoding="async" loading="${imageLoading}"><span class="vf-blog-card-category">${escapeHTML(a.category)}</span></a>
       <div class="vf-blog-card-copy"><div class="vf-blog-card-overline"><span>${escapeHTML(dateLabel(a))}</span><span class="vf-dot"></span><span>${Math.max(1,Math.min(45,Number(a.readMinutes)||7))} min read</span></div>

@@ -82,3 +82,6 @@
   [data-nav-pill]>a:not(.vf-mobile-brand):not(.hidden){font-size:.565rem!important;padding-left:2px!important;padding-right:2px!important}
   [data-nav-pill]>.vf-nav-consultation{font-size:.565rem!important}
 }
+
+/* Keep touch-friendly hit targets without forcing full-page navigation. */
+@media(hover:none) and (pointer:coarse){[data-nav-pill] a{touch-action:manipulation;pointer-events:auto;-webkit-tap-highlight-color:transparent}[data-nav-pill] a:hover{transform:none!important}}

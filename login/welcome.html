@@ -25,6 +25,11 @@
 
 <style>
 /* Scoped welcome-only content layout; website navigation and footer unchanged. */
+/* Give the installation headline a little more breathing room without changing the rest of the site. */
+.dl-hero #welcome-title{font-size:clamp(44px,6.25vw,83px);line-height:1.13;letter-spacing:-.038em;font-weight:830;max-width:1100px;margin-left:auto;margin-right:auto;text-wrap:balance}
+.dl-hero #welcome-title em{display:inline-block;line-height:1.14;letter-spacing:-.035em;padding-inline:.055em;padding-bottom:.075em;font-style:normal}
+@media(max-width:600px){.dl-hero #welcome-title{font-size:clamp(39px,10.2vw,62px);line-height:1.13;letter-spacing:-.032em}.dl-hero #welcome-title em{line-height:1.15;letter-spacing:-.025em}}
+
 .welcome-guide{scroll-margin-top:112px;padding:64px 0 35px}
 .welcome-guide-heading{text-align:center;max-width:730px;margin:0 auto 46px}
 .welcome-guide-heading h2{font-size:clamp(32px,4.9vw,55px);line-height:1.12;letter-spacing:-.06em;font-weight:850;color:#2c2648;margin:14px 0 16px}
