@@ -1,515 +1,77 @@
 <!DOCTYPE html>
-
 <html lang="en"><head>
-<!-- Google tag (gtag.js) -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeadExtract | Public Business Contact Extractor — veefivee</title>
+<meta name="description" content="Find public business listings and extract published names, phone numbers and email addresses from business websites. No API key or installation required.">
+<meta name="robots" content="index, follow, max-image-preview:large"><meta name="theme-color" content="#f5f4ff">
+<link rel="canonical" href="https://veefivee.com/leadextract.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="veefivee"><meta property="og:title" content="LeadExtract — Public Business Contacts">
+<meta property="og:description" content="Research real business listings and published website contacts, with source links and CSV export."><meta property="og:url" content="https://veefivee.com/leadextract.html"><meta property="og:image" content="https://veefivee.com/assets/og-products.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css"><link rel="stylesheet" href="css/extras.css?v=20261023"><link rel="stylesheet" href="css/leadextract-live.css?v=20261024"><link rel="stylesheet" href="css/blog-nav.css?v=20261023">
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-086Y2TSZTM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-086Y2TSZTM');
-</script>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="veefivee" name="author"/><meta content="Explore a sample US local-business lead workflow with LeadExtract Me Pro by veefivee. Test filters, owner evidence, email parsing, saved lists, and CSV export in an interactive browser demo." name="description"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="#f5f4ff" name="theme-color"/><link href="https://veefivee.com/leadextract.html" rel="canonical"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="css/styles.css" rel="stylesheet"/><link href="css/extras.css?v=20261023" rel="stylesheet"/><link href="css/leadextract.css?v=23" rel="stylesheet"/><link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/><link href="assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="assets/apple-touch-icon.png" rel="apple-touch-icon"/><meta content="website" property="og:type"/><meta content="veefivee" property="og:site_name"/><meta content="en_US" property="og:locale"/><meta content="LeadExtract Me Pro — Interactive Lead Research Demo | veefivee" property="og:title"/><meta content="Try a sample local-business lead research interface: sample lead cards, contact evidence, CRM exports and parser tools. Demo data, not live extraction." property="og:description"/><meta content="https://veefivee.com/leadextract.html" property="og:url"/><meta content="https://veefivee.com/assets/og-products.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="LeadExtract Me Pro | veefivee interactive demo" name="twitter:title"/><meta content="Explore a simulated US local business lead workflow from veefivee. Includes CSV export and parser lab." name="twitter:description"/><title>LeadExtract Me Pro | Local Business Lead Research Demo — veefivee</title><script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "LeadExtract Me Pro — Interactive Demo", "url": "https://veefivee.com/leadextract.html", "description": "Browser-based interactive demonstration with synthetic business leads, sample owner evidence, parser tests, filtering and CSV export. Does not retrieve live web data.", "applicationCategory": "BusinessApplication", "operatingSystem": "Web browser", "softwareRequirements": "Modern browser with JavaScript enabled", "creator": {"@type": "Organization", "name": "veefivee", "url": "https://veefivee.com/"}, "isAccessibleForFree": true}</script><link rel="stylesheet" href="css/blog-nav.css?v=20261023">
-</head><body class="vf-lead-body"><nav class="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4"><div class="flex max-w-full items-center gap-0.5 rounded-full border border-foreground/10 px-2 py-2 shadow-lg transition-all duration-500 sm:gap-1 sm:px-4 bg-background/40 backdrop-blur-xl" data-nav-pill=""><a aria-label="veefivee home" class="liquid-hover hidden rounded-full px-2 py-1 text-sm font-semibold tracking-tight md:block" href="index.html"><img alt="🌴" class="android-palm" decoding="async" height="26" src="assets/android-palm.png" width="26"/> veefivee</a><div class="mx-1 hidden h-4 w-px bg-foreground/15 md:block"></div><a aria-label="veefivee home" class="vf-mobile-brand liquid-hover rounded-full text-sm font-semibold tracking-tight" href="index.html"><img alt="🌴" class="android-palm" decoding="async" height="26" src="assets/android-palm.png" width="26"/><span>veefivee</span></a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="index.html">Home</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="about.html">About</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="industries.html">Industries</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="services.html">Services</a><a class="vf-nav-products liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="products.html">Products</a><a class="vf-nav-blog liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="blog.html">Blog</a><a aria-label="Free consultation with veefivee" class="vf-nav-consultation liquid-hover rounded-full bg-primary px-2.5 py-1.5 text-[0.7rem] font-semibold text-primary-foreground transition-transform duration-300 hover:scale-105 sm:px-3 sm:text-sm" href="free-consultation.html"><span class="vf-nav-contact-desktop">Free Consultation</span><span class="vf-nav-contact-mobile">Free Consultation</span></a></div></nav><div class="relative min-h-screen vf-site-shell"><section aria-labelledby="vf-lead-title" class="vf-lead-hero">
-<div class="vf-lead-hero-inner">
-<div class="vf-lead-kicker"><span aria-hidden="true" class="vf-lead-pulse"></span> From veefivee's creative technology lab <span class="vf-lead-kicker-sep">/</span> Interactive preview</div>
-<h1 id="vf-lead-title">Discover the people <span class="vf-lead-gradient">behind the business.</span></h1>
-<p class="vf-lead-subtitle">Explore your own business and location search, review simulated leads, test owner evidence tools, and export CRM-ready sample data.</p>
-<div class="vf-lead-hero-meta"><span>Made for curious builders, worldwide</span><a href="tools.html">More veefivee tools <span aria-hidden="true">↗</span></a></div>
-<div class="vf-lead-disclaimer" role="note"><strong>Interactive demo. </strong>Business profiles and contacts are fictional. Search does not access live websites; CSV exports contain sample data.</div>
-</div>
-</section><div class="vf-lead-app"><div aria-label="LeadExtract tools and workspace tabs" class="vf-lead-workspace-header hybrid-navbar" role="region">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 py-2.5 flex flex-col gap-2.5 lg:flex-row lg:items-center lg:justify-between">
-<!-- Brand + Mobile Action Buttons -->
-<div class="flex items-center justify-between gap-3">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#6457e9] via-[#6b56e8] to-[#3abaad] flex items-center justify-center shadow-sm border border-black/10 shrink-0">
-<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.3" viewbox="0 0 24 24">
-<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</div>
-<div>
-<div class="flex items-center gap-2 flex-wrap">
-<span class="font-extrabold text-base sm:text-lg tracking-tight text-[#282440]">LeadExtract Me Pro</span>
-<span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-[#edeaff] text-[#6457e9] border border-[#dcd6fa]">Interactive demo</span>
-<span class="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-[#ddf3ed] text-[#245d56] border border-[#bde1d6]">
-<span class="w-1.5 h-1.5 rounded-full bg-[#258b7c]"></span>Sample data</span>
-</div>
-<p class="text-xs text-[#77718f] hidden sm:block">Explore sample owner records, research signals, and CRM-ready CSV workflows</p>
-</div>
-</div>
-<!-- Mobile Quick Buttons -->
-<div class="flex items-center gap-2 lg:hidden">
-<button class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#faf9ff] hover:bg-[#f0edfa] text-[#282440] border border-[#e4e0ee] transition" id="btnOpenSavedVaultMobileProxy" onclick="document.getElementById('btnOpenSavedVault').click()" type="button">
-            Vault
-          </button>
-<button class="btn-hybrid-csv px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1" id="btnExportCsvMobileProxy" onclick="document.getElementById('btnExportCsvTop').click()" type="button">
-<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" viewbox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span>Extract CSV</span>
-</button>
-</div>
-</div>
-<!-- Segmented Bootstrap/Apple Nav Pills -->
-<nav aria-label="Main Navigation" class="flex items-center gap-1 bg-[#f0edfa] p-1 rounded-xl border border-[#e4e0ee] overflow-x-auto no-scrollbar max-w-full">
-<button class="shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-white text-[#6457e9] shadow-sm flex items-center gap-1.5" id="tabBtnLeadEngine" type="button">
-<svg class="w-3.5 h-3.5 text-[#6457e9]" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span>Lead Extraction Engine</span>
-<span class="ml-0.5 px-1.5 py-0.2 rounded-md bg-[#edeaff] text-[#6457e9] font-mono text-[11px] font-bold" id="navCountBadge">0</span>
-</button>
-<button class="shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all text-[#595574] hover:text-[#282440] flex items-center gap-1.5" id="tabBtnQueueLog" type="button">
-<svg class="w-3.5 h-3.5 text-[#c78c55]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span>SERP Filter &amp; Replenish Log</span>
-<span class="ml-0.5 px-1.5 py-0.2 rounded-md bg-[#fff1d8] text-[#736139] font-mono text-[10px] font-semibold" id="navSkippedBadge">0 skipped</span>
-</button>
-<button class="shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all text-[#595574] hover:text-[#282440] flex items-center gap-1.5" id="tabBtnLiveInspector" type="button">
-<svg class="w-3.5 h-3.5 text-[#8853cb]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span>Live HTML De-Obfuscator &amp; Parser Lab</span>
-</button>
-<button class="shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all text-[#595574] hover:text-[#282440] flex items-center gap-1.5" id="tabBtnArchitecture" type="button">
-<svg class="w-3.5 h-3.5 text-[#67c7d5]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span>6-Pillar Spec &amp; Blocklist</span>
-</button>
-</nav>
-<!-- Desktop Right Action Bar -->
-<div class="hidden lg:flex items-center gap-2.5 shrink-0">
-<button class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#faf9ff] hover:bg-[#f0edfa] text-[#282440] border border-[#d6d0e7] flex items-center gap-1.5 transition" id="btnOpenSavedVault" type="button">
-<svg class="w-3.5 h-3.5 text-[#258b7c]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span>Saved Vault</span>
-<span class="px-1.5 py-0.2 rounded-md bg-[#ddf3ed] text-[#245d56] font-mono text-[11px] font-bold" id="savedVaultCountBadge">0</span>
-</button>
-<button class="btn-hybrid-csv px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5" id="btnExportCsvTop" type="button">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewbox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span>Extract CSV</span>
-</button>
-</div>
-</div>
-</div><main class="max-w-[1440px] mx-auto px-4 sm:px-6 py-5 space-y-5 vf-lead-content">
-<!-- ===================================================================== -->
-<!-- VIEW 1: LEAD EXTRACTION ENGINE (APPLE + BOOTSTRAP HYBRID)             -->
-<!-- ===================================================================== -->
-<section class="space-y-5" id="viewLeadEngine">
-<!-- COMMAND & SEARCH CARD (BOOTSTRAP CARD HEADER + APPLE BODY) -->
-<div class="hybrid-card overflow-hidden vf-search-stage">
-<!-- Card Header -->
-<div class="bg-[#faf9ff] border-b border-[#e4e0ee] px-5 py-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-<div class="flex items-center gap-2.5">
-<span class="w-2.5 h-2.5 rounded-full bg-[#6457e9]"></span>
-<h2 class="text-sm sm:text-base font-bold text-[#282440] vf-search-headline">Find your next business opportunity.</h2>
-</div>
-<div class="flex flex-wrap items-center gap-2">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#ddf3ed] text-[#245d56] border border-[#bde1d6] text-[11px] font-semibold">
-<svg class="w-3.5 h-3.5 text-[#258b7c]" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>Sample data · No live search</span>
-</div>
-</div>
-<!-- Card Body -->
-<div class="p-5 space-y-4">
-<p class="vf-search-prompt">Enter a business type and a place to explore a simulated search workflow. You choose the search, we handle the demo.</p><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3.5 items-end vf-search-grid">
-<!-- Trade + Location Search Input (4 cols) -->
-<div class="md:col-span-2 lg:col-span-4 vf-query-field">
-<label class="block text-xs font-bold text-[#595574] mb-1.5" for="searchQueryInput">What businesses are you looking for?</label>
-<div class="relative">
-<input aria-label="Type in business and location" autocomplete="off" class="bs-apple-input w-full pl-9 pr-3.5 py-2.5 text-sm font-medium placeholder-[#77718f]" id="searchQueryInput" placeholder="Type in business and location" type="text" value=""/>
-<svg class="w-4 h-4 text-[#77718f] absolute left-3 top-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</div>
-</div>
-<!-- Quick Market Preset (2 cols) -->
-
-<!-- Lead Target Preset + Custom Number Input (3 cols) -->
-<div class="lg:col-span-3">
-<label class="block text-xs font-bold text-[#595574] mb-1.5" for="customBatchInput">
-                Target Leads <span class="text-[#77718f] font-normal">(Default 150 or Custom)</span>
-</label>
-<div class="flex items-center gap-1.5">
-<select aria-label="Target Lead Presets" class="bs-apple-input w-1/2 px-2.5 py-2.5 text-xs font-semibold text-[#6457e9]" id="batchTargetSelect">
-<option value="25">25 Leads</option>
-<option value="50">50 Leads</option>
-<option value="100">100 Leads</option>
-<option selected="" value="150">150 (Default)</option>
-<option value="200">200 Leads</option>
-<option value="250">250 Leads</option>
-<option value="custom">Custom #</option>
-</select>
-<div class="relative w-1/2">
-<input class="bs-apple-input w-full px-3 py-2 text-sm font-bold text-[#282440] mono" id="customBatchInput" max="500" min="1" placeholder="Custom #" title="Number of demo results" type="number" value="150"/>
-<span class="absolute right-2.5 top-2.5 text-[10px] font-semibold text-[#77718f] pointer-events-none">leads</span>
-</div>
-</div>
-</div>
-<!-- Action Buttons: Simple "Search" + Very Visible "Extract CSV" (3 cols) -->
-<div class="md:col-span-2 lg:col-span-3 flex flex-col sm:flex-row items-stretch gap-2">
-<select aria-label="Stream Speed" class="bs-apple-input sm:w-24 px-2 py-2.5 text-xs font-semibold text-[#595574]" id="streamSpeedSelect" title="Results presentation">
-<option selected="" value="turbo">Turbo</option>
-<option value="realistic">Live Step</option>
-<option value="instant">Instant</option>
-</select>
-<!-- Simple Search Button (No "150" clutter inside button text) -->
-<button class="btn-hybrid-primary flex-1 rounded-xl py-2.5 px-4 text-sm font-bold flex items-center justify-center gap-1.5" id="btnRunScrape" type="button">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span id="btnRunScrapeLabel">Search</span>
-</button>
-<!-- Very Visible, Easy-to-See Extract CSV Button -->
-<button class="btn-hybrid-csv flex-1 rounded-xl py-2.5 px-4 text-sm font-bold flex items-center justify-center gap-1.5" id="btnExtractCsvHero" type="button">
-<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span>Extract CSV</span>
-</button>
-</div>
-</div>
-<!-- Card Footer Bar: Cross-Session Deduplication Toggle & Live Crawl Progress -->
-<div class="pt-3.5 border-t border-[#f0edfa] flex flex-col md:flex-row md:items-center justify-between gap-3">
-<div class="flex flex-wrap items-center gap-4">
-<label class="inline-flex items-center gap-2.5 cursor-pointer select-none">
-<input checked="" class="sr-only peer" id="skipSavedToggle" type="checkbox"/>
-<div class="w-10 h-5 bg-[#d6d0e7] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:shadow-sm after:transition-all relative peer-checked:bg-[#258b7c]"></div>
-<span class="text-xs font-semibold text-[#282440]">Skip previously saved businesses <span class="text-[#77718f] font-mono text-[11px]" id="skipSavedSubtext">(0 domains in browser storage)</span></span>
-</label>
-<button class="text-xs font-semibold text-[#6457e9] hover:underline transition" id="btnSaveAllCurrent" type="button">Save first 12 results to Vault</button>
-</div>
-<!-- Live Streaming Status Indicator -->
-<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#faf9ff] border border-[#e4e0ee] text-xs" id="liveStreamBanner">
-<span class="w-2 h-2 rounded-full bg-[#258b7c] shrink-0" id="streamStatusDot"></span>
-<span class="text-[#595574] font-medium truncate" id="streamStatusText">Ready when you are. Start by choosing a business and location.</span>
-</div>
-</div>
-<!-- Bootstrap/Apple Hybrid Progress Bar -->
-<div class="w-full bg-[#f0edfa] rounded-full h-2 overflow-hidden">
-<div class="bg-gradient-to-r from-[#6457e9] via-[#67c7d5] to-[#258b7c] h-full transition-all duration-150" id="streamProgressBar" style="width:0%"></div>
-</div>
-</div>
-</div><section class="vf-related-searches" hidden="" id="relatedSearches"><div class="vf-related-top"><h3>Keep exploring</h3><p>Related searches inspired by what you entered.</p></div><div class="vf-related-chips" id="relatedSearchChips"></div></section><section class="vf-lead-empty-state" id="leadEmptyState"><div aria-hidden="true" class="vf-empty-symbol"><div class="vf-empty-orbit vf-empty-orbit-one"></div><div class="vf-empty-orbit vf-empty-orbit-two"></div><svg aria-hidden="true" fill="none" viewbox="0 0 64 64"><circle cx="28" cy="28" r="14" stroke="currentColor" stroke-width="3"></circle><path d="m39 39 13 13" stroke="currentColor" stroke-linecap="round" stroke-width="4"></path><circle cx="28" cy="28" fill="currentColor" r="4"></circle></svg></div><span class="vf-empty-eyebrow">A blank canvas for your next idea</span><h3>Your search starts here.</h3><p>Nothing is preloaded. Tell us which businesses and location interest you, and your sample results will appear here.</p><span class="vf-empty-note">Interactive preview · No live web scraping</span></section>
-<!-- 6-PILLAR TELEMETRY SCORECARDS (BOOTSTRAP BADGES + APPLE BENTO) -->
-<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5" data-results-only="true">
-<div class="hybrid-card p-4">
-<div class="flex items-center justify-between text-xs font-semibold text-[#77718f]">
-<span>Valid Leads</span>
-<span class="px-2 py-0.5 rounded bg-[#ddf3ed] text-[#245d56] text-[10px] font-bold">Active</span>
-</div>
-<div class="mt-1.5 flex items-baseline gap-1.5">
-<span class="text-2xl sm:text-3xl font-extrabold text-[#282440] mono" id="statValidDomains">0</span>
-<span class="text-xs text-[#258b7c] font-bold" id="statTargetGoal">/ 150 target</span>
-</div>
-<p class="mt-1 text-[11px] text-[#77718f]" id="statSerpScanned">No searches yet</p>
-</div>
-<div class="hybrid-card p-4">
-<div class="flex items-center justify-between text-xs font-semibold text-[#77718f]">
-<span>Auto-Refilled</span>
-<span class="px-2 py-0.5 rounded bg-[#fff1d8] text-[#736139] text-[10px] font-bold">Pillar 1</span>
-</div>
-<div class="mt-1.5 flex items-baseline gap-1.5">
-<span class="text-2xl sm:text-3xl font-extrabold text-[#282440] mono" id="statReplenishedCount">0</span>
-<span class="text-xs text-[#77718f]">filtered</span>
-</div>
-<p class="mt-1 text-[11px] text-[#77718f]" id="statReplenishedBreakdown">Not started</p>
-</div>
-<div class="hybrid-card p-4">
-<div class="flex items-center justify-between text-xs font-semibold text-[#77718f]">
-<span>Verified Owners</span>
-<span class="px-2 py-0.5 rounded bg-[#e7e2ff] text-[#51449d] text-[10px] font-bold">Pillar 4</span>
-</div>
-<div class="mt-1.5 flex items-baseline gap-1.5">
-<span class="text-2xl sm:text-3xl font-extrabold text-[#282440] mono" id="statVerifiedOwners">0</span>
-<span class="text-xs text-[#77718f]" id="statUnstatedOwners">(0 unstated)</span>
-</div>
-<p class="mt-1 text-[11px] text-[#77718f]">Role-anchored with proof</p>
-</div>
-<div class="hybrid-card p-4">
-<div class="flex items-center justify-between text-xs font-semibold text-[#77718f]">
-<span>Direct Emails</span>
-<span class="px-2 py-0.5 rounded bg-[#eee6ff] text-[#65439c] text-[10px] font-bold">Pillar 3</span>
-</div>
-<div class="mt-1.5 flex items-baseline gap-1.5">
-<span class="text-2xl sm:text-3xl font-extrabold text-[#282440] mono" id="statDirectEmails">0</span>
-<span class="text-xs text-[#77718f]" id="statGenericEmails">direct · 0 role</span>
-</div>
-<p class="mt-1 text-[11px] text-[#77718f]" id="statDeobfuscatedCount">0 decoded</p>
-</div>
-<div class="hybrid-card p-4">
-<div class="flex items-center justify-between text-xs font-semibold text-[#77718f]">
-<span>Subpages Crawled</span>
-<span class="px-2 py-0.5 rounded bg-[#e9faff] text-[#287784] text-[10px] font-bold">Pillar 2</span>
-</div>
-<div class="mt-1.5 flex items-baseline gap-1.5">
-<span class="text-2xl sm:text-3xl font-extrabold text-[#282440] mono" id="statSubpagesCrawled">0</span>
-<span class="text-xs text-[#77718f]">pages</span>
-</div>
-<p class="mt-1 text-[11px] text-[#77718f]" id="statHydrationParsed">0 JSON-LD · 0 Hydration</p>
-</div>
-<div class="hybrid-card p-4">
-<div class="flex items-center justify-between text-xs font-semibold text-[#77718f]">
-<span>Traps Stripped</span>
-<span class="px-2 py-0.5 rounded bg-[#fbe6ee] text-[#9b4d6b] text-[10px] font-bold">Guardrail</span>
-</div>
-<div class="mt-1.5 flex items-baseline gap-1.5">
-<span class="text-2xl sm:text-3xl font-extrabold text-[#282440] mono" id="statTrapsBlocked">0</span>
-<span class="text-xs text-[#77718f]">blocked</span>
-</div>
-<p class="mt-1 text-[11px] text-[#77718f]" id="statBookingSignals">0 booking tools tagged</p>
-</div>
-</div>
-<!-- FILTER & TOOLBAR WITH PROMINENT EXTRACT CSV ACTION -->
-<div class="hybrid-card p-3.5 sm:px-5 flex flex-col lg:flex-row lg:items-center justify-between gap-3" data-results-only="true">
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap items-center gap-2.5 flex-1">
-<div class="relative sm:col-span-2 lg:w-64">
-<input class="bs-apple-input w-full pl-8 pr-3 py-1.5 text-xs font-medium" id="leadFilterInput" placeholder="Filter leads, owners, emails, tech..." type="text"/>
-<svg class="w-3.5 h-3.5 text-[#77718f] absolute left-2.5 top-2" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</div>
-<select class="bs-apple-input px-3 py-1.5 text-xs font-semibold" id="ownerFilterSelect">
-<option value="all">All Owners</option>
-<option value="verified">Verified Owner Named</option>
-<option value="unstated">Unstated (Honesty Guardrail)</option>
-<option value="privacy">Found via /privacy-policy</option>
-</select>
-<select class="bs-apple-input px-3 py-1.5 text-xs font-semibold" id="emailTierFilterSelect">
-<option value="all">All Email Tiers</option>
-<option value="Direct">Direct / Personal Email</option>
-<option value="Generic">Generic / Role Email</option>
-<option value="deobfuscated">De-Obfuscated Only</option>
-</select>
-<select class="bs-apple-input px-3 py-1.5 text-xs font-semibold" id="techFilterSelect">
-<option value="all">All Booking Platforms</option>
-<option value="Boulevard">Boulevard</option>
-<option value="Vagaro">Vagaro</option>
-<option value="Square Appointments">Square Appointments</option>
-<option value="Acuity Scheduling">Acuity Scheduling</option>
-<option value="Mindbody">Mindbody</option>
-<option value="Calendly">Calendly</option>
-<option value="GlossGenius">GlossGenius</option>
-<option value="ServiceTitan">ServiceTitan</option>
-<option value="JaneApp">JaneApp</option>
-<option value="NexHealth">NexHealth</option>
-</select>
-</div>
-<div class="flex flex-wrap items-center justify-between sm:justify-end gap-2.5 pt-2 lg:pt-0 border-t lg:border-t-0 border-[#e4e0ee]">
-<span class="text-xs font-semibold text-[#77718f]" id="visibleLeadsCountLabel">Ready for your first search</span>
-<div class="inline-flex rounded-xl bg-[#f0edfa] p-0.5 border border-[#e4e0ee]">
-<button class="px-3 py-1 rounded-lg text-xs font-bold bg-white text-[#6457e9] shadow-sm transition" id="btnViewCards" type="button">Cards</button>
-<button class="px-3 py-1 rounded-lg text-xs font-semibold text-[#595574] hover:text-[#282440] transition" id="btnViewTable" type="button">CRM Table</button>
-</div>
-<button class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#faf9ff] hover:bg-[#f0edfa] text-[#6457e9] border border-[#d6d0e7] transition" id="btnPreviewCsvModal" type="button">
-            Inspect 14-Col CSV
-          </button>
-<button class="btn-hybrid-csv px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5" id="btnExtractCsvToolbar" type="button">
-<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" viewbox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span>Extract CSV</span>
-</button>
-</div>
-</div>
-<!-- STREAMING BUSINESS LEAD CARDS GRID -->
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5" data-results-only="true" id="leadsCardGrid"></div>
-<!-- COMPACT 14-COLUMN CRM TABLE VIEW (TOGGLED) -->
-<div class="hidden hybrid-card overflow-hidden" data-results-only="true" id="leadsTableContainer">
-<div class="overflow-x-auto max-h-[720px]">
-<table class="w-full text-left border-collapse text-xs">
-<thead class="bg-[#faf9ff] sticky top-0 z-10 border-b border-[#e4e0ee] text-[#595574] uppercase font-bold text-[10px] tracking-wider">
-<tr>
-<th class="py-3.5 px-4">#</th>
-<th class="py-3.5 px-4">Business &amp; Domain</th>
-<th class="py-3.5 px-4">Owner Full Name</th>
-<th class="py-3.5 px-4">First / Last</th>
-<th class="py-3.5 px-4">Verified Role</th>
-<th class="py-3.5 px-4">Primary Email &amp; Tier</th>
-<th class="py-3.5 px-4">Phone (E.164)</th>
-<th class="py-3.5 px-4">Verbatim Proof (10-20w)</th>
-<th class="py-3.5 px-4">Tech &amp; Proof</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-[#f0edfa] bg-white" id="leadsTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-<!-- ===================================================================== -->
-<!-- VIEW 2: SERP FILTER & AUTO-REPLENISH TELEMETRY LOG (PILLAR 1)         -->
-<!-- ===================================================================== -->
-<section class="hidden space-y-5" id="viewQueueLog">
-<div class="hybrid-card p-5 sm:p-6">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 pb-4 border-b border-[#e4e0ee]">
-<div>
-<h2 class="text-lg font-bold text-[#282440]">SERP Pre-Scrape Filter &amp; Queue Replenishment Log</h2>
-<p class="text-xs sm:text-sm text-[#77718f] mt-0.5">
-              Directories, duplicate subpages, 404/500 errors, parked domains, and saved leads are automatically skipped and refilled from the organic search pool.
-            </p>
-</div>
-<select class="bs-apple-input px-3.5 py-2 text-xs font-semibold self-start sm:self-auto" id="serpLogFilterSelect">
-<option value="all">All SERP Candidates</option>
-<option value="BLOCKED_DIRECTORY">Blocked Directories &amp; Marketplaces</option>
-<option value="DUPLICATE_ROOT">Deduplicated Root Domains</option>
-<option value="HTTP_ERROR_OR_PARKED">404 / 500 / Timeout / Parked</option>
-<option value="SKIPPED_SAVED">Skipped (Saved in Vault)</option>
-<option value="ACCEPTED">Accepted Local Businesses</option>
-</select>
-</div>
-<div class="overflow-x-auto max-h-[640px] rounded-xl border border-[#e4e0ee]">
-<table class="w-full text-left border-collapse text-xs">
-<thead class="bg-[#faf9ff] sticky top-0 border-b border-[#e4e0ee] text-[#595574] font-bold text-[10px] uppercase tracking-wider">
-<tr>
-<th class="py-3 px-4">Rank</th>
-<th class="py-3 px-4">Candidate URL</th>
-<th class="py-3 px-4">Root Domain</th>
-<th class="py-3 px-4">Gate Decision</th>
-<th class="py-3 px-4">Replenishment Action</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-[#f0edfa] bg-white font-mono text-[11px]" id="serpQueueTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-<!-- ===================================================================== -->
-<!-- VIEW 3: LIVE HTML DE-OBFUSCATOR, HYDRATION & PARSER LAB               -->
-<!-- ===================================================================== -->
-<section class="hidden space-y-5" id="viewLiveInspector">
-<div class="hybrid-card p-5 sm:p-6">
-<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-5 pb-4 border-b border-[#e4e0ee]">
-<div>
-<h2 class="text-lg font-bold text-[#282440]">Live HTML De-Obfuscation &amp; Zero-Guessing Parser Lab</h2>
-<p class="text-xs sm:text-sm text-[#77718f] mt-0.5">
-              Test LeadExtract Me Pro's engine on Cloudflare <code class="text-[#6457e9] font-mono">data-cfemail</code> hex strings, HTML entities, Wix/Next.js JSON state, <code class="text-[#6457e9] font-mono">/privacy-policy</code> LLC footprints, and false-positive traps.
-            </p>
-</div>
-<div class="flex flex-wrap items-center gap-2">
-<button class="sample-html-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#faf9ff] hover:bg-[#f0edfa] text-[#282440] border border-[#d6d0e7] transition" data-sample="cfemail_wix" type="button">
-              1. Cloudflare Hex + Wix Warmup JSON
-            </button>
-<button class="sample-html-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#faf9ff] hover:bg-[#f0edfa] text-[#282440] border border-[#d6d0e7] transition" data-sample="privacy_llc" type="button">
-              2. /privacy-policy LLC + Entity Email
-            </button>
-<button class="sample-html-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#faf9ff] hover:bg-[#f0edfa] text-[#282440] border border-[#d6d0e7] transition" data-sample="staff_only" type="button">
-              3. Staff-Only Page (Zero-Guessing Test)
-            </button>
-<button class="sample-html-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#faf9ff] hover:bg-[#f0edfa] text-[#282440] border border-[#d6d0e7] transition" data-sample="jsonld_traps" type="button">
-              4. JSON-LD + Sentry/@2x.png Trap Torture
-            </button>
-</div>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-<div class="space-y-3">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-<label class="text-xs font-bold text-[#595574] uppercase tracking-wider" for="rawHtmlTestInput">Raw Subpage HTML &amp; Hydration Input</label>
-<input class="bs-apple-input w-full sm:w-64 px-3 py-1 text-xs font-mono text-[#6457e9]" id="rawHtmlSourceUrl" type="text" value="https://atxbotanicalsalon.com/our-story"/>
-</div>
-<textarea class="bs-apple-input w-full p-4 text-xs font-mono text-[#282440] leading-relaxed" id="rawHtmlTestInput" rows="15"></textarea>
-<button class="btn-hybrid-primary w-full py-3 px-5 rounded-xl font-bold text-xs tracking-wide uppercase" id="btnExecuteLiveParse" type="button">
-              Run Proprietor Extraction &amp; Anti-Obfuscation Pipeline
-            </button>
-</div>
-<div class="rounded-2xl bg-[#faf9ff] border border-[#e4e0ee] p-5 space-y-4 overflow-y-auto max-h-[520px]" id="liveParseOutputPanel"></div>
-</div>
-</div>
-</section>
-<!-- ===================================================================== -->
-<!-- VIEW 4: 6-PILLAR ARCHITECTURE & STRICT BLOCKLIST MANAGER              -->
-<!-- ===================================================================== -->
-<section class="hidden space-y-5" id="viewArchitecture">
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-<div class="hybrid-card p-6 space-y-4">
-<div>
-<span class="text-[11px] font-bold px-2.5 py-0.5 rounded-md bg-[#fbe6ee] text-[#9b4d6b]">Pillar 1 &amp; 3 Guardrails</span>
-<h3 class="text-base font-bold text-[#282440] mt-2">Aggregator &amp; Directory Blocklist</h3>
-<p class="text-xs text-[#77718f] mt-1">Filtered out before scraping and automatically replenished from organic results.</p>
-</div>
-<div class="flex gap-2">
-<input class="bs-apple-input flex-1 px-3.5 py-1.5 text-xs" id="customBlockDomainInput" placeholder="Add domain (e.g. groupon.com)..." type="text"/>
-<button class="btn-hybrid-primary px-4 py-1.5 rounded-xl font-bold text-xs" id="btnAddBlockDomain" type="button">Add</button>
-</div>
-<div class="flex flex-wrap gap-1.5 max-h-72 overflow-y-auto pt-1" id="blocklistPillsContainer"></div>
-</div>
-<div class="hybrid-card p-6 space-y-3">
-<span class="text-[11px] font-bold px-2.5 py-0.5 rounded-md bg-[#eee6ff] text-[#65439c]">Pillar 2 Priority Router</span>
-<h3 class="text-base font-bold text-[#282440]">Deep Subpage Discovery (Max 5/Domain)</h3>
-<p class="text-xs text-[#77718f]">Internal navigation, header, and footer links are crawled in priority order:</p>
-<div class="space-y-2.5 text-xs">
-<div class="p-3.5 rounded-xl bg-[#faf9ff] border border-[#f0edfa]">
-<div class="font-bold text-[#245d56] mb-1">Tier 1 — Team, Founders &amp; Leadership</div>
-<p class="font-mono text-[11px] text-[#595574] leading-relaxed">/about-us, /our-story, /team, /our-team, /staff, /meet-the-team, /stylists, /doctors, /providers, /founders, /leadership, /bio</p>
-</div>
-<div class="p-3.5 rounded-xl bg-[#faf9ff] border border-[#f0edfa]">
-<div class="font-bold text-[#6457e9] mb-1">Tier 2 — Contact &amp; Direct Locations</div>
-<p class="font-mono text-[11px] text-[#595574] leading-relaxed">/contact-us, /connect, /locations, /book</p>
-</div>
-<div class="p-3.5 rounded-xl bg-[#faf9ff] border border-[#f0edfa]">
-<div class="font-bold text-[#736139] mb-1">Tier 3 — Legal &amp; Ownership Footprints</div>
-<p class="font-mono text-[11px] text-[#595574] leading-relaxed">/privacy-policy, /terms-of-service, /impressum (LLC &amp; compliance emails)</p>
-</div>
-</div>
-</div>
-<div class="hybrid-card p-6 space-y-3">
-<span class="text-[11px] font-bold px-2.5 py-0.5 rounded-md bg-[#ddf3ed] text-[#245d56]">Pillar 4 Zero-Guessing Rules</span>
-<h3 class="text-base font-bold text-[#282440]">Explicit Role Anchoring &amp; Contact Tiers</h3>
-<p class="text-xs text-[#77718f]">Decision-makers are extracted only when paired in proximity with a verified principal title:</p>
-<div class="p-3.5 rounded-xl bg-[#faf9ff] border border-[#f0edfa] font-mono text-[11px] text-[#282440] leading-relaxed">
-            Owner · Co-Owner · Founder · Co-Founder · Principal · Managing Partner · President · CEO · Master Stylist &amp; Owner · Practice Owner · Lead DDS / MD / DC
-          </div>
-<div class="p-3.5 rounded-xl bg-[#fff1d8]/70 border border-[#ffdfb3] text-xs space-y-1">
-<div class="font-bold text-[#736139]">Staff vs. Owner Separation Guardrail</div>
-<p class="text-[#595574] text-[11px]">Testimonials, blog authors, and general staff without ownership titles are never guessed. Ambiguous sites report <code class="font-mono text-[#736139]">"Not explicitly named on site"</code>.</p>
-</div>
-</div>
-</div>
-</section>
-</main></div><footer class="site-footer relative px-4 pb-12 pt-8"><div class="footer-luxe mx-auto max-w-5xl rounded-[2rem] p-8 text-center">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-086Y2TSZTM');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LeadExtract","url":"https://veefivee.com/leadextract.html","description":"Browser-based research of public business listings and website contacts with source attribution and CSV export. Requires internet access for live sources; availability and coverage vary.","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","isAccessibleForFree":true,"creator":{"@type":"Organization","name":"veefivee","url":"https://veefivee.com/"}}</script>
+</head><body class="vf-lead-body"><nav class="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4"><div class="flex max-w-full items-center gap-0.5 rounded-full border border-foreground/10 px-2 py-2 shadow-lg transition-all duration-500 sm:gap-1 sm:px-4 bg-background/40 backdrop-blur-xl" data-nav-pill=""><a aria-label="veefivee home" class="liquid-hover hidden rounded-full px-2 py-1 text-sm font-semibold tracking-tight md:block" href="index.html"><img alt="🌴" class="android-palm" decoding="async" height="26" src="assets/android-palm.png" width="26"/> veefivee</a><div class="mx-1 hidden h-4 w-px bg-foreground/15 md:block"></div><a aria-label="veefivee home" class="vf-mobile-brand liquid-hover rounded-full text-sm font-semibold tracking-tight" href="index.html"><img alt="🌴" class="android-palm" decoding="async" height="26" src="assets/android-palm.png" width="26"/><span>veefivee</span></a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="index.html">Home</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="about.html">About</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="industries.html">Industries</a><a class="liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="services.html">Services</a><a class="vf-nav-products liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="products.html">Products</a><a class="vf-nav-blog liquid-hover rounded-full px-2 py-1.5 text-[0.7rem] font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-3 sm:text-sm" href="blog.html">Blog</a><a aria-label="Free consultation with veefivee" class="vf-nav-consultation liquid-hover rounded-full bg-primary px-2.5 py-1.5 text-[0.7rem] font-semibold text-primary-foreground transition-transform duration-300 hover:scale-105 sm:px-3 sm:text-sm" href="free-consultation.html"><span class="vf-nav-contact-desktop">Free Consultation</span><span class="vf-nav-contact-mobile">Free Consultation</span></a></div></nav><div class="relative min-h-screen vf-site-shell"><header class="le-hero">
+  <span class="le-kicker">✳ The veefivee toolkit · Public business contacts</span>
+  <h1>Discover the people<br><span class="le-gradient">behind the business.</span></h1>
+  <p>Find real business listings, read their public websites, and collect the names, phone numbers and email addresses they publish.</p>
+</header>
+<main class="le-shell" id="leadextract">
+  <section class="le-panel" aria-labelledby="le-search-title">
+    <div class="le-tabs" role="tablist" aria-label="Choose a contact source">
+      <button type="button" class="le-tab" role="tab" id="tab-discover" aria-selected="true" aria-controls="panel-discover" data-mode="discover">Find businesses</button>
+      <button type="button" class="le-tab" role="tab" id="tab-websites" aria-selected="false" aria-controls="panel-websites" tabindex="-1" data-mode="websites">Website URLs</button>
+      <button type="button" class="le-tab" role="tab" id="tab-paste" aria-selected="false" aria-controls="panel-paste" tabindex="-1" data-mode="paste">Paste a page</button>
+    </div>
+    <form id="leadSearchForm">
+      <div id="panel-discover" role="tabpanel" aria-labelledby="tab-discover">
+        <h2 id="le-search-title">Start with a business and a place.</h2>
+        <p class="le-help">Search OpenStreetMap listings, then check the businesses' websites for published contacts and team members. Coverage varies by location.</p>
+        <div class="le-grid">
+          <div class="le-field"><label for="businessCategory">Business type</label><select id="businessCategory"><option value="hairdressers">Hair salons &amp; barbers</option><option value="dentists">Dentists</option><option value="restaurants">Restaurants</option><option value="cafes">Cafés</option><option value="real_estate">Real estate agents</option><option value="lawyers">Lawyers</option><option value="accountants">Accountants</option><option value="car_repair">Car repair</option><option value="hotels">Hotels</option><option value="shops">Shops</option></select></div>
+          <div class="le-field"><label for="businessCity">City or town</label><input id="businessCity" placeholder="e.g. Austin" maxlength="80" autocomplete="address-level2"></div>
+          <div class="le-field"><label for="businessRegion">State, region or country</label><input id="businessRegion" placeholder="e.g. Texas (full name)" maxlength="80" autocomplete="address-level1"></div>
+        </div>
+      </div>
+      <div id="panel-websites" role="tabpanel" aria-labelledby="tab-websites" hidden>
+        <h2>Already have their websites?</h2>
+        <p class="le-help">Add up to 10 public business URLs, one per line. We read each page and follow relevant contact, about and team links on the same website.</p>
+        <div class="le-field"><label for="websiteUrls">Business website URLs</label><textarea id="websiteUrls" rows="4" placeholder="https://business-website.com&#10;https://another-business.com/team" spellcheck="false"></textarea></div>
+      </div>
+      <div id="panel-paste" role="tabpanel" aria-labelledby="tab-paste" hidden>
+        <h2>Extract from a page you can open.</h2>
+        <p class="le-help">If a website blocks automated reading, paste its public page text or HTML here. This mode processes the pasted content in your browser.</p>
+        <div class="le-field"><label for="pasteSource">Original page URL</label><input id="pasteSource" type="url" placeholder="https://business-website.com/team"></div>
+        <div class="le-field" style="margin-top:15px"><label for="pasteContent">Page text or HTML</label><textarea id="pasteContent" rows="6" placeholder="Paste the public contact or team page here…" spellcheck="false" maxlength="1000000"></textarea></div>
+      </div>
+      <div class="le-settings">
+        <div class="le-field" id="resultLimitField"><label for="resultLimit">Business limit</label><select id="resultLimit"><option value="5" selected>Up to 5</option><option value="10">Up to 10</option><option value="20">Up to 20</option></select></div>
+        <div class="le-field" id="pageLimitField"><label for="pageLimit">Pages per website</label><select id="pageLimit"><option value="1">Starting page only</option><option value="3" selected>Up to 3 pages</option></select></div>
+        <div class="le-actions"><button class="le-button le-button-primary" type="submit" id="runSearch">Find public contacts ↗</button><button class="le-button" type="button" id="stopSearch" hidden>Stop</button></div>
+      </div>
+    </form>
+    <p class="le-notice">No API keys or installation needed. Website reading uses <a href="https://jina.ai/reader/" target="_blank" rel="noopener noreferrer">Jina Reader</a>; business search uses <a href="https://wiki.openstreetmap.org/wiki/Overpass_API" target="_blank" rel="noopener noreferrer">OpenStreetMap / Overpass</a>. Searches and requested URLs are sent to those services. Availability and rate limits apply. Only publicly listed details can be returned; personal contact details are never guessed.</p>
+    <noscript><p class="le-notice">Please enable JavaScript to use contact extraction. No desktop software is required.</p></noscript>
+  </section>
+  <div id="searchStatus" class="le-status" role="status" aria-live="polite" aria-atomic="true" hidden><span id="statusText"></span><progress id="searchProgress" max="1" value="0" aria-label="Businesses processed" hidden></progress></div>
+  <section aria-labelledby="resultsHeading">
+    <div class="le-toolbar">
+      <div><h2 class="le-results-title" id="resultsHeading">Your research</h2><p class="le-count" id="resultCount">No businesses researched yet</p></div>
+      <div class="le-toolbar-controls">
+        <label class="sr-only" for="resultFilter">Filter businesses and people</label><input class="le-filter" id="resultFilter" type="search" placeholder="Filter names or businesses…">
+        <label class="le-check"><input type="checkbox" id="savedOnly">Saved only</label>
+        <button type="button" class="le-button le-button-export" id="exportCsv" disabled>Export CSV ↓</button>
+      </div>
+    </div>
+    <div id="businessResults" class="le-results"><div class="le-empty"><h3>A useful connection starts here.</h3><p>Search a place, add business websites, or paste a public page.<br>Your results will include the source for each published contact.</p></div></div>
+  </section>
+  <details class="le-log" id="researchLog"><summary>Pages checked &amp; search activity</summary><ol id="logEntries"></ol></details>
+  <p class="le-attribution">Business listings: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>, available under the ODbL. Website contact details are attributed to their original pages. “Found” means published in a source; it does not verify current employment, phone ownership or email deliverability. Saved results stay in this browser.</p>
+</main><footer class="site-footer relative px-4 pb-12 pt-8"><div class="footer-luxe mx-auto max-w-5xl rounded-[2rem] p-8 text-center">
 <a class="footer-brand" href="index.html"><img alt="🌴" class="android-palm" decoding="async" height="26" src="assets/android-palm.png" width="26"/> veefivee<span class="footer-brand-dot">.</span></a>
 <p class="footer-tagline">The curious minds behind the next big thing.</p>
 <div class="footer-links"><a href="index.html">Home</a><a href="about.html">Our story</a><a href="industries.html">Industries</a><a href="services.html">Services</a><a href="products.html">Products</a><a href="blog.html">Blog</a><a href="tools.html">Try Tools</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a></div>
 <div class="footer-socials"><a aria-label="Instagram @fahadkingx7" href="https://www.instagram.com/fahadkingx7/" rel="noopener noreferrer" target="_blank">Instagram · @fahadkingx7 ↗</a><a aria-label="Chat on WhatsApp" href="https://wa.me/923254891223" rel="noopener noreferrer" target="_blank">WhatsApp ↗</a><a href="mailto:info@veefivee.com">Email ↗</a></div>
-<div class="footer-fine"><span>© <span id="year">2026</span> veefivee. All rights reserved.</span><span>Made with curiosity and a little magic. <strong><img alt="🌴" class="android-palm" decoding="async" height="26" src="assets/android-palm.png" width="26"/> veefivee</strong></span></div></div></footer></div><div class="fixed inset-0 z-50 hidden bg-black/40 backdrop-blur-sm flex items-end sm:items-center justify-center p-2 sm:p-4" id="provenanceModal">
-<div class="bg-white border border-[#e4e0ee] rounded-t-2xl sm:rounded-2xl max-w-3xl w-full max-h-[88vh] overflow-y-auto shadow-2xl p-5 sm:p-6 space-y-4">
-<div class="flex items-start justify-between gap-3 border-b border-[#e4e0ee] pb-3.5">
-<div>
-<span class="text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-[#ddf3ed] text-[#245d56]">Verifiable Provenance &amp; DOM Trace</span>
-<h3 class="text-lg font-bold text-[#282440] mt-1" id="modalBizName">Business Name</h3>
-<p class="text-xs font-mono text-[#77718f]" id="modalBizDomain"></p>
-</div>
-<button class="p-2 rounded-xl bg-[#faf9ff] hover:bg-[#f0edfa] text-[#595574] border border-[#e4e0ee]" id="btnCloseProvenanceModal" type="button">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-<div class="space-y-4 text-xs" id="modalProvenanceBody"></div>
-</div>
-</div><div class="fixed inset-0 z-50 hidden bg-black/40 backdrop-blur-sm flex items-end sm:items-center justify-center p-2 sm:p-4" id="csvPreviewModal">
-<div class="bg-white border border-[#e4e0ee] rounded-t-2xl sm:rounded-2xl max-w-5xl w-full max-h-[88vh] flex flex-col shadow-2xl p-5 sm:p-6 space-y-4">
-<div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#e4e0ee] pb-3.5">
-<div>
-<span class="text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-[#e7e2ff] text-[#51449d]">Pillar 6 — Split-Field CRM Export</span>
-<h3 class="text-lg font-bold text-[#282440] mt-1">14-Column Outreach-Ready CRM CSV</h3>
-<p class="text-xs text-[#77718f]">Pre-split First/Last Name, Verified Role, Email Tier, E.164 Phone, Source URL &amp; Verbatim Evidence Snippet.</p>
-</div>
-<div class="flex items-center gap-2">
-<button class="px-3.5 py-1.5 rounded-xl bg-[#faf9ff] hover:bg-[#f0edfa] text-[#282440] border border-[#d6d0e7] text-xs font-semibold" id="btnCopyCsvClipboard" type="button">
-            Copy Raw CSV
-          </button>
-<button class="btn-hybrid-csv px-4 py-1.5 rounded-xl text-xs font-bold" id="btnDownloadCsvModal" type="button">
-            Download .CSV File
-          </button>
-<button class="p-2 rounded-xl bg-[#faf9ff] hover:bg-[#f0edfa] text-[#595574] border border-[#e4e0ee]" id="btnCloseCsvModal" type="button">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-<textarea class="w-full flex-1 min-h-[340px] rounded-xl bg-[#faf9ff] border border-[#e4e0ee] p-4 font-mono text-[11px] text-[#282440] outline-none" id="csvRawPreviewTextarea" readonly=""></textarea>
-</div>
-</div><div class="fixed inset-0 z-50 hidden bg-black/40 backdrop-blur-sm flex items-end sm:items-center justify-center p-2 sm:p-4" id="savedVaultModal">
-<div class="bg-white border border-[#e4e0ee] rounded-t-2xl sm:rounded-2xl max-w-2xl w-full max-h-[82vh] flex flex-col shadow-2xl p-5 sm:p-6 space-y-4">
-<div class="flex items-center justify-between border-b border-[#e4e0ee] pb-3.5">
-<div>
-<span class="text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-[#ddf3ed] text-[#245d56]">Cross-Session Deduplication Vault</span>
-<h3 class="text-lg font-bold text-[#282440] mt-1">Saved Business Domains</h3>
-<p class="text-xs text-[#77718f]">Saved domains are automatically skipped and replenished on repeat searches.</p>
-</div>
-<button class="p-2 rounded-xl bg-[#faf9ff] hover:bg-[#f0edfa] text-[#595574] border border-[#e4e0ee]" id="btnCloseSavedVault" type="button">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-<div class="flex-1 overflow-y-auto space-y-2 text-xs pr-1" id="savedVaultList"></div>
-<div class="flex items-center justify-between pt-3 border-t border-[#e4e0ee]">
-<button class="px-4 py-1.5 rounded-xl bg-[#fbe6ee] hover:bg-[#f3c1d2] text-[#9b4d6b] text-xs font-bold transition" id="btnClearSavedVault" type="button">
-          Clear Saved Vault
-        </button>
-<button class="btn-hybrid-primary px-5 py-1.5 rounded-xl text-xs font-bold" id="btnCloseSavedVaultFooter" type="button">
-          Done
-        </button>
-</div>
-</div>
-</div><div class="fixed bottom-5 right-5 z-50 pointer-events-none flex flex-col gap-2" id="toastContainer"></div><script defer="True" src="js/leadextract.js?v=23"></script><script defer="" src="js/leadextract-experience.js"></script><script defer="True" src="js/main.js?v=20261023"></script><noscript>The LeadExtract interactive demo needs JavaScript to run.</noscript></body></html>
+<div class="footer-fine"><span>© <span id="year">2026</span> veefivee. All rights reserved.</span><span>Made with curiosity and a little magic. <strong><img alt="🌴" class="android-palm" decoding="async" height="26" src="assets/android-palm.png" width="26"/> veefivee</strong></span></div></div></footer></div><script defer src="js/leadextract-parser.js?v=20261024"></script><script defer src="js/leadextract-sources.js?v=20261024"></script><script defer src="js/leadextract.js?v=20261024"></script><script defer src="js/main.js?v=20261023"></script></body></html>
