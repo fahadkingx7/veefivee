@@ -104,7 +104,7 @@ This file reflects information on the public site and should not be taken as a g
 - [Freelancers & first-time founders](https://veefivee.com/industries/freelancers-first-time-founders.html): Practical startup advice, freelancer portfolios, simple websites, branding and MVP support for founders in the USA, UK, Pakistan and worldwide.
 
 
-## LeadExtract public business contacts
-At https://veefivee.com/leadextract.html visitors can search bounded public OpenStreetMap business listings, supply business website URLs, or paste public page content. Jina Reader retrieves public website pages without a user API key or installation. The browser extracts explicitly published people, roles, phone numbers and email addresses, keeps source links, and exports CSV. Company contacts are separate from person-specific contacts; unpublished details stay blank and are not guessed. Availability, source coverage and rate limits apply. Saved results remain in browser storage.
+## LeadExtract Me Pro interactive demo
+At https://veefivee.com/leadextract.html visitors can explore local business research and contact parsing examples with simulated USA business profiles. This demo generates fictional data locally and does not query search engines or scrape live websites. It includes filters, a saved vault, parser lab, and CSV export of sample data.
 
-- [Try Tools](https://veefivee.com/tools.html): Veefivee's public tools directory with LeadExtract public contact research, a live IP checker and CSV/Excel to VCF converter.
+- [Try Tools](https://veefivee.com/tools.html): Veefivee's public tools directory with LeadExtract interactive sample research and CSV/Excel to VCF converter.
