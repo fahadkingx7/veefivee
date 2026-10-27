@@ -24,32 +24,45 @@
 <link rel="stylesheet" href="../css/blog-nav.css?v=20261023-smooth2">
 
 <style>
-/* Scoped welcome-only content layout; website navigation and footer unchanged. */
-/* Give the installation headline a little more breathing room without changing the rest of the site. */
-.dl-hero #welcome-title{font-size:clamp(44px,6.25vw,83px);line-height:1.13;letter-spacing:-.038em;font-weight:830;max-width:1100px;margin-left:auto;margin-right:auto;text-wrap:balance}
-.dl-hero #welcome-title em{display:inline-block;line-height:1.14;letter-spacing:-.035em;padding-inline:.055em;padding-bottom:.075em;font-style:normal}
-@media(max-width:600px){.dl-hero #welcome-title{font-size:clamp(39px,10.2vw,62px);line-height:1.13;letter-spacing:-.032em}.dl-hero #welcome-title em{line-height:1.15;letter-spacing:-.025em}}
 
-.welcome-guide{scroll-margin-top:112px;padding:64px 0 35px}
-.welcome-guide-heading{text-align:center;max-width:730px;margin:0 auto 46px}
-.welcome-guide-heading h2{font-size:clamp(32px,4.9vw,55px);line-height:1.12;letter-spacing:-.06em;font-weight:850;color:#2c2648;margin:14px 0 16px}
-.welcome-guide-heading h2 span{background:linear-gradient(106deg,#6954d7,#a963c9 52%,#6487dd);-webkit-background-clip:text;background-clip:text;color:transparent}
-.welcome-guide-heading p{font-size:clamp(14px,1.55vw,17px);line-height:1.8;color:#777087;margin:0 auto;max-width:580px}
-.welcome-guide-list{display:grid;gap:20px;max-width:1000px;margin:0 auto}
-.welcome-guide-item{display:grid;grid-template-columns:88px minmax(0,1fr) 205px;gap:25px;align-items:center;padding:35px 38px;border:1px solid rgba(255,255,255,.96);border-radius:30px;background:linear-gradient(120deg,rgba(255,255,255,.94),rgba(252,250,255,.81));box-shadow:0 18px 52px rgba(87,73,155,.075)}
-.welcome-guide-number{align-self:start;display:grid;place-items:center;width:73px;height:73px;border-radius:23px;background:#f1ecff;color:#7961d3;font-size:24px;font-weight:850;letter-spacing:-.07em}
-.welcome-guide-item h3{font-size:clamp(23px,2.6vw,31px);font-weight:810;line-height:1.2;letter-spacing:-.05em;color:#29243f;margin:0 0 13px}
-.welcome-guide-item p{color:#756f86;font-size:15px;line-height:1.76;margin:0;max-width:580px}
-.welcome-guide-item strong{color:#443958;font-weight:760}
-.welcome-guide-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:152px;padding:18px;border:1px solid rgba(205,192,244,.45);border-radius:24px;background:linear-gradient(145deg,#f0edff,#e8f2ff 80%);color:#6958aa;text-align:center}
-.welcome-guide-symbol{display:grid;place-items:center;width:70px;height:70px;border:1px solid #ffffffc9;border-radius:21px;background:#ffffffb7;box-shadow:0 10px 27px #7f70be18;font-size:31px;line-height:1}
-.welcome-guide-visual small{font-size:11px;font-weight:790;letter-spacing:.04em}
-.welcome-guide-item:nth-child(2) .welcome-guide-visual{background:linear-gradient(145deg,#f4eaff,#f1ecff)}
-.welcome-guide-item:nth-child(3) .welcome-guide-visual{background:linear-gradient(145deg,#e8f9f4,#ecf5ff)}
-.welcome-guide-help{max-width:1000px;margin:30px auto 0}
-@media(max-width:760px){.welcome-guide{padding-top:38px}.welcome-guide-heading{margin-bottom:26px}.welcome-guide-item{grid-template-columns:62px minmax(0,1fr);gap:16px;padding:24px 20px;border-radius:24px}.welcome-guide-number{width:56px;height:56px;border-radius:17px;font-size:20px}.welcome-guide-visual{grid-column:1/-1;min-height:100px;flex-direction:row;gap:18px}.welcome-guide-symbol{width:56px;height:56px;border-radius:17px;font-size:25px}.welcome-guide-item p{font-size:14px}.welcome-guide-item h3{font-size:24px}.welcome-guide-heading h2{font-size:clamp(32px,8vw,45px)}}
-@media(prefers-reduced-motion:reduce){.welcome-guide *{scroll-behavior:auto!important}}
-
+/* Welcome refresh: consistent with veefivee's modern Inter typography. */
+.vf-login-welcome .dl-wrap{max-width:1100px}
+.vf-login-welcome .dl-page{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-top:125px}
+.vf-login-welcome .dl-hero{max-width:810px;margin:auto;padding:17px 0 48px;text-align:center}
+.vf-login-welcome .welcome-icon{position:relative;width:74px;height:74px;display:grid;place-items:center;background:#ffffffd9;border:1px solid white;border-radius:23px;box-shadow:0 15px 42px #7568bb24;margin:0 auto 23px}
+.vf-login-welcome .welcome-icon img{width:57px;height:57px;object-fit:contain}
+.vf-login-welcome .welcome-icon:after{content:"✓";position:absolute;right:-8px;bottom:-7px;display:grid;place-items:center;width:26px;height:26px;background:#e1f9ea;border:2px solid white;border-radius:50%;font-size:15px;font-weight:800;color:#149367}
+.vf-login-welcome .welcome-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border:1px solid #ebe5f8;background:#ffffffc9;color:#725cbc;border-radius:999px;font-size:11px;font-weight:780;letter-spacing:.1em;text-transform:uppercase;margin-bottom:17px}
+.vf-login-welcome .welcome-eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:#27b98b;box-shadow:0 0 0 4px #27b98b1a}
+.vf-login-welcome .dl-hero #welcome-title{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:850px;margin:0 auto 18px;font-size:clamp(37px,5vw,64px);font-weight:800;letter-spacing:-.058em;line-height:1.15;color:#29243f;text-wrap:balance}
+.vf-login-welcome .dl-hero #welcome-title em{display:inline;font:inherit;letter-spacing:inherit;line-height:inherit;background:linear-gradient(110deg,#6858d6,#af68bd 55%,#638cdd);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;padding:0}
+.vf-login-welcome .dl-hero .dl-lead{font-size:clamp(14px,1.4vw,16px);font-weight:400;line-height:1.8;color:#746e84;max-width:590px;margin:0 auto}
+.vf-login-welcome .dl-install-actions{margin:23px 0 0}
+.vf-login-welcome .dl-button{font-size:15px;font-weight:720;gap:20px;padding:17px 28px;box-shadow:0 12px 30px #7963d835}
+.vf-login-welcome .welcome-guide{padding:34px 0 22px;scroll-margin-top:114px;border-top:1px solid #e8e4f3a1}
+.vf-login-welcome .welcome-guide-heading{margin:0 auto 29px;max-width:680px;text-align:center}
+.vf-login-welcome .welcome-guide-heading h2{font-size:clamp(30px,3.8vw,45px);line-height:1.18;font-weight:790;letter-spacing:-.052em;color:#2d2744;margin:12px 0}
+.vf-login-welcome .welcome-guide-heading h2 span{background:linear-gradient(110deg,#6e56d0,#aa65c5);background-clip:text;-webkit-background-clip:text;color:transparent}
+.vf-login-welcome .welcome-guide-heading p{max-width:520px;margin:auto;font-size:14px;line-height:1.76;color:#777187}
+.vf-login-welcome .welcome-guide-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.vf-login-welcome .welcome-guide-item{display:flex;flex-direction:column;align-items:flex-start;gap:0;min-width:0;border:1px solid #fff;background:linear-gradient(145deg,#fffffff0,#fcfaffdb);border-radius:25px;padding:28px 24px;box-shadow:0 15px 48px #6555a00d}
+.vf-login-welcome .welcome-guide-number{width:42px;height:42px;display:grid;place-items:center;margin-bottom:21px;border-radius:14px;background:#eeeaff;color:#755cca;font-size:13px;font-weight:780;letter-spacing:0}
+.vf-login-welcome .welcome-guide-item h3{font-size:20px;font-weight:760;letter-spacing:-.04em;line-height:1.3;color:#322b47;margin:0 0 12px}
+.vf-login-welcome .welcome-guide-item p{font-size:13px;color:#756f84;line-height:1.8;margin:0}
+.vf-login-welcome .welcome-guide-item strong{font-weight:740;color:#443a5b}
+.vf-login-welcome .welcome-guide-visual{display:flex;align-items:center;gap:8px;color:#7965bd;font-size:10px;font-weight:760;letter-spacing:.04em;padding-top:22px;margin-top:auto}
+.vf-login-welcome .welcome-guide-symbol{display:grid;place-items:center;width:33px;height:33px;border-radius:10px;background:#efeaff;font-size:18px}
+.vf-login-welcome .welcome-guide-help{margin:17px auto 0;max-width:100%}
+.vf-login-welcome .welcome-guide-help .dl-note{margin:0}
+@media(max-width:760px){
+ .vf-login-welcome .dl-page{padding:112px 15px 45px}
+ .vf-login-welcome .dl-hero{padding:17px 0 43px}
+ .vf-login-welcome .dl-hero #welcome-title{font-size:clamp(35px,9vw,50px)}
+ .vf-login-welcome .welcome-guide-list{grid-template-columns:1fr;gap:12px}
+ .vf-login-welcome .welcome-guide-item{border-radius:22px;padding:23px}
+ .vf-login-welcome .welcome-guide-number{margin-bottom:14px}
+ .vf-login-welcome .welcome-guide{padding-top:30px}
+}
 /* Paint the header/hero color directly on the root canvas.
    The prior decorative pseudo-element drifted and faded before the right edge. */
 html:has(body.vf-login-welcome) {
@@ -77,38 +90,36 @@ body.vf-login-welcome {
   <div class="dl-glow" aria-hidden="true"></div>
   <div class="dl-wrap">
     <section class="dl-hero" aria-labelledby="welcome-title">
-      <div class="dl-eyebrow"><span class="dl-eyebrow-dot" aria-hidden="true"></span> INSTALLATION COMPLETE</div>
-      <div class="dl-appicon"><img src="../assets/login-mark.png" alt="LogIn extension icon" width="62" height="62" decoding="async"></div>
-      <h1 id="welcome-title">Congratulations!<br><em>LogIn is installed.</em></h1>
-      <p class="dl-lead">You're one step closer to simpler, shared access. Open LogIn in Chrome, sign in with the account provided by your administrator, and you're ready to go.</p>
-      <div class="dl-install-actions">
-        <a class="dl-button" href="#setup" id="welcome-get-started">Get started <span aria-hidden="true">↗</span></a>
-      </div>
+      <div class="welcome-icon"><img src="../assets/login-mark.png" alt="LogIn extension icon" width="57" height="57"></div>
+      <div class="welcome-eyebrow">Installation complete</div>
+      <h1 id="welcome-title">Congratulations!<br><em>You're ready for LogIn.</em></h1>
+      <p class="dl-lead">LogIn is installed in Chrome. Just sign in with the account provided by your administrator and you're ready to connect to your team's websites.</p>
+      <div class="dl-install-actions"><a class="dl-button" href="#setup" id="welcome-get-started">Get started <span aria-hidden="true">↗</span></a></div>
     </section>
     <section class="welcome-guide" id="setup" aria-labelledby="setup-title">
       <div class="welcome-guide-heading">
         <div class="dl-small">YOUR LOGIN JOURNEY STARTS HERE</div>
-        <h2 id="setup-title">Three steps.<br><span>You're all set.</span></h2>
-        <p>Getting connected is simple. Follow the guide below to start using your team's shared access with LogIn.</p>
+        <h2 id="setup-title">Getting started is <span>simple.</span></h2>
+        <p>Three quick steps to connect your account and get straight to work.</p>
       </div>
       <div class="welcome-guide-list">
         <article class="welcome-guide-item">
           <span class="welcome-guide-number" aria-label="Step one">01</span>
-          <div><h3>Find and pin LogIn.</h3>
-            <p>Click the <strong>puzzle-piece Extensions icon</strong> in Chrome's toolbar. Find <strong>LogIn</strong>, click the pin icon, and keep it within easy reach next to your address bar.</p></div>
-          <div class="welcome-guide-visual" aria-hidden="true"><span class="welcome-guide-symbol">🧩</span><small>FIND YOUR EXTENSION</small></div>
+          <h3>Pin LogIn in Chrome</h3>
+          <p>Open Chrome's <strong>Extensions</strong> menu (the puzzle-piece icon), find <strong>LogIn</strong>, and pin it to your toolbar.</p>
+          <div class="welcome-guide-visual" aria-hidden="true"><span class="welcome-guide-symbol">✳</span> FIND YOUR EXTENSION</div>
         </article>
         <article class="welcome-guide-item">
           <span class="welcome-guide-number" aria-label="Step two">02</span>
-          <div><h3>Sign in to your account.</h3>
-            <p>Click your <strong>LogIn extension icon</strong>, then enter the credentials provided by your administrator. Follow any prompts to complete your device setup.</p></div>
-          <div class="welcome-guide-visual" aria-hidden="true"><span class="welcome-guide-symbol">↗</span><small>SIGN IN SECURELY</small></div>
+          <h3>Sign in to your account</h3>
+          <p>Open LogIn and enter the account credentials provided by your administrator. Follow any on-screen prompts.</p>
+          <div class="welcome-guide-visual" aria-hidden="true"><span class="welcome-guide-symbol">↗</span> YOUR ACCOUNT</div>
         </article>
         <article class="welcome-guide-item">
           <span class="welcome-guide-number" aria-label="Step three">03</span>
-          <div><h3>You're ready to get going.</h3>
-            <p>Once your account is connected, use LogIn to open your <strong>assigned website</strong>. Your administrator manages your access and shared session settings.</p></div>
-          <div class="welcome-guide-visual" aria-hidden="true"><span class="welcome-guide-symbol">✓</span><small>ACCESS YOUR WORKSPACE</small></div>
+          <h3>Start using LogIn</h3>
+          <p>Once you're connected, open your <strong>assigned website</strong>. Your administrator handles shared access for your team.</p>
+          <div class="welcome-guide-visual" aria-hidden="true"><span class="welcome-guide-symbol">✓</span> YOU'RE ALL SET</div>
         </article>
       </div>
       <div class="welcome-guide-help">
