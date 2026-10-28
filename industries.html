@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <script>document.documentElement.classList.add('vf-font-loading');</script>
-<style>html.vf-font-loading body{visibility:hidden}html.vf-font-loading .page-enter,html.vf-font-loading .rise-in,html.vf-font-loading .text-shimmer,html.vf-font-loading .animate-ping,html.vf-font-loading .animate-bounce,html.vf-font-loading .animate-float,html.vf-font-loading .animate-float-slow{animation-play-state:paused!important}</style>
+<style>/* Images and backgrounds render immediately; Inter controls text swap. */html.vf-font-loading .page-enter,html.vf-font-loading .rise-in,html.vf-font-loading .text-shimmer,html.vf-font-loading .animate-ping,html.vf-font-loading .animate-bounce,html.vf-font-loading .animate-float,html.vf-font-loading .animate-float-slow{animation-play-state:paused!important}</style>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-086Y2TSZTM"></script>
@@ -20,7 +20,7 @@
 <meta content="veefivee" name="author"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&amp;display=block" rel="stylesheet"/>
 <script>(function(){var done=false,timer=setTimeout(show,1800);function show(){if(done)return;done=true;clearTimeout(timer);document.documentElement.classList.remove('vf-font-loading');}if(!document.fonts||!document.fonts.load){show();return;}Promise.all([document.fonts.load('400 16px Inter'),document.fonts.load('800 16px Inter')]).then(show,show);})();</script>
 <link href="css/styles.css" rel="stylesheet"/>
 <link href="css/extras.css?v=20261023" rel="stylesheet"/>
@@ -47,7 +47,7 @@
 <div class="vf-industry-panels">
 <article class="vf-industry-panel vf-panel-software" data-reveal="" data-tilt="1.4" id="software-houses">
 <div class="vf-industry-panel-media">
-<img alt="Illustration of a software team collaborating in a modern development studio" height="1086" loading="lazy" src="assets/industry-software.webp?v=10" width="1448"/>
+<img alt="Illustration of a software team collaborating in a modern development studio" height="1086" loading="eager" fetchpriority="high" src="assets/industry-software.webp?v=10" width="1448"/>
 </div>
 <div class="vf-industry-panel-copy">
 <div class="vf-industry-card-top"><span aria-hidden="true" class="vf-industry-icon">⌘</span><span class="vf-industry-number">01 / 08</span></div>
@@ -61,7 +61,7 @@
 </article>
 <article class="vf-industry-panel vf-panel-creators vf-panel-reverse" data-reveal="" data-tilt="1.4" id="creators">
 <div class="vf-industry-panel-media">
-<img alt="Illustration of an influencer taking a selfie" height="1086" loading="lazy" src="assets/industry-creators.webp?v=10" width="1448"/>
+<img alt="Illustration of an influencer taking a selfie" height="1086" loading="eager" src="assets/industry-creators.webp?v=10" width="1448"/>
 </div>
 <div class="vf-industry-panel-copy">
 <div class="vf-industry-card-top"><span aria-hidden="true" class="vf-industry-icon">✺</span><span class="vf-industry-number">02 / 08</span></div>
@@ -75,7 +75,7 @@
 </article>
 <article class="vf-industry-panel vf-panel-government" data-reveal="" data-tilt="1.4" id="government">
 <div class="vf-industry-panel-media">
-<img alt="Illustration of a civic government building with digital operations" height="1086" loading="lazy" src="assets/industry-government.webp?v=10" width="1448"/>
+<img alt="Illustration of a civic government building with digital operations" height="1086" loading="eager" src="assets/industry-government.webp?v=10" width="1448"/>
 </div>
 <div class="vf-industry-panel-copy">
 <div class="vf-industry-card-top"><span aria-hidden="true" class="vf-industry-icon">◈</span><span class="vf-industry-number">03 / 08</span></div>
@@ -89,7 +89,7 @@
 </article>
 <article class="vf-industry-panel vf-panel-callcenter vf-panel-reverse" data-reveal="" data-tilt="1.4" id="call-centers">
 <div class="vf-industry-panel-media">
-<img alt="Illustration of a modern call center and sales team with CRM tools" height="1086" loading="lazy" src="assets/industry-callcenter.webp?v=10" width="1448"/>
+<img alt="Illustration of a modern call center and sales team with CRM tools" height="1086" loading="eager" src="assets/industry-callcenter.webp?v=10" width="1448"/>
 </div>
 <div class="vf-industry-panel-copy">
 <div class="vf-industry-card-top"><span aria-hidden="true" class="vf-industry-icon">◉</span><span class="vf-industry-number">04 / 08</span></div>
@@ -103,7 +103,7 @@
 </article>
 <article class="vf-industry-panel vf-panel-education" data-reveal="" data-tilt="1.4" id="education">
 <div class="vf-industry-panel-media">
-<img alt="Illustration of a beautiful university campus building" height="1086" loading="lazy" src="assets/industry-education.webp?v=10" width="1448"/>
+<img alt="Illustration of a beautiful university campus building" height="1086" loading="eager" src="assets/industry-education.webp?v=10" width="1448"/>
 </div>
 <div class="vf-industry-panel-copy">
 <div class="vf-industry-card-top"><span aria-hidden="true" class="vf-industry-icon">✦</span><span class="vf-industry-number">05 / 08</span></div>
@@ -117,7 +117,7 @@
 </article>
 <article class="vf-industry-panel vf-panel-business vf-panel-reverse" data-reveal="" data-tilt="1.4" id="businesses">
 <div class="vf-industry-panel-media">
-<img alt="Illustration of a modern office team collaborating" height="1086" loading="lazy" src="assets/industry-business.webp?v=10" width="1448"/>
+<img alt="Illustration of a modern office team collaborating" height="1086" loading="eager" src="assets/industry-business.webp?v=10" width="1448"/>
 </div>
 <div class="vf-industry-panel-copy">
 <div class="vf-industry-card-top"><span aria-hidden="true" class="vf-industry-icon">↗</span><span class="vf-industry-number">06 / 08</span></div>
@@ -131,7 +131,7 @@
 </article>
 <article class="vf-industry-panel vf-panel-local" data-reveal="" data-tilt="1.4" id="local-shops">
 <div class="vf-industry-panel-media">
-<img alt="Illustration of a stylish cafe or local shop owner using a tablet" height="1086" loading="lazy" src="assets/industry-localshops.webp?v=10" width="1448"/>
+<img alt="Illustration of a stylish cafe or local shop owner using a tablet" height="1086" loading="eager" src="assets/industry-localshops.webp?v=10" width="1448"/>
 </div>
 <div class="vf-industry-panel-copy">
 <div class="vf-industry-card-top"><span aria-hidden="true" class="vf-industry-icon">☕</span><span class="vf-industry-number">07 / 08</span></div>
@@ -145,7 +145,7 @@
 </article>
 <article class="vf-industry-panel vf-panel-freelancers vf-panel-reverse" data-reveal="" data-tilt="1.4" id="freelancers">
 <div class="vf-industry-panel-media">
-<img alt="Illustration of a freelancer working in a stylish home office" height="1086" loading="lazy" src="assets/industry-freelancers.webp?v=10" width="1448"/>
+<img alt="Illustration of a freelancer working in a stylish home office" height="1086" loading="eager" src="assets/industry-freelancers.webp?v=10" width="1448"/>
 </div>
 <div class="vf-industry-panel-copy">
 <div class="vf-industry-card-top"><span aria-hidden="true" class="vf-industry-icon">✳</span><span class="vf-industry-number">08 / 08</span></div>
