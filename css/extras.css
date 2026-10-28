@@ -740,3 +740,16 @@ body {max-width:100%; overflow-x:clip;}
     object-position: center;
   }
 }
+
+/* v28: Homepage mobile animation compositor staging (no motion or visual changes). */
+@media (max-width: 767.98px) {
+  /* Keep the existing 700ms page-enter blur/fade/slide and 800ms rise-in
+     keyframes exactly as authored. Give Chrome compositor notice before
+     their initial frames, instead of promoting surfaces partway through. */
+  .vf-home-page > .home-hero > .mx-auto.max-w-4xl {
+    will-change: opacity, transform, filter;
+  }
+  .vf-home-page .home-hero .rise-in {
+    will-change: opacity, transform;
+  }
+}
