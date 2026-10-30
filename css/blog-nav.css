@@ -88,3 +88,14 @@
 
 /* Shared header typography across marketing, articles and tool pages. */
 nav:has([data-nav-pill]),[data-nav-pill],[data-nav-pill] a{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important}
+
+/* A restrained 1px wordmark increase; reserve a little extra capsule height. */
+[data-nav-pill] > a[aria-label="veefivee home"]{font-size:15px!important}
+[data-nav-pill] > .vf-mobile-brand{padding-top:4px!important;padding-bottom:3px!important}
+@media(min-width:768px) and (max-width:900px){[data-nav-pill] > a[aria-label="veefivee home"]{font-size:13px!important}}
+/* Hero entrance: preserve fade, lift and stagger without animating a blur
+   over nested glass surfaces. Avoid scaling text during its entrance. */
+.vf-home-page > .home-hero > .mx-auto.max-w-4xl{animation:none!important;will-change:auto}
+.vf-home-page .home-hero .rise-in{animation-name:vf-hero-lift;will-change:auto}
+@keyframes vf-hero-lift{from{opacity:0;transform:translate3d(0,20px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@media(prefers-reduced-motion:reduce){.vf-home-page .home-hero .rise-in{animation:none!important;opacity:1;transform:none}}
