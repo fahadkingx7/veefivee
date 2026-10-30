@@ -85,3 +85,6 @@
 
 /* Keep touch-friendly hit targets without forcing full-page navigation. */
 @media(hover:none) and (pointer:coarse){[data-nav-pill] a{touch-action:manipulation;pointer-events:auto;-webkit-tap-highlight-color:transparent}[data-nav-pill] a:hover{transform:none!important}}
+
+/* Shared header typography across marketing, articles and tool pages. */
+nav:has([data-nav-pill]),[data-nav-pill],[data-nav-pill] a{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important}

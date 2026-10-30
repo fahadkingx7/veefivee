@@ -56,8 +56,14 @@
     listen(window, "scroll", updateNav, { passive: true });
   }
 
+  // Reveal homepage sections at the viewport, rather than far below it.
+  document.querySelectorAll('.vf-home-page > section').forEach(function (section) {
+    if (section.hasAttribute('data-reveal') || section.querySelector('[data-reveal]')) return;
+    section.setAttribute('data-reveal', '');
+    section.style.cssText += ';opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)';
+  });
   var reveals = document.querySelectorAll("[data-reveal]");
-  if ("IntersectionObserver" in window) {
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
@@ -65,7 +71,7 @@
         entry.target.style.transform = "translateY(0)";
         io.unobserve(entry.target);
       });
-    }, { threshold: 0.01, rootMargin: "400px 0px" });
+    }, { threshold: 0.01, rootMargin: "0px 0px -24px 0px" });
     reveals.forEach(function (el) { io.observe(el); });
     dispose.push(function () { io.disconnect(); });
 

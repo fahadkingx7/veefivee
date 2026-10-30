@@ -11,7 +11,7 @@
     if(!href || !src || !post.title) return null;
     const article=create('article','vf-home-journal-card');
     const media=create('a','vf-home-journal-image');media.href=href;media.setAttribute('aria-label','Read '+post.title);
-    const img=create('img');img.src=src;img.alt=post.imageAlt||post.title;img.loading='lazy';img.decoding='async';img.width=740;img.height=480;media.append(img);
+    const img=create('img');img.src=src;img.alt=post.imageAlt||post.title;img.loading='eager';img.decoding='async';img.width=740;img.height=480;media.append(img);
     const copy=create('div','vf-home-journal-copy');
     const tag=create('span','vf-home-journal-tag',(post.category||'Insights')+' · '+(Math.max(1,Math.min(45,Number(post.readMinutes)||6)))+' min read');
     const heading=create('h3');const name=create('a',null,post.title);name.href=href;heading.append(name);

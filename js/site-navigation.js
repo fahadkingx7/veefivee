@@ -77,6 +77,11 @@
       currentPill.replaceChildren.apply(currentPill, Array.from(pill.childNodes).map(function (node) { return document.importNode(node, true); }));
       document.querySelectorAll(metadata).forEach(function (node) { node.remove(); });
       next.querySelectorAll(metadata).forEach(function (node) { document.head.appendChild(document.importNode(node, true)); });
+      // Destination-specific head styles must match a direct page load.
+      document.head.querySelectorAll('style').forEach(function (style) { style.remove(); });
+      next.head.querySelectorAll('style').forEach(function (style) {
+        document.head.appendChild(document.importNode(style, true));
+      });
       active = url.href;
       position(url, traversal ? saved : null);
       window.VFPage.mount();
