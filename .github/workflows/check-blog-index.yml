@@ -1,5 +1,17 @@
 name: Check blog archive consistency
 on:
+  pull_request:
+    paths:
+      - 'blogs/**'
+      - 'data/blog-posts.json'
+      - 'data/blog-featured.json'
+      - 'blog.html'
+      - 'index.html'
+      - 'about.html'
+      - 'services.html'
+      - 'scripts/build_blog_index.py'
+      - 'assets/blog-*.webp'
+      - '.github/workflows/check-blog-index.yml'
   push:
     branches: [main]
     paths:
